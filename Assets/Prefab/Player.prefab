@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4294871546288971454}
   - component: {fileID: 4294871546288971455}
   - component: {fileID: 4294871546288971424}
-  - component: {fileID: 4294871546288971452}
   - component: {fileID: 4294871546288971451}
   - component: {fileID: 1389915068245649366}
   m_Layer: 0
@@ -121,32 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 1389915068245649366}
---- !u!61 &4294871546288971452
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4294871546288971425}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  gameController: {fileID: 0}
+  dragTimer: 10
 --- !u!120 &4294871546288971451
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -271,10 +246,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   speed: 10
+  upWardForce: 10
   launchSpeed: 3
   line: {fileID: 4294871546288971451}
   maxDrag: 2
   onGround: 0
   groundLength: 54
+  timeManager: {fileID: 0}
+  state: 0
+  dragTimer: 10
+  timeDragOut: 0
   myCamera: {fileID: 0}
-  startPosition: {x: 0, y: 0, z: 0}
+  canLaunch: 1

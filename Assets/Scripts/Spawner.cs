@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject space;
+    public GameObject pool;
     public int firstNumberToSpawn;
     public int numberToSpawn;
     public List<GameObject> enemies;
@@ -29,21 +29,24 @@ public class Spawner : MonoBehaviour
 
     public void spawnEnemies(float spawnCount)
     {
-        int randomEnemy = 0;
-        GameObject toSpawn;
-        MeshCollider collider = space.GetComponent<MeshCollider>();
-
-        float screenX, screenY;
-        Vector2 position;
-        for(int i = 0; i < spawnCount; i++)
+        if (pool != null)
         {
-            randomEnemy = Random.Range(0, enemies.Count);
-            toSpawn = enemies[randomEnemy];
+            int randomEnemy = 0;
+            GameObject toSpawn;
+            MeshCollider collider = pool.GetComponent<MeshCollider>();
 
-            screenX = Random.Range(collider.bounds.min.x, collider.bounds.max.x);
-            screenY = Random.Range(collider.bounds.min.y, collider.bounds.max.y);
-            position = new Vector2(screenX, screenY);
-            Instantiate(toSpawn, position, Quaternion.identity);
+            float screenX, screenY;
+            Vector2 position;
+            for (int i = 0; i < spawnCount; i++)
+            {
+                randomEnemy = Random.Range(0, enemies.Count);
+                toSpawn = enemies[randomEnemy];
+
+                screenX = Random.Range(collider.bounds.min.x, collider.bounds.max.x);
+                screenY = Random.Range(collider.bounds.min.y, collider.bounds.max.y);
+                position = new Vector2(screenX, screenY);
+                Instantiate(toSpawn, position, Quaternion.identity);
+            }
         }
     }
 }

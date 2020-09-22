@@ -2,22 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public GameObject deathText;
+    private bool canRestart = false;
+
+    private void Update()
     {
-        
+        if (canRestart && Input.GetMouseButton(0))
+        {
+            Restart();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayerDead()
     {
-        
+        deathText.SetActive(true);
+        canRestart = true;
     }
 
-    public void Restart()
+    private void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
