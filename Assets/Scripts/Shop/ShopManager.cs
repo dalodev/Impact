@@ -11,9 +11,6 @@ public class ShopManager : MonoBehaviour
     public double coins;
     public Text coinsTxt;
 
-    private int sectionIndex = 0;
-    private int currentSectionIndex = 0;
-
     void Start()
     {
         coinsTxt.text = "$" + coins.ToString();
@@ -36,16 +33,6 @@ public class ShopManager : MonoBehaviour
             coinsTxt.text = "$" + coins.ToString();
         }
 
-    }
-
-    public void MoveLeft()
-    {
-        currentSectionIndex--;
-    }
-
-    public void MoveRight()
-    {
-        currentSectionIndex++;
     }
 
     public void Menu()
