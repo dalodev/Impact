@@ -13,13 +13,11 @@ public class LifeTimer : MonoBehaviour
     private float dragTime = 10f;
     public TimeManager timeManager;
 
-    // Start is called before the first frame update
     void Start()
     {
         dragTime = player.dragTimer;
     }
 
-    // Update is called once per frame
     void Update()
     {
         

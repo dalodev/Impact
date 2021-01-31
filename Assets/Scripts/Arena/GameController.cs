@@ -20,6 +20,9 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            SceneManager.LoadScene(0);
+
         timer += Time.unscaledDeltaTime;
         if(timer > 0.1f && scoreOverTime) {
             currentScore += 5f;
@@ -57,6 +60,6 @@ public class GameController : MonoBehaviour
 
     public void GoToShop()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }
