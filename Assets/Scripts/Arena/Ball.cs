@@ -27,6 +27,9 @@ public class Ball : MonoBehaviour
     [Header("Stats")]
     public float dragTimer = 10f;
 
+    [Header("Game")]
+    public GameController gameCotroller;
+
     public bool timeDragOut = false;
 
     public Camera myCamera;
@@ -53,6 +56,7 @@ public class Ball : MonoBehaviour
 
     public void Launch()
     {
+        gameCotroller.activateScoreOverTime(true);
         canLaunch = false;
         state = BallState.LAUNCH;
         if (!timeDragOut)
@@ -100,6 +104,11 @@ public class Ball : MonoBehaviour
     void EndLine()
     {
         line.enabled = false;
+    }
+
+    public void UpdateScore(float score)
+    {
+        gameCotroller.UpdateScore(score);
     }
 
    public enum BallState

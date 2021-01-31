@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Ball")]
     public Ball ball;
+    public GameObject lifeUI;
 
     public GameController gameController;
     public float dragTimer = 10f;
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        lifeUI.SetActive(true);
         dragTimer = ball.dragTimer;
     }
 
