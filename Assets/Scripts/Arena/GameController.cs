@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -52,5 +53,10 @@ public class GameController : MonoBehaviour
     public void activateScoreOverTime(bool activate)
     {
         scoreOverTime = activate;
+    }
+
+    public void GoToShop()
+    {
+        SceneManager.LoadScene(1);
     }
 }

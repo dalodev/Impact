@@ -20,10 +20,10 @@ public class CameraZoom : MonoBehaviour
     {
         switch (currentPlayer.state)
         {
-            case Ball.BallState.DRAGGING:
+            case Ball.BallState.LAUNCH:
                 Camera.main.orthographicSize = Mathf.Lerp(minOrthographicSize, maxOrthographicSize, Time.deltaTime * smooth);
                 break;
-            case Ball.BallState.LAUNCH:
+            case Ball.BallState.DRAGGING:
                 Camera.main.orthographicSize = Mathf.Lerp(maxOrthographicSize, minOrthographicSize, Time.deltaTime * smooth);
                 break;
         }
