@@ -36,6 +36,17 @@ public class Ball : MonoBehaviour
     Vector3 endPoint;
 
     public bool canLaunch = true;
+
+    [Header("Customize")]
+    public TrailRenderer trail; 
+
+    void Awake()
+    {
+        CustomizeData data = SaveSystem.LoadCustomize();
+        gameObject.GetComponent<SpriteRenderer>().material = Resources.Load<Material>("Skins/Player/"+data.skin);
+        trail.material = Resources.Load<Material>("Skins/Trail/"+data.trail);
+    }
+
     public bool IsOnGround()
     {
         return Physics2D.RaycastAll(transform.position, Vector2.down, groundLength, groundLayer).Length > 0;

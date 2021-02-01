@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Event
+  - Trail
   layers:
   - Default
   - TransparentFX

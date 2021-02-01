@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pool: {fileID: 903022785}
-  firstNumberToSpawn: 450
-  numberToSpawn: 40
+  firstNumberToSpawn: 700
+  numberToSpawn: 45
   enemies:
   - {fileID: 9079352930251004577, guid: be54b610a17b8454d8b3928281860a42, type: 3}
   spawnInterval: 5
@@ -548,7 +548,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4c95db369ba425c4bb82f30ad9de4bc9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1377,8 +1377,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 903022785}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 245, z: 0}
-  m_LocalScale: {x: 400, y: 500, z: 1}
+  m_LocalPosition: {x: 0, y: 335, z: 0}
+  m_LocalScale: {x: 400, y: 700, z: 1}
   m_Children: []
   m_Father: {fileID: 875348946}
   m_RootOrder: 1
@@ -2252,6 +2252,10 @@ PrefabInstance:
       propertyPath: gameCotroller
       value: 
       objectReference: {fileID: 563260663}
+    - target: {fileID: 1389915068245649366, guid: ff9da86b83601cd49bece9c7f3bd50e0, type: 3}
+      propertyPath: trail
+      value: 
+      objectReference: {fileID: 494282060}
     - target: {fileID: 4294871546288971424, guid: ff9da86b83601cd49bece9c7f3bd50e0, type: 3}
       propertyPath: gameController
       value: 

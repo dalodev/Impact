@@ -24,20 +24,18 @@ public class ShopManager : MonoBehaviour
 
     public void Buy()
     {
-        GameObject buttonRef = GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().currentSelectedGameObject;
-        ItemInfo item = buttonRef.GetComponent<ItemInfo>();
+        /*SkinsManager skinManager = GameObject.FindObjectOfType<SkinsManager>();
+        SkinInfo item = skinManager.getselectedItem();
         if (coins >= item.priceValue && item.enabled == true)
         {
             coins -= item.priceValue;
             item.enabled = false;
             coinsTxt.text = "$" + coins.ToString();
-        }
-
+        }*/
     }
 
     public void Menu()
     {
         SceneManager.LoadScene(0);
-
     }
 }
