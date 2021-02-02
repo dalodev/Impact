@@ -1,17 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
+
 
 public class CustomizeManager : MonoBehaviour
 {
     public string skinId, trailId;
     public SkinsManager skinManager;
     public TrailSkinManager trailSkinManager;
+    public GameObject menuManager;
+    public GameObject customizeManager;
     
-
     void Awake()
     {
         CustomizeData data = SaveSystem.LoadCustomize();
@@ -22,7 +20,11 @@ public class CustomizeManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-            SceneManager.LoadScene(0);
+        {
+            menuManager.SetActive(true);
+            customizeManager.SetActive(false);
+        }
+           
     }
 
     public void Customize()
@@ -30,11 +32,5 @@ public class CustomizeManager : MonoBehaviour
         this.skinId = skinManager.getSkinName();
         this.trailId = trailSkinManager.getTrailName();
         SaveSystem.SaveCustomize(this);
-        Menu();
-    }
-
-    public void Menu()
-    {
-        SceneManager.LoadScene(0);
     }
 }

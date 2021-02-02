@@ -1,29 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class TrailSkinManager : MonoBehaviour
 {
     public TrailRenderer trail;
+    public GameObject player;
     public List<SkinInfo> skins = new List<SkinInfo>();
     private int currentSkin = 0;
-
-    void Awake()
-    {
-        CustomizeData data = SaveSystem.LoadCustomize();
-        SkinInfo skin = skins.Find(item => item.itemName == data.trail);
-        currentSkin = skins.IndexOf(skin);
-        selectSkin(skin);
-
-    }
-
-    private void selectSkin(SkinInfo skin)
-    {
-        if (skin != null)
-        {
-            trail.material = skin.skin;
-        }
-    }
 
     public void nextSkin()
     {
@@ -31,10 +14,26 @@ public class TrailSkinManager : MonoBehaviour
         if (index < skins.Count)
         {
             SkinInfo skin = skins[index];
-            if (skin != null)
+            if (skin.skin != null)
             {
+                GameObject effect = GameObject.FindGameObjectWithTag("Trail");
+                if (effect != null)
+                {
+                    Destroy(effect);
+                }
+                trail.gameObject.SetActive(true);
                 trail.material = skin.skin;
-
+            }
+            if(skin.effect != null)
+            {
+                trail.gameObject.SetActive(false);
+                GameObject effect = GameObject.FindGameObjectWithTag("Trail");
+                if(effect != null)
+                {
+                    Destroy(effect);
+                }
+                GameObject newTrail = Instantiate(skin.effect, player.transform.position, Quaternion.identity);
+                newTrail.transform.parent = player.transform;
             }
         }
         else
@@ -49,10 +48,28 @@ public class TrailSkinManager : MonoBehaviour
         if (index >= 0)
         {
             SkinInfo skin = skins[index];
-            if (skin != null)
+            if (skin.skin != null)
             {
+                GameObject effect = GameObject.FindGameObjectWithTag("Trail");
+                if (effect != null)
+                {
+                    Destroy(effect);
+                }
+                trail.gameObject.SetActive(true);
                 trail.material = skin.skin;
             }
+            if(skin.effect != null)
+            {
+                trail.gameObject.SetActive(false);
+                GameObject effect = GameObject.FindGameObjectWithTag("Trail");
+                if(effect != null)
+                {
+                    Destroy(effect);
+                }
+                GameObject newTrail = Instantiate(skin.effect, player.transform.position, Quaternion.identity);
+                newTrail.transform.parent = player.transform;
+            }
+            
         }
         else
         {
@@ -68,6 +85,14 @@ public class TrailSkinManager : MonoBehaviour
 
     public string getTrailName()
     {
-        return skins[currentSkin].skin.name;
+        Material material = skins[currentSkin].skin;
+        if (material != null)
+        {
+            return skins[currentSkin].skin.name;
+        }
+        else
+        {
+            return skins[currentSkin].effect.name;
+        }
     }
 }

@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
 
     public GameObject deathText;
     public GameObject lifeUi;
-    public Text scoreText;
-    public Text highScoreText;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI highScoreText;
     private float currentScore = 0f;
     private int scoreIncreaseRate = 1;
     private float currentMaxScore = 0f;

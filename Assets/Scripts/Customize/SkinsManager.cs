@@ -37,6 +37,7 @@ public class SkinsManager : MonoBehaviour
         }else
         {
             currentSkin = skins.Count-1;
+            //hide next button
         }
     }
 
@@ -55,6 +56,7 @@ public class SkinsManager : MonoBehaviour
         else
         {
             currentSkin = 0;
+            //hide previous button
         }
     }
 
