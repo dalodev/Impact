@@ -11,7 +11,7 @@ public class SkinsManager : MonoBehaviour
     void Awake()
     {
         CustomizeData data = SaveSystem.LoadCustomize();
-        SkinInfo skin = skins.Find(item => item.itemName == data.skin);
+        SkinInfo skin = skins.Find(item => item.skin.name == data.skin);
         currentSkin = skins.IndexOf(skin);
         selectSkin(skin);
     }

@@ -42,21 +42,7 @@ public class Ball : MonoBehaviour
 
     void Awake()
     {
-        CustomizeData data = SaveSystem.LoadCustomize();
-        gameObject.GetComponent<SpriteRenderer>().material = Resources.Load<Material>("Skins/Player/"+data.skin);
-        Material trailLoaded = Resources.Load<Material>("Skins/Trail/" + data.trail);
-        if(trailLoaded != null)
-        {
-            trail.gameObject.SetActive(false);
-            trail.material = Resources.Load<Material>("Skins/Trail/" + data.trail);
-        }
-        GameObject trailEffect = Resources.Load<GameObject>("Skins/Trail/" + data.trail);
-        if(trailEffect != null)
-        {
-            trail.gameObject.SetActive(false);
-            GameObject newTrail = Instantiate(trailEffect, transform.position, Quaternion.identity);
-            newTrail.transform.parent = transform;
-        }
+        enabled = false;
     }
 
     public bool IsOnGround()

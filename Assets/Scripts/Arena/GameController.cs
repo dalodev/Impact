@@ -43,11 +43,6 @@ public class GameController : MonoBehaviour
         highScoreText.text = "HighScore: " + currentScore.ToString();
     }
 
-    public void Restart()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
     public void UpdateScore(float score)
     {
         currentMaxScore = this.currentScore + score;
@@ -58,8 +53,10 @@ public class GameController : MonoBehaviour
         scoreOverTime = activate;
     }
 
-    public void GoToShop()
+    public void restart()
     {
         SceneManager.LoadScene(0);
+
     }
+
 }
