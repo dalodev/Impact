@@ -26,6 +26,7 @@ public class Ball : MonoBehaviour
 
     [Header("Stats")]
     public float dragTimer = 10f;
+    public float xp;
 
     [Header("Game")]
     public GameController gameCotroller;

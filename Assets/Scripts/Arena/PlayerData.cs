@@ -7,7 +7,7 @@ public class PlayerData
 
     public PlayerData(GameController gameController)
     {
-        this.coins = gameController.level;
+        this.coins = gameController.currentLevel;
         this.level = gameController.coins;
     }
 }

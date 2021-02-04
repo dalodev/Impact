@@ -12,8 +12,11 @@ public class GameController : MonoBehaviour
     public GameObject lifeUi;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highScoreText;
-    public int level = 0;
-    public int coins = 0;
+    public TextMeshProUGUI levelText;
+    public Level level;
+    public int currentLevel;
+    public int coins;
+    public Ball ball;
     public CustomizeManager customizeManager;
     private float currentScore = 0f;
     private int scoreIncreaseRate = 1;
@@ -46,7 +49,10 @@ public class GameController : MonoBehaviour
         deathText.SetActive(true);
         lifeUi.SetActive(false);
         highScoreText.text = "HighScore: " + currentScore.ToString();
+        level.IncrementXp(ball.xp);
+        levelText.text = "Level " + level;
         SaveSystem.SavePlayerData(this);
+
     }
 
     public void UpdateScore(float score)
