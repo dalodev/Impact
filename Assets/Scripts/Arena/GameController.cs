@@ -12,6 +12,9 @@ public class GameController : MonoBehaviour
     public GameObject lifeUi;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highScoreText;
+    public int level = 0;
+    public int coins = 0;
+    public CustomizeManager customizeManager;
     private float currentScore = 0f;
     private int scoreIncreaseRate = 1;
     private float currentMaxScore = 0f;
@@ -20,9 +23,11 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-            SceneManager.LoadScene(0);
-
+        if (Input.GetKeyDown(KeyCode.Escape)
+            && !customizeManager.enabled)
+        {
+            restart();
+        }
         timer += Time.unscaledDeltaTime;
         if(timer > 0.1f && scoreOverTime) {
             currentScore += 5f;
@@ -41,6 +46,7 @@ public class GameController : MonoBehaviour
         deathText.SetActive(true);
         lifeUi.SetActive(false);
         highScoreText.text = "HighScore: " + currentScore.ToString();
+        SaveSystem.SavePlayerData(this);
     }
 
     public void UpdateScore(float score)
@@ -58,5 +64,4 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene(0);
 
     }
-
 }

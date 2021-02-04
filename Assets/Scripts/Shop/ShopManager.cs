@@ -6,32 +6,27 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
-{
-    
+{ 
     public double coins;
+    public int level;
     public Text coinsTxt;
 
     void Start()
     {
+        PlayerData data = SaveSystem.LoadPlayerData();
+        this.level = data.level;
+        this.coins = data.coins;
         coinsTxt.text = "$" + coins.ToString();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-            SceneManager.LoadScene(0);
+       
     }
 
     public void Buy()
     {
-        /*SkinsManager skinManager = GameObject.FindObjectOfType<SkinsManager>();
-        SkinInfo item = skinManager.getselectedItem();
-        if (coins >= item.priceValue && item.enabled == true)
-        {
-            coins -= item.priceValue;
-            item.enabled = false;
-            coinsTxt.text = "$" + coins.ToString();
-        }*/
+        
     }
 
     public void Menu()

@@ -8,10 +8,12 @@ public class PlayerController : MonoBehaviour
 
     public GameController gameController;
     public float dragTimer = 10f;
+    private Vector3 initialPosition;
 
     // Start is called before the first frame update
     void Start()
     {
+        initialPosition = transform.position;
         lifeUI.SetActive(true);
         dragTimer = ball.dragTimer;
     }
@@ -30,5 +32,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) ball.StartDrag();
         if (Input.GetMouseButton(0)) ball.Dragging();
         if (Input.GetMouseButtonUp(0)) ball.Launch();
+    }
+
+    public void RestartPosition()
+    {
+        transform.position = initialPosition;
+        this.gameObject.SetActive(true);
+
     }
 }

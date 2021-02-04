@@ -25,7 +25,7 @@ public class DeathZone : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false); 
             Shaker.ShakeAll(ShakePreset);
             gameController.PlayerDead();
         }
