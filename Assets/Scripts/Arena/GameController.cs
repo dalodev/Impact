@@ -50,7 +50,7 @@ public class GameController : MonoBehaviour
         lifeUi.SetActive(false);
         highScoreText.text = "HighScore: " + currentScore.ToString();
         level.IncrementXp(ball.xp);
-        levelText.text = "Level " + level;
+        levelText.text = "Level " + currentLevel;
         SaveSystem.SavePlayerData(this);
 
     }
