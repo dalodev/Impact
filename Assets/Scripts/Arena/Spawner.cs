@@ -10,11 +10,11 @@ public class Spawner : MonoBehaviour
     public List<GameObject> enemies;
     public float spawnInterval;
     private float nextSpawn;
-
+    private bool restart = true;
 
     private void Start()
     {
-        spawnEnemies(firstNumberToSpawn);
+        //SpawnEnemies(firstNumberToSpawn);
         nextSpawn = Time.time + spawnInterval;
     }
 
@@ -22,12 +22,16 @@ public class Spawner : MonoBehaviour
     {
         if(Time.time >= nextSpawn)
         {
-            spawnEnemies(numberToSpawn);
+            SpawnEnemies(numberToSpawn);
             nextSpawn = Time.time + spawnInterval;
+        }
+        if (restart){
+            restart = false;
+            SpawnEnemies(firstNumberToSpawn);
         }
     }
 
-    public void spawnEnemies(float spawnCount)
+    public void SpawnEnemies(float spawnCount)
     {
         if (pool != null)
         {
@@ -45,8 +49,18 @@ public class Spawner : MonoBehaviour
                 screenX = Random.Range(collider.bounds.min.x, collider.bounds.max.x);
                 screenY = Random.Range(collider.bounds.min.y, collider.bounds.max.y);
                 position = new Vector2(screenX, screenY);
-                Instantiate(toSpawn, position, Quaternion.identity);
+                GameObject enemy = Instantiate(toSpawn, position, Quaternion.identity);
+                enemy.transform.parent = this.gameObject.transform;
             }
         }
+    }
+
+    public void RemoveEnemies()
+    {
+        foreach (Transform child in transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+        restart = true;
     }
 }

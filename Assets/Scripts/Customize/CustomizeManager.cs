@@ -13,8 +13,17 @@ public class CustomizeManager : MonoBehaviour
     void Awake()
     {
         CustomizeData data = SaveSystem.LoadCustomize();
-        skinId = data.skin;
-        trailId = data.trail;
+        if (data != null)
+        {
+            skinId = data.skin;
+            trailId = data.trail;
+        }
+        else
+        {
+            skinId = skinManager.GetSkinName();
+            trailId = trailSkinManager.GetTrailName();
+        }
+        
     }
 
     void Update()
@@ -23,14 +32,38 @@ public class CustomizeManager : MonoBehaviour
         {
             menuManager.SetActive(true);
             customizeManager.SetActive(false);
+            Customize();
         }
-           
     }
 
     public void Customize()
     {
-        this.skinId = skinManager.getSkinName();
-        this.trailId = trailSkinManager.getTrailName();
-        SaveSystem.SaveCustomize(this);
+        bool navigate = false;
+        if (trailSkinManager.GetselectedItem().enabled)
+        {
+            Debug.Log("trail enabled");
+            this.trailId = trailSkinManager.GetTrailName();
+            SaveSystem.SaveCustomize(this);
+            navigate = true;
+        }
+
+        if (skinManager.GetselectedItem().enabled)
+        {
+            Debug.Log("skin enabled");
+            this.skinId = skinManager.GetSkinName();
+            SaveSystem.SaveCustomize(this);
+            navigate = true;
+        }
+        if (navigate)
+        {
+            menuManager.SetActive(true);
+            customizeManager.SetActive(false);
+            trailSkinManager.DisableLockImage();
+            skinManager.DisableLockImage();
+        }
+        else
+        {
+            //display error
+        }
     }
 }

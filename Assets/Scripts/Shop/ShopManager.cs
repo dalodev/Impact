@@ -14,8 +14,17 @@ public class ShopManager : MonoBehaviour
     void Start()
     {
         PlayerData data = SaveSystem.LoadPlayerData();
-        this.level = data.level;
-        this.coins = data.coins;
+        if(data != null)
+        {
+            this.level = data.level;
+            this.coins = data.coins;
+        }
+        else
+        {
+            this.level = 0;
+            this.coins = 0;
+        }
+        
         //coinsTxt.text = "$" + coins.ToString();
     }
 

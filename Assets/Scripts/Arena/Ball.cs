@@ -66,7 +66,7 @@ public class Ball : MonoBehaviour
 
     public void Launch()
     {
-        gameCotroller.activateScoreOverTime(true);
+        gameCotroller.ActivateScoreOverTime(true);
         canLaunch = false;
         state = BallState.LAUNCH;
         if (!timeDragOut)
@@ -116,7 +116,7 @@ public class Ball : MonoBehaviour
         line.enabled = false;
     }
 
-    public void UpdateScore(float score)
+    public void UpdateScore(int score)
     {
         gameCotroller.UpdateScore(score);
     }

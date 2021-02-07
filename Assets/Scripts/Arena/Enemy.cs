@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public ShakePreset ShakePreset = null;
     public GameObject deathEffect = null;
     public float upWardForce = 8f;
-    public float points = 0f;
+    public int points = 0;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

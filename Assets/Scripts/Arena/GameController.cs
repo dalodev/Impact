@@ -1,73 +1,123 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using TMPro;
 
 public class GameController : MonoBehaviour
 {
-
     public GameObject deathText;
     public GameObject lifeUi;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highScoreText;
     public TextMeshProUGUI levelText;
-    public Level level;
-    public int currentLevel;
     public int coins;
     public Ball ball;
     public CustomizeManager customizeManager;
-    private float currentScore = 0f;
+    public LevelSystem levelSystem;
+    public Spawner spawner;
+   
+    private int highScore;
+    private int currentScore = 0;
     private int scoreIncreaseRate = 1;
-    private float currentMaxScore = 0f;
+    private int currentMaxScore = 0;
     private float timer = 0f;
     private bool scoreOverTime = false;
 
-    private void Update()
+    void Awake()
+    {
+        SaveSystem.DeleteData();
+        PlayerData data = SaveSystem.LoadPlayerData();
+        if (data != null)
+        {
+            highScore = data.highScore;
+        }
+        else
+        {
+            highScore = 0;
+        }
+    }
+
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)
             && !customizeManager.enabled)
         {
-            restart();
+            Restart();
         }
         timer += Time.unscaledDeltaTime;
         if(timer > 0.1f && scoreOverTime) {
-            currentScore += 5f;
+            currentScore += 5;
             timer = 0;
         }
         if (currentScore < currentMaxScore)
         {
             currentScore = currentScore + scoreIncreaseRate;
         }
-        scoreText.text = "Score: " + currentScore.ToString();
+        if (!deathText.activeInHierarchy)
+        {
+            scoreText.text = "Score: " + currentScore.ToString();
+        }
     }
 
     public void PlayerDead()
     {
-        activateScoreOverTime(false);
+        ActivateScoreOverTime(false);
         deathText.SetActive(true);
         lifeUi.SetActive(false);
-        highScoreText.text = "HighScore: " + currentScore.ToString();
-        level.IncrementXp(ball.xp);
-        levelText.text = "Level " + currentLevel;
-        SaveSystem.SavePlayerData(this);
+        if(currentScore > highScore)
+        {
+            highScore = currentScore;
+            highScoreText.text = "HighScore: " + currentScore.ToString();
+        }
+        else
+        {
+            highScoreText.text = "HighScore: " + highScore.ToString();
 
+        }
+        scoreText.text = "Score: " + currentScore.ToString();
+        levelSystem.AddExperience(currentScore, this);
+        currentMaxScore = 0;
+        currentScore = 0;
     }
 
-    public void UpdateScore(float score)
+    public void UpdateScore(int score)
     {
-        currentMaxScore = this.currentScore + score;
+        currentMaxScore = currentScore + score;
     }
 
-    public void activateScoreOverTime(bool activate)
+    public void ActivateScoreOverTime(bool activate)
     {
         scoreOverTime = activate;
     }
 
-    public void restart()
+    public void Restart()
     {
         SceneManager.LoadScene(0);
+    } 
 
+    public int GetHighScore()
+    {
+        return highScore;
+    }
+
+    public void RemoveSpawnerEnemies()
+    {
+        spawner.RemoveEnemies();
+        spawner.gameObject.SetActive(false);
+        spawner.gameObject.SetActive(true);
+    }
+
+    public int GetLevel()
+    {
+        return levelSystem.GetLevel();
+    }
+
+    public int GetExperience()
+    {
+        return levelSystem.experience;
+    }
+
+    public int GetExperienceToNextLevel()
+    {
+        return levelSystem.experienceToNextLevel;
     }
 }

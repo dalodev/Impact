@@ -1,30 +1,55 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkinsManager : MonoBehaviour
 {
     public SpriteRenderer playerSprite;
+    public GameObject lockImage;
     public List<SkinInfo> skins = new List<SkinInfo>();
     private int currentSkin = 0;
+    private int skinIndex = 0;
+    private int currentLevel;
 
     void Awake()
     {
         CustomizeData data = SaveSystem.LoadCustomize();
-        SkinInfo skin = skins.Find(item => item.skin.name == data.skin);
-        currentSkin = skins.IndexOf(skin);
-        selectSkin(skin);
+        if (data != null)
+        {
+            SkinInfo skin = skins.Find(item => item.skin.name == data.skin);
+            currentSkin = skins.IndexOf(skin);
+            skinIndex = skins.IndexOf(skin);
+        }
+        else
+        {
+            currentSkin = 0;
+            skinIndex = 0;
+        }
+        
+        PlayerData playerData = SaveSystem.LoadPlayerData();
+        if(playerData != null)
+        {
+            currentLevel = playerData.level;
+
+        }
+        else
+        {
+            currentLevel = 0;
+        }
+        SelectSkin(skins[currentSkin]);
     }
 
-    private void selectSkin(SkinInfo skin)
+    private void SelectSkin(SkinInfo skin)
     {
         if(skin != null)
         {
+            IsSkinEnable(skin);
             playerSprite.material = skin.skin;
         }
     }
 
-    public void nextSkin()
+    public void NextSkin()
     {
         int index = currentSkin += 1;
         if(index < skins.Count)
@@ -32,6 +57,7 @@ public class SkinsManager : MonoBehaviour
             SkinInfo skin = skins[index];
             if (skin != null)
             {
+                IsSkinEnable(skin);
                 playerSprite.material = skin.skin;
             }
         }else
@@ -41,7 +67,7 @@ public class SkinsManager : MonoBehaviour
         }
     }
 
-    public void previousSkin()
+    public void PreviousSkin()
     {
         int index = currentSkin -= 1;
         if (index >= 0)
@@ -49,8 +75,8 @@ public class SkinsManager : MonoBehaviour
             SkinInfo skin = skins[index];
             if (skin != null)
             {
+                IsSkinEnable(skin);
                 playerSprite.material = skin.skin;
-
             }
         }
         else
@@ -60,13 +86,42 @@ public class SkinsManager : MonoBehaviour
         }
     }
 
-    public SkinInfo getselectedItem()
+    public SkinInfo GetselectedItem()
     {
-        return skins[currentSkin];
+        if (skins[currentSkin].enabled)
+        {
+            return skins[currentSkin];
+        }
+        else
+        {
+            currentSkin = skinIndex;
+            playerSprite.material = skins[skinIndex].skin;
+            return skins[skinIndex];
+        }
+        
     }
 
-    public string getSkinName()
+    public string GetSkinName()
     {
-        return skins[currentSkin].skin.name;
+        return GetselectedItem().skin.name;
+    }
+
+    private void IsSkinEnable(SkinInfo skin)
+    {
+        if (skin.unlockLevel <= currentLevel)
+        {
+            lockImage.SetActive(false);
+            skin.enabled = true;
+        }
+        else
+        {
+            lockImage.SetActive(true);
+            skin.enabled = false;
+        }
+    }
+
+    public void DisableLockImage()
+    {
+        lockImage.SetActive(false);
     }
 }

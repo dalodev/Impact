@@ -1,21 +1,45 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TrailSkinManager : MonoBehaviour
 {
     public TrailRenderer trail;
     public GameObject player;
     public List<SkinInfo> skins = new List<SkinInfo>();
+    public GameObject lockImage;
     private int currentSkin = 0;
+    private int skinIndex = 0;
+    private int currentLevel;
 
     void Awake()
     {
         CustomizeData data = SaveSystem.LoadCustomize();
-        SkinInfo skin = skins.Find(item => findTrail(item, data));
-        currentSkin = skins.IndexOf(skin);
+        if (data != null)
+        {
+            SkinInfo skin = skins.Find(item => FindTrail(item, data));
+            currentSkin = skins.IndexOf(skin);
+            skinIndex = skins.IndexOf(skin);
+        }
+        else
+        {
+            currentSkin = 0;
+            skinIndex = 0;
+        }
+        
+        PlayerData playerData = SaveSystem.LoadPlayerData();
+        if(playerData != null)
+        {
+            currentLevel = playerData.level;
+        }
+        else
+        {
+            currentLevel = 0;
+        }
         SelectSkin(currentSkin);
+
     }
-    private bool findTrail(SkinInfo item, CustomizeData data)
+    private bool FindTrail(SkinInfo item, CustomizeData data)
     {
         bool find = false;
         if(item.skin != null)
@@ -30,7 +54,7 @@ public class TrailSkinManager : MonoBehaviour
         return find;
     }
 
-    public void nextSkin()
+    public void NextSkin()
     {
         int index = currentSkin += 1;
         if (index < skins.Count)
@@ -43,7 +67,7 @@ public class TrailSkinManager : MonoBehaviour
         }
     }
 
-    public void previousSkin()
+    public void PreviousSkin()
     {
         int index = currentSkin -= 1;
         if (index >= 0)
@@ -59,44 +83,91 @@ public class TrailSkinManager : MonoBehaviour
     private void SelectSkin(int index)
     {
         SkinInfo skin = skins[index];
-        if (skin.skin != null)
+        if (skin != null)
         {
             GameObject effect = GameObject.FindGameObjectWithTag("Trail");
             if (effect != null)
             {
                 Destroy(effect);
             }
-            trail.gameObject.SetActive(true);
-            trail.material = skin.skin;
-        }
-        if (skin.effect != null)
-        {
-            trail.gameObject.SetActive(false);
-            GameObject effect = GameObject.FindGameObjectWithTag("Trail");
-            if (effect != null)
+            IsSkinEnable(skin);
+               
+            Material material = skins[currentSkin].skin;
+            if (material != null)
             {
-                Destroy(effect);
+                trail.gameObject.SetActive(true);
+                trail.material = skin.skin;
             }
-            GameObject newTrail = Instantiate(skin.effect, player.transform.position, Quaternion.identity);
-            newTrail.transform.parent = player.transform;
-        }
+            else
+            {
+                trail.gameObject.SetActive(false);
+                GameObject newTrail = Instantiate(skin.effect, player.transform.position, Quaternion.identity);
+                newTrail.transform.parent = player.transform;
+            }
+            
+        }        
     }
 
-    public SkinInfo getselectedItem()
+    public SkinInfo GetselectedItem()
     {
-        return skins[currentSkin];
-    }
-
-    public string getTrailName()
-    {
-        Material material = skins[currentSkin].skin;
-        if (material != null)
+        GameObject effect = GameObject.FindGameObjectWithTag("Trail");
+        
+        if (skins[currentSkin].enabled)
         {
-            return skins[currentSkin].skin.name;
+            return skins[currentSkin];
         }
         else
         {
-            return skins[currentSkin].effect.name;
+            currentSkin = skinIndex;
+            if (effect != null)
+            {
+                Destroy(effect);
+            }
+            if (skins[skinIndex].skin != null)
+            {
+                trail.gameObject.SetActive(true);
+                trail.material = skins[skinIndex].skin;
+            }
+            if( skins[skinIndex].effect != null)
+            {
+                GameObject newTrail = Instantiate(skins[skinIndex].effect, player.transform.position, Quaternion.identity);
+                newTrail.transform.parent = player.transform;
+            }
+            return skins[skinIndex];
         }
+        
+    }
+
+    public string GetTrailName()
+    {
+        Material material = GetselectedItem().skin;
+        if (material != null)
+        {
+            return GetselectedItem().skin.name;
+        }
+        else
+        {
+            return GetselectedItem().effect.name;
+        }
+
+    }
+
+    private void IsSkinEnable(SkinInfo skin)
+    {
+        if (skin.unlockLevel <= currentLevel)
+        {
+            lockImage.SetActive(false);
+            skin.enabled = true;
+        }
+        else
+        {
+            lockImage.gameObject.SetActive(true);
+            skin.enabled = false;
+        }
+    }
+
+    public void DisableLockImage()
+    {
+        lockImage.SetActive(false);
     }
 }
