@@ -9,10 +9,16 @@ public class CameraZoom : MonoBehaviour
 
     public float maxOrthographicSize = 40f;
     public float minOrthographicSize = 25f;
-    public float smooth = 5f;
+    public float smooth = 15f;
+    private float zoomFactor = 10f;
+    private float targetZoom;
+    private Camera cam;
+
     // Start is called before the first frame update
     void Start()
     {
+        cam = Camera.main;
+        targetZoom = cam.orthographicSize;
     }
 
     // Update is called once per frame
@@ -21,10 +27,14 @@ public class CameraZoom : MonoBehaviour
         switch (currentPlayer.state)
         {
             case Ball.BallState.LAUNCH:
-                Camera.main.orthographicSize = Mathf.Lerp(minOrthographicSize, maxOrthographicSize, Time.deltaTime * smooth);
+                targetZoom -= 0.1f * zoomFactor;
+                targetZoom = Mathf.Clamp(targetZoom, minOrthographicSize, maxOrthographicSize);
+                cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetZoom, Time.unscaledDeltaTime * smooth);
                 break;
             case Ball.BallState.DRAGGING:
-                Camera.main.orthographicSize = Mathf.Lerp(maxOrthographicSize, minOrthographicSize, Time.deltaTime * smooth);
+                targetZoom -= -0.1f * zoomFactor;
+                targetZoom = Mathf.Clamp(targetZoom, minOrthographicSize, maxOrthographicSize);
+                cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetZoom, Time.unscaledDeltaTime * smooth);
                 break;
         }
     }
