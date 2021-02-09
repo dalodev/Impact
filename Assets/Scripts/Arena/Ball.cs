@@ -66,7 +66,7 @@ public class Ball : MonoBehaviour
 
     public void Launch()
     {
-        gameCotroller.ActivateScoreOverTime(true);
+        //gameCotroller.ActivateScoreOverTime(true);
         canLaunch = false;
         state = BallState.LAUNCH;
         if (!timeDragOut)

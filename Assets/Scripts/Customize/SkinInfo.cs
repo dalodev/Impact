@@ -11,4 +11,5 @@ public class SkinInfo
     public int itemID;
     public int unlockLevel;
     public bool enabled = false;
+    public int coins = 0;
 }

@@ -44,13 +44,13 @@ public class GameController : MonoBehaviour
             Restart();
         }
         timer += Time.unscaledDeltaTime;
-        if(timer > 0.1f && scoreOverTime) {
+        /*if(timer > 0.1f && scoreOverTime) {
             currentScore += 5;
             timer = 0;
-        }
+        }*/
         if (currentScore < currentMaxScore)
         {
-            currentScore = currentScore + scoreIncreaseRate;
+            currentScore += scoreIncreaseRate;
         }
         if (!deathText.activeInHierarchy)
         {
@@ -60,7 +60,7 @@ public class GameController : MonoBehaviour
 
     public void PlayerDead()
     {
-        ActivateScoreOverTime(false);
+        //ActivateScoreOverTime(false);
         deathText.SetActive(true);
         lifeUi.SetActive(false);
         if(currentScore > highScore)
@@ -81,6 +81,7 @@ public class GameController : MonoBehaviour
 
     public void UpdateScore(int score)
     {
+        Debug.Log("Score: " + currentScore);
         currentMaxScore = currentScore + score;
     }
 

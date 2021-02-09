@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using TMPro;
 
 public class CustomizeManager : MonoBehaviour
 {
@@ -9,6 +9,8 @@ public class CustomizeManager : MonoBehaviour
     public TrailSkinManager trailSkinManager;
     public GameObject menuManager;
     public GameObject customizeManager;
+    public TextMeshProUGUI levelText;
+    public TextMeshProUGUI coinText;
     
     void Awake()
     {
@@ -23,12 +25,21 @@ public class CustomizeManager : MonoBehaviour
             skinId = skinManager.GetSkinName();
             trailId = trailSkinManager.GetTrailName();
         }
+        PlayerData playerData = SaveSystem.LoadPlayerData();
+        if(playerData != null)
+        {
+            levelText.text =  ""+playerData.level;
+        }
+        else
+        {
+            levelText.text = ""+0;
+        }
         
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && this.gameObject.activeInHierarchy)
         {
             menuManager.SetActive(true);
             customizeManager.SetActive(false);

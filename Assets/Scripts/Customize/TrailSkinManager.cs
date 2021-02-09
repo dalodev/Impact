@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TrailSkinManager : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class TrailSkinManager : MonoBehaviour
     private int currentSkin = 0;
     private int skinIndex = 0;
     private int currentLevel;
-
+    public GameObject nextButton;
+    public GameObject previousButton;
     void Awake()
     {
         CustomizeData data = SaveSystem.LoadCustomize();
@@ -59,11 +61,13 @@ public class TrailSkinManager : MonoBehaviour
         int index = currentSkin += 1;
         if (index < skins.Count)
         {
+            previousButton.SetActive(true);
             SelectSkin(index);
         }
         else
         {
             currentSkin = skins.Count - 1;
+            nextButton.SetActive(false);
         }
     }
 
@@ -72,11 +76,13 @@ public class TrailSkinManager : MonoBehaviour
         int index = currentSkin -= 1;
         if (index >= 0)
         {
+            nextButton.SetActive(true);
             SelectSkin(index);
         }
         else
         {
             currentSkin = 0;
+            previousButton.SetActive(false);
         }
     }
 
@@ -169,5 +175,10 @@ public class TrailSkinManager : MonoBehaviour
     public void DisableLockImage()
     {
         lockImage.SetActive(false);
+    }
+
+    public int GetCurrentSkinCoins()
+    {
+        return GetselectedItem().coins;
     }
 }

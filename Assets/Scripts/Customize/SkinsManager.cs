@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SkinsManager : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class SkinsManager : MonoBehaviour
     private int currentSkin = 0;
     private int skinIndex = 0;
     private int currentLevel;
+    public TextMeshProUGUI skinCoinsText;
+    public GameObject nextButton;
+    public GameObject previousButton;
 
     void Awake()
     {
@@ -54,6 +58,7 @@ public class SkinsManager : MonoBehaviour
         int index = currentSkin += 1;
         if(index < skins.Count)
         {
+            previousButton.SetActive(true);
             SkinInfo skin = skins[index];
             if (skin != null)
             {
@@ -64,6 +69,7 @@ public class SkinsManager : MonoBehaviour
         {
             currentSkin = skins.Count-1;
             //hide next button
+            nextButton.SetActive(false);
         }
     }
 
@@ -72,6 +78,7 @@ public class SkinsManager : MonoBehaviour
         int index = currentSkin -= 1;
         if (index >= 0)
         {
+            nextButton.SetActive(true);
             SkinInfo skin = skins[index];
             if (skin != null)
             {
@@ -83,6 +90,7 @@ public class SkinsManager : MonoBehaviour
         {
             currentSkin = 0;
             //hide previous button
+            previousButton.SetActive(false);
         }
     }
 
@@ -116,6 +124,10 @@ public class SkinsManager : MonoBehaviour
         else
         {
             lockImage.SetActive(true);
+            if(skin.coins > 0)
+            {
+
+            }
             skin.enabled = false;
         }
     }
