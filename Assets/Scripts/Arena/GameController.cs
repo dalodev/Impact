@@ -24,7 +24,7 @@ public class GameController : MonoBehaviour
 
     void Awake()
     {
-        SaveSystem.DeleteData();
+        //SaveSystem.DeleteData();
         PlayerData data = SaveSystem.LoadPlayerData();
         if (data != null)
         {

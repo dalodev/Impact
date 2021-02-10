@@ -14,6 +14,7 @@ public class TrailSkinManager : MonoBehaviour
     private int currentLevel;
     public GameObject nextButton;
     public GameObject previousButton;
+
     void Awake()
     {
         CustomizeData data = SaveSystem.LoadCustomize();
@@ -41,6 +42,14 @@ public class TrailSkinManager : MonoBehaviour
         SelectSkin(currentSkin);
 
     }
+
+    public void selectCurrentSkin()
+    {
+        currentSkin = skins.IndexOf(GetselectedItem());
+        skinIndex = skins.IndexOf(GetselectedItem());
+        UpdateArrows();
+    }
+
     private bool FindTrail(SkinInfo item, CustomizeData data)
     {
         bool find = false;
@@ -59,31 +68,32 @@ public class TrailSkinManager : MonoBehaviour
     public void NextSkin()
     {
         int index = currentSkin += 1;
-        if (index < skins.Count)
+        if (index < skins.Count-1)
         {
             previousButton.SetActive(true);
-            SelectSkin(index);
+            
         }
         else
         {
             currentSkin = skins.Count - 1;
             nextButton.SetActive(false);
         }
+        SelectSkin(index);
     }
 
     public void PreviousSkin()
     {
         int index = currentSkin -= 1;
-        if (index >= 0)
+        if (index > 0)
         {
             nextButton.SetActive(true);
-            SelectSkin(index);
         }
         else
         {
             currentSkin = 0;
             previousButton.SetActive(false);
         }
+        SelectSkin(index);
     }
 
     private void SelectSkin(int index)
@@ -117,7 +127,7 @@ public class TrailSkinManager : MonoBehaviour
     public SkinInfo GetselectedItem()
     {
         GameObject effect = GameObject.FindGameObjectWithTag("Trail");
-        
+
         if (skins[currentSkin].enabled)
         {
             return skins[currentSkin];
@@ -180,5 +190,19 @@ public class TrailSkinManager : MonoBehaviour
     public int GetCurrentSkinCoins()
     {
         return GetselectedItem().coins;
+    }
+
+    private void UpdateArrows()
+    {
+        if (currentSkin == 0)
+        {
+            nextButton.SetActive(true);
+            previousButton.SetActive(false);
+        }
+        if (currentSkin >= skins.Count-1)
+        {
+            previousButton.SetActive(true);
+            nextButton.SetActive(false);
+        }
     }
 }

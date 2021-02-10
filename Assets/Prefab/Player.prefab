@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 494282059}
   - component: {fileID: 494282060}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4c95db369ba425c4bb82f30ad9de4bc9, type: 2}
+  - {fileID: 2100000, guid: 9001d441ec4f37648b1dedda944c817b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -156,7 +156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &903022789
 Transform:
   m_ObjectHideFlags: 0
@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 4294871546288971451}
   - component: {fileID: 1389915068245649366}
   - component: {fileID: 875348947}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -351,7 +351,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4294871546288971425}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e37ff7cf2e3513f4a907cfcdb1f31157, type: 3}
   m_Name: 
@@ -493,6 +493,7 @@ MonoBehaviour:
   timeManager: {fileID: 0}
   state: 0
   dragTimer: 5
+  xp: 70
   gameCotroller: {fileID: 0}
   timeDragOut: 0
   myCamera: {fileID: 0}

@@ -43,6 +43,12 @@ public class SkinsManager : MonoBehaviour
         }
         SelectSkin(skins[currentSkin]);
     }
+    public void selectCurrentSkin()
+    {
+        currentSkin = skins.IndexOf(GetselectedItem());
+        skinIndex = skins.IndexOf(GetselectedItem());
+        UpdateArrows();
+    }
 
     private void SelectSkin(SkinInfo skin)
     {
@@ -56,41 +62,40 @@ public class SkinsManager : MonoBehaviour
     public void NextSkin()
     {
         int index = currentSkin += 1;
-        if(index < skins.Count)
+        if(index < skins.Count-1)
         {
             previousButton.SetActive(true);
-            SkinInfo skin = skins[index];
-            if (skin != null)
-            {
-                IsSkinEnable(skin);
-                playerSprite.material = skin.skin;
-            }
+           
         }else
         {
             currentSkin = skins.Count-1;
-            //hide next button
             nextButton.SetActive(false);
+        }
+        SkinInfo skin = skins[index];
+        if (skin != null)
+        {
+            IsSkinEnable(skin);
+            playerSprite.material = skin.skin;
         }
     }
 
     public void PreviousSkin()
     {
         int index = currentSkin -= 1;
-        if (index >= 0)
+        if (index > 0)
         {
             nextButton.SetActive(true);
-            SkinInfo skin = skins[index];
-            if (skin != null)
-            {
-                IsSkinEnable(skin);
-                playerSprite.material = skin.skin;
-            }
         }
         else
         {
             currentSkin = 0;
-            //hide previous button
             previousButton.SetActive(false);
+        }
+        SkinInfo skin = skins[index];
+        if (skin != null)
+        {
+            IsSkinEnable(skin);
+            playerSprite.material = skin.skin;
         }
     }
 
@@ -135,5 +140,19 @@ public class SkinsManager : MonoBehaviour
     public void DisableLockImage()
     {
         lockImage.SetActive(false);
+    }
+
+    private void UpdateArrows()
+    {
+        if(currentSkin == 0)
+        {
+            nextButton.SetActive(true);
+            previousButton.SetActive(false);
+        }
+        if(currentSkin == skins.Count - 1)
+        {
+            previousButton.SetActive(true);
+            nextButton.SetActive(false);
+        }
     }
 }
