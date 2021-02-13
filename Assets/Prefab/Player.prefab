@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &494282059
 Transform:
   m_ObjectHideFlags: 0
@@ -51,7 +51,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9001d441ec4f37648b1dedda944c817b, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -381,7 +381,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d4863a30cd9d8624685b1403b11d467e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -413,7 +413,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.25961494
+        value: 0.36058235
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -422,7 +422,7 @@ LineRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.25961304
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -435,7 +435,7 @@ LineRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 0.4433962, g: 0.4245728, b: 0.4245728, a: 1}
-      key1: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
+      key1: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -462,10 +462,10 @@ LineRenderer:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
-    numCapVertices: 10
+    numCapVertices: 20
     alignment: 0
     textureMode: 0
-    shadowBias: 0.5
+    shadowBias: 0.1
     generateLightingData: 1
   m_UseWorldSpace: 1
   m_Loop: 0
@@ -487,6 +487,7 @@ MonoBehaviour:
     m_Bits: 256
   speed: 10
   upWardForce: 10
+  maxSpeed: 25
   launchSpeed: 5
   line: {fileID: 4294871546288971451}
   maxDrag: 3
@@ -5288,7 +5289,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0

@@ -11,6 +11,7 @@ public class Ball : MonoBehaviour
     [Header("Physics")]
     public float speed = 10f;
     public float upWardForce = 10f;
+    public float maxSpeed = 5f;
 
     [Header("Launch movment")]
     public float launchSpeed = 15f;
@@ -44,6 +45,14 @@ public class Ball : MonoBehaviour
     void Awake()
     {
         enabled = false;
+    }
+
+    private void FixedUpdate()
+    {
+        if(rb.velocity.magnitude > maxDrag)
+        {
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+        }
     }
 
     public bool IsOnGround()
@@ -93,7 +102,7 @@ public class Ball : MonoBehaviour
         float xVel = vel.x;
         float gravity = 9.81f;
 
-        int iterations = 2500 / (int) vel.magnitude;
+        int iterations = 650 / (int) vel.magnitude;
         float iterationsDist = 1f;
         line.positionCount = iterations;
         line.startColor = Color.white;
