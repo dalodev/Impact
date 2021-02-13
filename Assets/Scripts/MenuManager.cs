@@ -13,11 +13,11 @@ public class MenuManager : MonoBehaviour
         PlayerData playerData = SaveSystem.LoadPlayerData();
         if(playerData != null)
         {
-            levelText.text = "Level "+ playerData.level;
+            levelText.text = playerData.level.ToString();
         }
         else
         {
-            levelText.text = "Level " + 0;
+            levelText.text = 0.ToString();
         }
     }
 
@@ -25,7 +25,6 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
 
-        
     }
 
     // Update is called once per frame

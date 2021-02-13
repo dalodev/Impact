@@ -30,9 +30,9 @@ public class LevelSystem : MonoBehaviour
             experience = 0;
             experienceToNextLevel = 1000;
         }
-       
+        Debug.Log("awake");
         levelText.text = "Level "+ level.ToString();
-        IncrementProgress(GetExperienceNormalized());
+        levelSlider.value += GetExperienceNormalized();
     }
 
     void Update()
@@ -70,9 +70,9 @@ public class LevelSystem : MonoBehaviour
     {
         experience += amount;
         IncrementProgress(GetExperienceNormalized());
-        //Level up
         while (experience >= experienceToNextLevel)
         { 
+            //level up
             level++;
             experience -= experienceToNextLevel;
             experienceToUpdateNextLevel = experience;

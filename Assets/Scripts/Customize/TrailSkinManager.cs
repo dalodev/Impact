@@ -5,7 +5,6 @@ using TMPro;
 
 public class TrailSkinManager : MonoBehaviour
 {
-    public TrailRenderer trail;
     public GameObject player;
     public List<SkinInfo> skins = new List<SkinInfo>();
     public GameObject lockImage;
@@ -14,6 +13,7 @@ public class TrailSkinManager : MonoBehaviour
     private int currentLevel;
     public GameObject nextButton;
     public GameObject previousButton;
+    public TextMeshProUGUI skinLevelText;
 
     void Awake()
     {
@@ -29,9 +29,14 @@ public class TrailSkinManager : MonoBehaviour
             currentSkin = 0;
             skinIndex = 0;
         }
-        
+        GetPlayerData();
+        SelectSkin(currentSkin);
+    }
+
+    private void GetPlayerData()
+    {
         PlayerData playerData = SaveSystem.LoadPlayerData();
-        if(playerData != null)
+        if (playerData != null)
         {
             currentLevel = playerData.level;
         }
@@ -39,25 +44,20 @@ public class TrailSkinManager : MonoBehaviour
         {
             currentLevel = 0;
         }
-        SelectSkin(currentSkin);
-
     }
 
     public void selectCurrentSkin()
     {
+        GetPlayerData();
         currentSkin = skins.IndexOf(GetselectedItem());
-        skinIndex = skins.IndexOf(GetselectedItem());
+        skinIndex = currentSkin;
         UpdateArrows();
     }
 
     private bool FindTrail(SkinInfo item, CustomizeData data)
     {
         bool find = false;
-        if(item.skin != null)
-        {
-            trail.gameObject.SetActive(true);
-            find = item.skin.name == data.trail;
-        }
+        
         if(item.effect != null)
         {
             find = item.effect.name == data.trail;
@@ -107,20 +107,9 @@ public class TrailSkinManager : MonoBehaviour
                 Destroy(effect);
             }
             IsSkinEnable(skin);
-               
-            Material material = skins[currentSkin].skin;
-            if (material != null)
-            {
-                trail.gameObject.SetActive(true);
-                trail.material = skin.skin;
-            }
-            else
-            {
-                trail.gameObject.SetActive(false);
-                GameObject newTrail = Instantiate(skin.effect, player.transform.position, Quaternion.identity);
-                newTrail.transform.parent = player.transform;
-            }
-            
+
+            GameObject newTrail = Instantiate(skin.effect, player.transform.position, Quaternion.identity);
+            newTrail.transform.parent = player.transform;
         }        
     }
 
@@ -139,11 +128,6 @@ public class TrailSkinManager : MonoBehaviour
             {
                 Destroy(effect);
             }
-            if (skins[skinIndex].skin != null)
-            {
-                trail.gameObject.SetActive(true);
-                trail.material = skins[skinIndex].skin;
-            }
             if( skins[skinIndex].effect != null)
             {
                 GameObject newTrail = Instantiate(skins[skinIndex].effect, player.transform.position, Quaternion.identity);
@@ -156,16 +140,7 @@ public class TrailSkinManager : MonoBehaviour
 
     public string GetTrailName()
     {
-        Material material = GetselectedItem().skin;
-        if (material != null)
-        {
-            return GetselectedItem().skin.name;
-        }
-        else
-        {
-            return GetselectedItem().effect.name;
-        }
-
+        return GetselectedItem().effect.name;
     }
 
     private void IsSkinEnable(SkinInfo skin)
@@ -173,11 +148,14 @@ public class TrailSkinManager : MonoBehaviour
         if (skin.unlockLevel <= currentLevel)
         {
             lockImage.SetActive(false);
+            skinLevelText.gameObject.SetActive(false);
             skin.enabled = true;
         }
         else
         {
             lockImage.gameObject.SetActive(true);
+            skinLevelText.gameObject.SetActive(true);
+            skinLevelText.text = skin.unlockLevel.ToString();
             skin.enabled = false;
         }
     }
@@ -204,5 +182,10 @@ public class TrailSkinManager : MonoBehaviour
             previousButton.SetActive(true);
             nextButton.SetActive(false);
         }
+    }
+
+    public void levelUp()
+    {
+        currentLevel++;
     }
 }

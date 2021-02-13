@@ -6,13 +6,14 @@ using TMPro;
 
 public class SkinsManager : MonoBehaviour
 {
-    public SpriteRenderer playerSprite;
+    public ParticleSystem playerParticleSys;
     public GameObject lockImage;
     public List<SkinInfo> skins = new List<SkinInfo>();
     private int currentSkin = 0;
     private int skinIndex = 0;
     private int currentLevel;
     public TextMeshProUGUI skinCoinsText;
+    public TextMeshProUGUI skinLevelText;
     public GameObject nextButton;
     public GameObject previousButton;
 
@@ -30,23 +31,28 @@ public class SkinsManager : MonoBehaviour
             currentSkin = 0;
             skinIndex = 0;
         }
-        
+        GetPlayerData();
+        SelectSkin(skins[currentSkin]);
+    }
+
+    private void GetPlayerData()
+    {
         PlayerData playerData = SaveSystem.LoadPlayerData();
-        if(playerData != null)
+        if (playerData != null)
         {
             currentLevel = playerData.level;
-
         }
         else
         {
             currentLevel = 0;
         }
-        SelectSkin(skins[currentSkin]);
     }
+
     public void selectCurrentSkin()
     {
+        GetPlayerData();
         currentSkin = skins.IndexOf(GetselectedItem());
-        skinIndex = skins.IndexOf(GetselectedItem());
+        skinIndex = currentSkin;
         UpdateArrows();
     }
 
@@ -55,7 +61,7 @@ public class SkinsManager : MonoBehaviour
         if(skin != null)
         {
             IsSkinEnable(skin);
-            playerSprite.material = skin.skin;
+            playerParticleSys.GetComponent<ParticleSystemRenderer>().material = skin.skin;
         }
     }
 
@@ -75,7 +81,7 @@ public class SkinsManager : MonoBehaviour
         if (skin != null)
         {
             IsSkinEnable(skin);
-            playerSprite.material = skin.skin;
+            playerParticleSys.GetComponent<ParticleSystemRenderer>().material = skin.skin;
         }
     }
 
@@ -95,7 +101,7 @@ public class SkinsManager : MonoBehaviour
         if (skin != null)
         {
             IsSkinEnable(skin);
-            playerSprite.material = skin.skin;
+            playerParticleSys.GetComponent<ParticleSystemRenderer>().material = skin.skin;
         }
     }
 
@@ -108,7 +114,7 @@ public class SkinsManager : MonoBehaviour
         else
         {
             currentSkin = skinIndex;
-            playerSprite.material = skins[skinIndex].skin;
+            playerParticleSys.GetComponent<ParticleSystemRenderer>().material = skins[skinIndex].skin;
             return skins[skinIndex];
         }
         
@@ -123,12 +129,28 @@ public class SkinsManager : MonoBehaviour
     {
         if (skin.unlockLevel <= currentLevel)
         {
-            lockImage.SetActive(false);
-            skin.enabled = true;
+            if(skin.coins > 0) //TODO check if skin buyed
+            {
+                lockImage.SetActive(true);
+                skinLevelText.gameObject.SetActive(false);
+                //skinCoinsText.gameObject.SetActive(true);
+                skinCoinsText.text = "" + skin.coins;
+            }
+            else
+            {
+                lockImage.SetActive(false);
+                skinLevelText.gameObject.SetActive(false);
+                //skinCoinsText.gameObject.SetActive(false);
+                skin.enabled = true;
+            }
         }
         else
         {
             lockImage.SetActive(true);
+            skinLevelText.gameObject.SetActive(true);
+            //skinCoinsText.gameObject.SetActive(true);
+            //skinCoinsText.text = ""+skin.coins;
+            skinLevelText.text = "" + skin.unlockLevel;
             if(skin.coins > 0)
             {
 
@@ -154,5 +176,9 @@ public class SkinsManager : MonoBehaviour
             previousButton.SetActive(true);
             nextButton.SetActive(false);
         }
+    }
+    public void levelUp()
+    {
+        currentLevel++;
     }
 }

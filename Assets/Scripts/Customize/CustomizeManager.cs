@@ -11,6 +11,7 @@ public class CustomizeManager : MonoBehaviour
     public GameObject customizeManager;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI coinText;
+    private int currentLevel = 0;
     
     void Awake()
     {
@@ -76,5 +77,12 @@ public class CustomizeManager : MonoBehaviour
         {
             //display error
         }
+    }
+
+    public void DebugLevelUp()
+    {
+        trailSkinManager.levelUp();
+        skinManager.levelUp();
+        levelText.text = "" + currentLevel++; 
     }
 }
