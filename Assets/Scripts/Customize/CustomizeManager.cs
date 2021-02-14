@@ -11,6 +11,8 @@ public class CustomizeManager : MonoBehaviour
     public GameObject customizeManager;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI coinText;
+    public MenuTweenManager menuTween;
+    public CustomizeTweenManager customizeTween;
     private int currentLevel = 0;
     
     void Awake()
@@ -40,10 +42,9 @@ public class CustomizeManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && this.gameObject.activeInHierarchy)
+        if (Input.GetKeyDown(KeyCode.Escape) && !menuTween.isShown && customizeTween.isShown)
         {
-            menuManager.SetActive(true);
-            customizeManager.SetActive(false);
+            menuTween.Customize(false);
             Customize();
         }
     }
@@ -68,8 +69,8 @@ public class CustomizeManager : MonoBehaviour
         }
         if (navigate)
         {
-            menuManager.SetActive(true);
-            customizeManager.SetActive(false);
+            //menuManager.SetActive(true);
+            //customizeManager.SetActive(false);
             trailSkinManager.DisableLockImage();
             skinManager.DisableLockImage();
         }

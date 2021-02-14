@@ -10,6 +10,7 @@ public class ShopManager : MonoBehaviour
     public double coins;
     public int level;
     public Text coinsTxt;
+    public CustomizeTweenManager customizeTween;
 
     void Start()
     {
@@ -30,7 +31,10 @@ public class ShopManager : MonoBehaviour
 
     void Update()
     {
-       
+        if (Input.GetKeyDown(KeyCode.Escape) && !customizeTween.isShown)
+        {
+            customizeTween.Shop(false);
+        }
     }
 
     public void Buy()

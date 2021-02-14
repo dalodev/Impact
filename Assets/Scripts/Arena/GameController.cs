@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     public CustomizeManager customizeManager;
     public LevelSystem levelSystem;
     public Spawner spawner;
-   
+    public ArenaTweenManager arenaTweenManager;
     private int highScore;
     private int currentScore = 0;
     private int scoreIncreaseRate = 1;
@@ -61,8 +61,9 @@ public class GameController : MonoBehaviour
     public void PlayerDead()
     {
         //ActivateScoreOverTime(false);
-        deathText.SetActive(true);
-        lifeUi.SetActive(false);
+        //deathText.SetActive(true);
+        //lifeUi.SetActive(false);
+        arenaTweenManager.ShowDeathPanel(true);
         if(currentScore > highScore)
         {
             highScore = currentScore;
