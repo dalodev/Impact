@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4158403062720309059}
   - component: {fileID: 3621990266976989206}
   m_Layer: 0
-  m_Name: BallExplosion
+  m_Name: CovidExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5048,7 +5048,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.11764706, b: 0, a: 1}
+      maxColor: {r: 0.5188679, g: 0.03671235, b: 0.39711142, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

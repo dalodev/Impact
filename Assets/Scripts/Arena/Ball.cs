@@ -130,6 +130,12 @@ public class Ball : MonoBehaviour
         gameCotroller.UpdateScore(score);
     }
 
+    public void PlayerDeath()
+    {
+        gameCotroller.PlayerDead();
+        gameObject.SetActive(false);
+    }
+
    public enum BallState
     {
         NONE,

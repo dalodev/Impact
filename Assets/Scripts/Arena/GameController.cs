@@ -61,8 +61,6 @@ public class GameController : MonoBehaviour
     public void PlayerDead()
     {
         //ActivateScoreOverTime(false);
-        //deathText.SetActive(true);
-        //lifeUi.SetActive(false);
         arenaTweenManager.ShowDeathPanel(true);
         if(currentScore > highScore)
         {
