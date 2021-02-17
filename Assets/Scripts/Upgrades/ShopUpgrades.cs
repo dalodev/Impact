@@ -1,20 +1,22 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Shop : MonoBehaviour
+public class ShopUpgrades : MonoBehaviour
 {
-    public GameObject menu;
     [Header("List of items to sold")]
-    [SerializeField] private ShopItem[] shopItems;
+    [SerializeField] private UpgradeItem[] items;
 
     [Header("References")]
-    [SerializeField] private Transform shopContainer;
-    [SerializeField] private GameObject shopItemPrefab;
+    [SerializeField] private Transform upgradesContainer;
+    [SerializeField] private GameObject upgradesItemPrefab;
+
+    public MenuTweenManager menuTweenManager;
+    private UpgradeItem itemSelected;
 
     private int coins;
-
-    private ShopItem itemSelected;
 
     private void Awake()
     {
@@ -30,49 +32,52 @@ public class Shop : MonoBehaviour
         PopulateShop();
     }
 
-    private void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && this.gameObject.activeInHierarchy)
         {
-            
-           //GO TO MENU
+            //GO TO MENU
         }
-
     }
 
     private void PopulateShop()
     {
-        for (int i = 0; i < shopItems.Length; i++)
+        for (int i = 0; i < items.Length; i++)
         {
-            ShopItem item = shopItems[i];
-            GameObject itemObject = Instantiate(shopItemPrefab, shopContainer);
+            UpgradeItem item = items[i];
+            GameObject itemObject = Instantiate(upgradesItemPrefab, upgradesContainer);
 
             itemObject.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(item, itemObject));
 
             itemObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "" + item.cost + "€";
-            itemObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "" + item.reward + " \ncoins";
         }
     }
 
-    private void OnButtonClick(ShopItem item, GameObject itemObject)
+    private void OnButtonClick(UpgradeItem item, GameObject itemObject)
     {
         itemSelected = item;
-        foreach (Transform child in shopContainer)
+        foreach (Transform child in upgradesContainer)
         {
             child.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
         }
         itemObject.GetComponent<Image>().color = item.backgroundColor;
     }
 
-    public ShopItem GetItemSelected()
+    public UpgradeItem GetItemSelected()
     {
         return itemSelected;
     }
-
     public void Buy()
     {
-        //initiate google play services
-        //in app service
+       if(GetItemSelected().cost <= coins)
+        {
+            //buy item
+            menuTweenManager.Upgrades(false);
+        }
+        else
+        {
+            //show not enogh coins
+            //redirect to shop
+        }
     }
-  
 }
