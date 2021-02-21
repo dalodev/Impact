@@ -81,10 +81,10 @@ public class MenuTweenManager : MonoBehaviour
             case true:
                 upgradesPanel.SetActive(true);
                 LeanTween.moveY(upgradesPanel.GetComponent<RectTransform>(), 0, 0.3f).setEaseInOutBack();
-                LeanTween.moveY(menuPanel.GetComponent<RectTransform>(), -1650, 0.3f).setEaseInOutBack();
+                LeanTween.moveY(menuPanel.GetComponent<RectTransform>(), -1700, 0.3f).setEaseInOutBack();
                 break;
             case false:
-                LeanTween.moveY(upgradesPanel.GetComponent<RectTransform>(), 1650, 0.3f).setEaseInOutBack();
+                LeanTween.moveY(upgradesPanel.GetComponent<RectTransform>(), 1700, 0.3f).setEaseInOutBack();
                 LeanTween.moveY(menuPanel.GetComponent<RectTransform>(), 0, 0.3f).setEaseInOutBack();
                 break;
         }

@@ -5063,6 +5063,74 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &1964131151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1964131152}
+  - component: {fileID: 1964131153}
+  m_Layer: 8
+  m_Name: Point Light 2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1964131152
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964131151}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4294871546288971453}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1964131153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964131151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 0.990566, g: 0.990566, b: 0.990566, a: 1}
+  m_Intensity: 1
+  m_LightVolumeOpacity: 0.05
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 0
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 0
+  m_ShadowVolumeIntensity: 0
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 1
+  m_PointLightOuterRadius: 4
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath: []
 --- !u!1 &4294871546288971425
 GameObject:
   m_ObjectHideFlags: 0
@@ -5100,6 +5168,7 @@ Transform:
   - {fileID: 903022789}
   - {fileID: 3037039595514576024}
   - {fileID: 1027674305}
+  - {fileID: 1964131152}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5320,6 +5389,8 @@ MonoBehaviour:
   launchSpeed: 5
   line: {fileID: 4294871546288971451}
   maxDrag: 3
+  dragCount: 0
+  maxDragCount: 0
   onGround: 0
   groundLength: 0.6
   timeManager: {fileID: 0}
@@ -5329,6 +5400,7 @@ MonoBehaviour:
   gameCotroller: {fileID: 0}
   timeDragOut: 0
   myCamera: {fileID: 0}
+  deathEffect: {fileID: 928886995705978368, guid: 28980cdb593af614fb0bfadc9705c0e1, type: 3}
   canLaunch: 1
   trail: {fileID: 494282060}
 --- !u!58 &875348947
@@ -5361,6 +5433,10 @@ PrefabInstance:
     - target: {fileID: 1278962375649610280, guid: d95da88540d2d6e44a0c4c40c581b24a, type: 3}
       propertyPath: m_Name
       value: Light2D
+      objectReference: {fileID: 0}
+    - target: {fileID: 1278962375649610280, guid: d95da88540d2d6e44a0c4c40c581b24a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1278962375649610283, guid: d95da88540d2d6e44a0c4c40c581b24a, type: 3}
       propertyPath: m_LocalPosition.x

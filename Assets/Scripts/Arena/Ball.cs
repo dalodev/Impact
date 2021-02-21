@@ -38,6 +38,7 @@ public class Ball : MonoBehaviour
     public bool timeDragOut = false;
 
     public Camera myCamera;
+    public GameObject deathEffect;
     Vector3 endPoint;
 
     public bool canLaunch = true;
@@ -146,6 +147,7 @@ public class Ball : MonoBehaviour
 
     public void PlayerDeath()
     {
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
         gameCotroller.PlayerDead(xp);
         gameObject.SetActive(false);
     }
