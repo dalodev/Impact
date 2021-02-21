@@ -48,7 +48,7 @@ public class EnemyInv : MonoBehaviour
             Rigidbody2D rbPlayer = collision.gameObject.GetComponent<Rigidbody2D>();
             rbPlayer.velocity = Vector3.zero;
             rbPlayer.AddForce(rotationDirection * upWardForce, ForceMode2D.Impulse);
-            player.canLaunch = true;
+            player.ResetLaunch(true);
             player.timeDragOut = false;
             if (ShakePreset != null)
             {

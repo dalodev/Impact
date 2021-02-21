@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
             Ball player = collision.gameObject.GetComponent<Ball>();
             Rigidbody2D rbPlayer = collision.gameObject.GetComponent<Rigidbody2D>();
             rbPlayer.AddForce(Vector2.up * upWardForce, ForceMode2D.Impulse);
-            player.canLaunch = true;
+            player.ResetLaunch(true);
             player.timeDragOut = false;
             if (ShakePreset != null)
             {

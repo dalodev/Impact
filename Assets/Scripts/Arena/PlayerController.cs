@@ -36,6 +36,6 @@ public class PlayerController : MonoBehaviour
         gameController.RemoveSpawnerEnemies();
         gameObject.SetActive(true);
         gameObject.transform.position = Vector3.zero;
-        ball.canLaunch = true;
+        ball.ResetLaunch(true);
     }
 }

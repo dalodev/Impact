@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce1b4564cbbe8d144bc11e90ad3b7510, type: 3}
   m_Name: Triple Launch
   m_EditorClassIdentifier: 
+  id: 2
   itemName: Triple Launch
   sprite: {fileID: 0}
   cost: 100

@@ -14,7 +14,7 @@ public class DeathZone : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
             Shaker.ShakeAll(ShakePreset);
-            gameController.PlayerDead();
+            gameController.PlayerDead(collision.gameObject.GetComponent<Ball>().xp);
         }
     }
 }

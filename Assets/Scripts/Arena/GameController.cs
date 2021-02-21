@@ -58,7 +58,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void PlayerDead()
+    public void PlayerDead(float xp = 1)
     {
         //ActivateScoreOverTime(false);
         arenaTweenManager.ShowDeathPanel(true);
@@ -73,7 +73,8 @@ public class GameController : MonoBehaviour
 
         }
         scoreText.text = "Score: " + currentScore.ToString();
-        levelSystem.AddExperience(currentScore, this);
+        int score = (int)(currentMaxScore * xp);
+        levelSystem.AddExperience(score, this);
         currentMaxScore = 0;
         currentScore = 0;
     }

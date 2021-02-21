@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Ball : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class Ball : MonoBehaviour
     public float launchSpeed = 15f;
     public LineRenderer line;
     public float maxDrag = 5f;
+    public int dragCount = 0;
+    public int maxDragCount = 1;
 
     [Header("Collision")]
     public bool onGround = false;
@@ -44,6 +47,7 @@ public class Ball : MonoBehaviour
 
     void Awake()
     {
+        ApplyUpgrades();
         enabled = false;
     }
 
@@ -76,7 +80,17 @@ public class Ball : MonoBehaviour
     public void Launch()
     {
         //gameCotroller.ActivateScoreOverTime(true);
-        canLaunch = false;
+        if(dragCount < maxDragCount)
+        {
+            dragCount++;
+            canLaunch = true;
+        }
+        else
+        {
+            dragCount = 0;
+            canLaunch = false;
+
+        }
         state = BallState.LAUNCH;
         if (!timeDragOut)
         {
@@ -132,8 +146,13 @@ public class Ball : MonoBehaviour
 
     public void PlayerDeath()
     {
-        gameCotroller.PlayerDead();
+        gameCotroller.PlayerDead(xp);
         gameObject.SetActive(false);
+    }
+
+    public void ResetLaunch(bool canLaunch) {
+        this.canLaunch = canLaunch;
+        this.dragCount = 0;
     }
 
    public enum BallState
@@ -141,6 +160,32 @@ public class Ball : MonoBehaviour
         NONE,
         DRAGGING,
         LAUNCH
+    }
+
+
+    private void ApplyUpgrades()
+    {
+        UpgradesData data = SaveSystem.LoadUpgrades();
+        if(data != null)
+        {
+            for(int i = 0; i < data.items.Length; i++)
+            {
+                switch ((int)data.items[i])
+                {
+                    case (int)UpgradesData.Upgrades.Speed:
+                        this.launchSpeed = 8;
+                        break;
+                    case (int)UpgradesData.Upgrades.TripleLaunch:
+                        this.maxDragCount = 2;
+                        break;
+                    case (int)UpgradesData.Upgrades.Experience:
+                        this.xp = 2;
+                        break;
+                }
+            }
+
+        }
+
     }
 
 }

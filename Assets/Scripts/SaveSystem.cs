@@ -64,10 +64,41 @@ public static class SaveSystem
         }
     }
 
+    public static void SaveUpgrades(ShopUpgrades upgradesData)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/upgrades.fun";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        UpgradesData data = new UpgradesData(upgradesData);
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+
+    public static UpgradesData LoadUpgrades()
+    {
+        string path = Application.persistentDataPath + "/upgrades.fun";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            UpgradesData data = formatter.Deserialize(stream) as UpgradesData;
+            stream.Close();
+            return data;
+        }
+        else
+        {
+            Debug.Log("Save file not found in " + path);
+            return null;
+        }
+    }
+
     public static void DeleteData()
     {
         DirectoryInfo dataDir = new DirectoryInfo(Application.persistentDataPath);
         dataDir.Delete(true);
     }
+
 
 }

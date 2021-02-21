@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce1b4564cbbe8d144bc11e90ad3b7510, type: 3}
-  m_Name: Speed
+  m_Name: DoubleExperience
   m_EditorClassIdentifier: 
-  id: 1
-  itemName: Speed
+  id: 3
+  itemName: XP x2
   sprite: {fileID: 0}
-  cost: 50
+  cost: 250
   backgroundColor: {r: 0, g: 0, b: 0, a: 0}
