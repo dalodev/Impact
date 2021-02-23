@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     public Ball ball;
     public CustomizeManager customizeManager;
     public LevelSystem levelSystem;
-    public Spawner spawner;
+    public EnemySpawner enemySpawner;
     public ArenaTweenManager arenaTweenManager;
     private int highScore;
     private int currentScore = 0;
@@ -58,7 +58,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void PlayerDead(float xp = 1)
+    public void PlayerDead(int xp = 1)
     {
         //ActivateScoreOverTime(false);
         arenaTweenManager.ShowDeathPanel(true);
@@ -73,7 +73,7 @@ public class GameController : MonoBehaviour
 
         }
         scoreText.text = "Score: " + currentScore.ToString();
-        int score = (int)(currentMaxScore * xp);
+        int score = currentMaxScore * xp;
         levelSystem.AddExperience(score, this);
         currentMaxScore = 0;
         currentScore = 0;
@@ -102,9 +102,9 @@ public class GameController : MonoBehaviour
 
     public void RemoveSpawnerEnemies()
     {
-        spawner.RemoveEnemies();
-        spawner.gameObject.SetActive(false);
-        spawner.gameObject.SetActive(true);
+        enemySpawner.RemoveEnemies();
+        enemySpawner.gameObject.SetActive(false);
+        enemySpawner.gameObject.SetActive(true);
     }
 
     public int GetLevel()

@@ -13,7 +13,9 @@ public class UpgradesData
     public enum Upgrades {
         Speed = 1, 
         TripleLaunch = 2, 
-        Experience = 3 
+        Experience = 3,
+        DragTime = 4,
+        AutoBounce = 5
     };
 
 }

@@ -30,7 +30,7 @@ public class Ball : MonoBehaviour
 
     [Header("Stats")]
     public float dragTimer = 10f;
-    public float xp;
+    public int xp;
 
     [Header("Game")]
     public GameController gameCotroller;
@@ -183,11 +183,14 @@ public class Ball : MonoBehaviour
                     case (int)UpgradesData.Upgrades.Experience:
                         this.xp = 2;
                         break;
+                    case (int)UpgradesData.Upgrades.DragTime:
+                        this.dragTimer = 8;
+                        break;
+                    case (int)UpgradesData.Upgrades.AutoBounce:
+                        //TODO make ball to bounce around 5 to 6 balls???? Activable by button????
+                        break;
                 }
             }
-
         }
-
     }
-
 }

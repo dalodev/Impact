@@ -105,14 +105,13 @@ public class ShopUpgrades : MonoBehaviour
                 //save upgrades
                 Debug.Log("Buy it");
                 menuTweenManager.Upgrades(false);
-                //SaveSystem.SaveUpgrades(this);
+                SaveSystem.SaveUpgrades(this);
                 //apply upgrades
             }
             else
             {
                 Debug.Log("No no no give me money");
-                //show not enogh coins
-                //redirect to shop
+                //show not enogh coins dialog
             }
         }
     }
