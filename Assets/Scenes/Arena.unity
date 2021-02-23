@@ -165,6 +165,8 @@ MonoBehaviour:
   deathEnemies:
   - {fileID: 5790352928787555000, guid: 091604478392a9e4a9e8193f60050c57, type: 3}
   spawnInterval: 5
+  nextSpawn: 0
+  restart: 1
 --- !u!4 &12368501
 Transform:
   m_ObjectHideFlags: 0
@@ -5084,7 +5086,6 @@ MonoBehaviour:
   ball: {fileID: 875348950}
   customizeManager: {fileID: 60570915}
   levelSystem: {fileID: 1615358224}
-  spawner: {fileID: 12368500}
   enemySpawner: {fileID: 12368502}
   arenaTweenManager: {fileID: 1284166923}
 --- !u!4 &563260664
@@ -11392,6 +11393,7 @@ MonoBehaviour:
   upgradesContainer: {fileID: 615136876}
   upgradesItemPrefab: {fileID: 7951822509052699729, guid: 218d414bb94b331409cf82cc6e8ebf27, type: 3}
   menuTweenManager: {fileID: 1041798595}
+  coinsText: {fileID: 1636525920}
 --- !u!1 &792488497
 GameObject:
   m_ObjectHideFlags: 0

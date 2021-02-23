@@ -70,12 +70,12 @@ public class TrailSkinManager : MonoBehaviour
         int index = currentSkin += 1;
         if (index < skins.Count-1)
         {
+            currentSkin = index;
             previousButton.SetActive(true);
-            
         }
         else
         {
-            currentSkin = skins.Count - 1;
+            previousButton.SetActive(true);
             nextButton.SetActive(false);
         }
         SelectSkin(index);
@@ -86,11 +86,12 @@ public class TrailSkinManager : MonoBehaviour
         int index = currentSkin -= 1;
         if (index > 0)
         {
+            currentSkin = index;
             nextButton.SetActive(true);
         }
         else
         {
-            currentSkin = 0;
+            nextButton.SetActive(true);
             previousButton.SetActive(false);
         }
         SelectSkin(index);

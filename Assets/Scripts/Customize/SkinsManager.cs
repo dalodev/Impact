@@ -67,14 +67,16 @@ public class SkinsManager : MonoBehaviour
 
     public void NextSkin()
     {
+
         int index = currentSkin += 1;
         if(index < skins.Count-1)
         {
+            currentSkin = index;
             previousButton.SetActive(true);
-           
-        }else
+        }
+        else
         {
-            currentSkin = skins.Count-1;
+            previousButton.SetActive(true);
             nextButton.SetActive(false);
         }
         SkinInfo skin = skins[index];
@@ -90,11 +92,12 @@ public class SkinsManager : MonoBehaviour
         int index = currentSkin -= 1;
         if (index > 0)
         {
+            currentSkin = index;
             nextButton.SetActive(true);
         }
         else
         {
-            currentSkin = 0;
+            nextButton.SetActive(true);
             previousButton.SetActive(false);
         }
         SkinInfo skin = skins[index];

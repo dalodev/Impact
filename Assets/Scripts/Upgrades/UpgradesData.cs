@@ -6,8 +6,8 @@ public class UpgradesData
 
    public UpgradesData(ShopUpgrades data)
     {
-        this.items = new float[items.Length + 1];
-        this.items[items.Length-1] = data.GetItemSelected().id;
+        this.items = new float[data.items.Length];
+        this.items[data.currentItems.Length+1] = data.GetItemSelected().id;
     }
 
     public enum Upgrades {

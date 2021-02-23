@@ -7,15 +7,16 @@ using TMPro;
 public class ShopUpgrades : MonoBehaviour
 {
     [Header("List of items to sold")]
-    [SerializeField] private UpgradeItem[] items;
+    [SerializeField] public UpgradeItem[] items;
 
     [Header("References")]
     [SerializeField] private Transform upgradesContainer;
     [SerializeField] private GameObject upgradesItemPrefab;
 
     public MenuTweenManager menuTweenManager;
+    public TextMeshProUGUI coinsText;
     private UpgradeItem itemSelected;
-    private float[] currentItems;
+    public float[] currentItems;
 
     private int coins;
 
@@ -26,6 +27,12 @@ public class ShopUpgrades : MonoBehaviour
         {
             coins = playerData.coins;
         }
+        else
+        {
+            coins = 0;
+        }
+        coins = 100000;
+        coinsText.text = ""+ coins;
         UpgradesData upgrades = SaveSystem.LoadUpgrades();
         if(upgrades != null)
         {
