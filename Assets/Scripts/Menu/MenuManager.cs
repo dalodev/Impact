@@ -7,6 +7,11 @@ using TMPro;
 public class MenuManager : MonoBehaviour
 {
     public TextMeshProUGUI levelText;
+    public MenuTweenManager menuTween;
+    public CustomizeTweenManager customizeTween;
+    public UpgradesTweenManager upgradesTween;
+    public ShopTweenManager shopTween;
+    public ArenaTweenManager arenaTween;
 
     private void Awake()
     {
@@ -18,6 +23,38 @@ public class MenuManager : MonoBehaviour
         else
         {
             levelText.text = 0.ToString();
+        }
+    }
+
+    private void Update()
+    {
+        OnBackPressed();
+    }
+
+    private void OnBackPressed()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            switch (UiState.instance.GetCurrentState())
+            {
+                case UiState.State.Menu:
+                    break;
+                case UiState.State.Options:
+                    menuTween.Options(false);
+                    break;
+                case UiState.State.Customize:
+                    menuTween.Customize(false);
+                    break;
+                case UiState.State.Upgrades:
+                    menuTween.Upgrades(false);
+                    break;
+                case UiState.State.ShopCustomize:
+                    customizeTween.Shop(false);
+                    break;
+                case UiState.State.ShopUpgrades:
+                    upgradesTween.Shop(false);
+                    break;
+            }
         }
     }
 }

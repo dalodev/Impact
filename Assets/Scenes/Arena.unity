@@ -153,20 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f4a76c716f6814c874f2ae62a2124d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pool: {fileID: 903022785}
-  firstNumberToSpawn: 800
-  principalEnemiesCount: 50
-  secondaryEnemiesCount: 50
-  deathEnemiesToSpawn: 70
-  principalEnemies:
-  - {fileID: 9079352930251004577, guid: be54b610a17b8454d8b3928281860a42, type: 3}
-  secondayEnemies:
-  - {fileID: 9079352930251004577, guid: b7cc80480fa8b2a44a068c33805948c4, type: 3}
-  deathEnemies:
-  - {fileID: 5790352928787555000, guid: 091604478392a9e4a9e8193f60050c57, type: 3}
-  spawnInterval: 5
-  nextSpawn: 0
-  restart: 1
 --- !u!4 &12368501
 Transform:
   m_ObjectHideFlags: 0
@@ -514,8 +500,6 @@ MonoBehaviour:
   customizeManager: {fileID: 1693532304}
   levelText: {fileID: 128868534}
   coinText: {fileID: 1796374087}
-  menuTween: {fileID: 1041798595}
-  customizeTween: {fileID: 1693532306}
 --- !u!114 &60570916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1923,6 +1907,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelText: {fileID: 905907881}
+  menuTween: {fileID: 1041798595}
+  customizeTween: {fileID: 1693532306}
+  upgradesTween: {fileID: 786270580}
+  shopTween: {fileID: 731545783}
+  arenaTween: {fileID: 1284166923}
 --- !u!4 &175501725
 Transform:
   m_ObjectHideFlags: 0
@@ -2756,7 +2745,7 @@ GameObject:
   - component: {fileID: 325277724}
   - component: {fileID: 325277723}
   m_Layer: 5
-  m_Name: Watch AD
+  m_Name: Shop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2824,7 +2813,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 325277724}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 786270580}
+        m_TargetAssemblyTypeName: UpgradesTweenManager, Assembly-CSharp
+        m_MethodName: Shop
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &325277724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3276,6 +3277,7 @@ GameObject:
   - component: {fileID: 370253813}
   - component: {fileID: 370253812}
   - component: {fileID: 370253811}
+  - component: {fileID: 370253814}
   m_Layer: 11
   m_Name: Ui camera
   m_TagString: Untagged
@@ -3371,6 +3373,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &370253814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370253810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 280f986a4db17844aa2540d4badef623, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &378277176
 GameObject:
   m_ObjectHideFlags: 0
@@ -3811,30 +3825,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1693532304}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1041798593}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 60570917}
         m_TargetAssemblyTypeName: SkinsManager, Assembly-CSharp
         m_MethodName: selectCurrentSkin
@@ -4368,8 +4358,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coins: 0
   level: 0
-  coinsTxt: {fileID: 0}
-  customizeTween: {fileID: 1693532306}
 --- !u!4 &486242745
 Transform:
   m_ObjectHideFlags: 0
@@ -5081,7 +5069,7 @@ MonoBehaviour:
   lifeUi: {fileID: 1610305612}
   scoreText: {fileID: 331036823}
   highScoreText: {fileID: 603595941}
-  levelText: {fileID: 0}
+  levelText: {fileID: 483053170}
   coins: 0
   ball: {fileID: 875348950}
   customizeManager: {fileID: 60570915}
@@ -11341,6 +11329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 786270578}
   - component: {fileID: 786270579}
+  - component: {fileID: 786270580}
   m_Layer: 5
   m_Name: Upgrades
   m_TagString: Untagged
@@ -11392,8 +11381,24 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6a7d05326d0c0194894761e6ed48cf01, type: 2}
   upgradesContainer: {fileID: 615136876}
   upgradesItemPrefab: {fileID: 7951822509052699729, guid: 218d414bb94b331409cf82cc6e8ebf27, type: 3}
-  menuTweenManager: {fileID: 1041798595}
+  gameController: {fileID: 563260663}
   coinsText: {fileID: 1636525920}
+  currentItems: []
+  shopManager: {fileID: 486242744}
+--- !u!114 &786270580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786270577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5af93f9181b86264f9ccc3075be0fba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradesPanel: {fileID: 786270577}
+  shopPanel: {fileID: 731545780}
 --- !u!1 &792488497
 GameObject:
   m_ObjectHideFlags: 0
@@ -11668,30 +11673,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1041798593}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1693532304}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 60570915}
         m_TargetAssemblyTypeName: CustomizeManager, Assembly-CSharp
         m_MethodName: Customize
@@ -13132,6 +13113,7 @@ MonoBehaviour:
   customizePanel: {fileID: 1693532304}
   optionsPanel: {fileID: 2122754162}
   upgradesPanel: {fileID: 786270577}
+  shopPanel: {fileID: 731545780}
   level: {fileID: 1404080528}
   playBtn: {fileID: 2024063108}
   customizeBtn: {fileID: 401868062}
@@ -13141,7 +13123,6 @@ MonoBehaviour:
   settingsBtn: {fileID: 1446681870}
   buttonsType: 28
   topButtonsType: 24
-  isShown: 1
 --- !u!1 &1059874277
 GameObject:
   m_ObjectHideFlags: 0
@@ -13296,9 +13277,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 731545780}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+      - m_Target: {fileID: 786270580}
+        m_TargetAssemblyTypeName: UpgradesTweenManager, Assembly-CSharp
+        m_MethodName: Shop
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16968,7 +16949,6 @@ MonoBehaviour:
   nextTrail: {fileID: 269714996}
   previousTrail: {fileID: 1175830472}
   showType: 15
-  isShown: 0
 --- !u!1 &1726917812
 GameObject:
   m_ObjectHideFlags: 0
@@ -18081,10 +18061,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 58.15
   m_fontSizeBase: 30
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -19111,30 +19091,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 731545780}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1693532304}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 1693532306}
         m_TargetAssemblyTypeName: CustomizeTweenManager, Assembly-CSharp
         m_MethodName: Shop
@@ -19944,8 +19900,6 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: 9fdb2612ce1222844b8356dc3b32f4d4, type: 2}
   volimeSlider: {fileID: 1537284283}
   dropDownGraphics: {fileID: 1250105018}
-  isShown: 0
-  menuTweenManager: {fileID: 1041798595}
 --- !u!1 &2131148390
 GameObject:
   m_ObjectHideFlags: 0

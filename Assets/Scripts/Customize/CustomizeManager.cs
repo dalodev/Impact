@@ -11,8 +11,6 @@ public class CustomizeManager : MonoBehaviour
     public GameObject customizeManager;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI coinText;
-    public MenuTweenManager menuTween;
-    public CustomizeTweenManager customizeTween;
     private int currentLevel = 0;
     
     void Awake()
@@ -42,9 +40,8 @@ public class CustomizeManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !menuTween.isShown && customizeTween.isShown)
+        if (Input.GetKeyDown(KeyCode.Escape) && UiState.instance.GetCurrentState() == UiState.State.Customize)
         {
-            menuTween.Customize(false);
             Customize();
         }
     }

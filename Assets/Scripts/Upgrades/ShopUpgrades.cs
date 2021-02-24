@@ -13,10 +13,11 @@ public class ShopUpgrades : MonoBehaviour
     [SerializeField] private Transform upgradesContainer;
     [SerializeField] private GameObject upgradesItemPrefab;
 
-    public MenuTweenManager menuTweenManager;
+    public GameController gameController;
     public TextMeshProUGUI coinsText;
     private UpgradeItem itemSelected;
     public float[] currentItems;
+    public ShopManager shopManager;
 
     private int coins;
 
@@ -43,14 +44,6 @@ public class ShopUpgrades : MonoBehaviour
     private void Start()
     {
         PopulateShop();
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape) && this.gameObject.activeInHierarchy)
-        {
-            //GO TO MENU
-        }
     }
 
     private void PopulateShop()
@@ -111,8 +104,8 @@ public class ShopUpgrades : MonoBehaviour
                 //buy item
                 //save upgrades
                 Debug.Log("Buy it");
-                menuTweenManager.Upgrades(false);
                 SaveSystem.SaveUpgrades(this);
+                gameController.ApplyUpgrades();
                 //apply upgrades
             }
             else
@@ -122,4 +115,5 @@ public class ShopUpgrades : MonoBehaviour
             }
         }
     }
+ 
 }

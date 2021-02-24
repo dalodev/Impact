@@ -165,7 +165,7 @@ public class Ball : MonoBehaviour
     }
 
 
-    private void ApplyUpgrades()
+    public void ApplyUpgrades()
     {
         UpgradesData data = SaveSystem.LoadUpgrades();
         if(data != null)

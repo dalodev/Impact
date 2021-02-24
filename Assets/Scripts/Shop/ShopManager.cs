@@ -9,8 +9,6 @@ public class ShopManager : MonoBehaviour
 { 
     public double coins;
     public int level;
-    public Text coinsTxt;
-    public CustomizeTweenManager customizeTween;
 
     void Start()
     {
@@ -29,21 +27,8 @@ public class ShopManager : MonoBehaviour
         //coinsTxt.text = "$" + coins.ToString();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape) && !customizeTween.isShown)
-        {
-            customizeTween.Shop(false);
-        }
-    }
-
     public void Buy()
     {
         
-    }
-
-    public void Menu()
-    {
-        SceneManager.LoadScene(0);
     }
 }

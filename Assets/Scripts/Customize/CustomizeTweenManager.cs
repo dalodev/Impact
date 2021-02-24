@@ -8,12 +8,6 @@ public class CustomizeTweenManager : MonoBehaviour
     public GameObject nextSkin, previousSkin;
     public GameObject nextTrail, previousTrail;
     public LeanTweenType showType;
-    public bool isShown = false;
-
-    private void Start()
-    {
-        isShown = true;
-    }
 
     public void NextSkin(bool isOn)
     {
@@ -69,15 +63,16 @@ public class CustomizeTweenManager : MonoBehaviour
 
     public void Shop(bool isOn)
     {
-        isShown = !isOn;
         switch (isOn)
         {
             case true:
+                UiState.instance.SetState(UiState.State.ShopCustomize);
                 shopPanel.SetActive(true);
                 LeanTween.scale(shopPanel.GetComponent<RectTransform>(), Vector3.one, 0.4f).setEaseInOutBounce();
                 LeanTween.moveY(customizePanel.GetComponent<RectTransform>(), -1650, 0.3f);
                 break;
             case false:
+                UiState.instance.SetState(UiState.State.Customize);
                 LeanTween.scale(shopPanel.GetComponent<RectTransform>(), Vector3.zero, 0.4f).setEaseInOutBounce();
                 LeanTween.moveY(customizePanel.GetComponent<RectTransform>(), 0, 0.3f);
                 break;

@@ -30,16 +30,6 @@ public class Shop : MonoBehaviour
         PopulateShop();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape) && this.gameObject.activeInHierarchy)
-        {
-            
-           //GO TO MENU
-        }
-
-    }
-
     private void PopulateShop()
     {
         for (int i = 0; i < shopItems.Length; i++)
@@ -75,4 +65,5 @@ public class Shop : MonoBehaviour
         //in app service
     }
   
+   
 }

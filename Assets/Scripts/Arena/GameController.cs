@@ -39,7 +39,7 @@ public class GameController : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)
-            && !customizeManager.enabled)
+            && ball.enabled)
         {
             Restart();
         }
@@ -120,5 +120,10 @@ public class GameController : MonoBehaviour
     public int GetExperienceToNextLevel()
     {
         return levelSystem.experienceToNextLevel;
+    }
+
+    public void ApplyUpgrades()
+    {
+        ball.ApplyUpgrades();
     }
 }
