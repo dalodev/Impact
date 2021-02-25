@@ -15,5 +15,5 @@ MonoBehaviour:
   id: 4
   itemName: Drag Time
   sprite: {fileID: 0}
-  cost: 300
+  cost: 500
   backgroundColor: {r: 0, g: 0, b: 0, a: 0}

@@ -15,5 +15,5 @@ MonoBehaviour:
   id: 3
   itemName: XP x2
   sprite: {fileID: 0}
-  cost: 250
+  cost: 1000
   backgroundColor: {r: 0, g: 0, b: 0, a: 0}

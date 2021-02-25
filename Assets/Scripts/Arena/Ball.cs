@@ -184,7 +184,7 @@ public class Ball : MonoBehaviour
                         this.xp = 2;
                         break;
                     case (int)UpgradesData.Upgrades.DragTime:
-                        this.dragTimer = 8;
+                        this.dragTimer = 5;
                         break;
                     case (int)UpgradesData.Upgrades.AutoBounce:
                         //TODO make ball to bounce around 5 to 6 balls???? Activable by button????

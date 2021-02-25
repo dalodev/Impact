@@ -15,5 +15,5 @@ MonoBehaviour:
   id: 1
   itemName: Speed
   sprite: {fileID: 0}
-  cost: 50
+  cost: 300
   backgroundColor: {r: 0, g: 0, b: 0, a: 0}

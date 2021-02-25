@@ -19,8 +19,6 @@ public class GameController : MonoBehaviour
     private int currentScore = 0;
     private int scoreIncreaseRate = 1;
     private int currentMaxScore = 0;
-    private float timer = 0f;
-    private bool scoreOverTime = false;
 
     void Awake()
     {
@@ -43,11 +41,7 @@ public class GameController : MonoBehaviour
         {
             Restart();
         }
-        timer += Time.unscaledDeltaTime;
-        /*if(timer > 0.1f && scoreOverTime) {
-            currentScore += 5;
-            timer = 0;
-        }*/
+        
         if (currentScore < currentMaxScore)
         {
             currentScore += scoreIncreaseRate;
@@ -83,11 +77,6 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("Score: " + currentScore);
         currentMaxScore = currentScore + score;
-    }
-
-    public void ActivateScoreOverTime(bool activate)
-    {
-        scoreOverTime = activate;
     }
 
     public void Restart()
