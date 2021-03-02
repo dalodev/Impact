@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 9079352930251004582}
   - component: {fileID: 9079352930251004583}
   - component: {fileID: 9079352930251004576}
-  - component: {fileID: 9079352930251004580}
+  - component: {fileID: 1498293285}
   m_Layer: 11
   m_Name: Coin
   m_TagString: Untagged
@@ -278,7 +278,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &9079352930251004580
+--- !u!114 &1498293285
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -287,10 +287,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 9079352930251004577}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de838127dfbe96c4992129893163a4d0, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c1ddc58efeb8184f8ae7c6f12e58a68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ShakePreset: {fileID: 11400000, guid: bd4328bd5427ab74383676e7049ce3d3, type: 2}
-  deathEffect: {fileID: 4853962083377314509, guid: 8d73885d72aa8ba41be72bc95f7944c5, type: 3}
-  upWardForce: 5
-  points: 60
+  deathEffect: {fileID: 4853962083377314509, guid: f3e565786db858f4baaec0b053fb3bd3, type: 3}
+  upWardForce: 8

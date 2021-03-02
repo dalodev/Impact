@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using MilkShake;
 
-public class Enemy : MonoBehaviour
+public class CoinBall : MonoBehaviour
 {
-
     public ShakePreset ShakePreset = null;
     public GameObject deathEffect = null;
     public float upWardForce = 8f;
-    public int points = 0;
-    private Vector3 direction = Vector3.up;
+    public int coins = 1;
+    public GameController gameController;
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -27,11 +27,11 @@ public class Enemy : MonoBehaviour
             }
             if (deathEffect != null)
             {
-                player.UpdateScore(points);
+                //TODO get coin
+                gameController.UpdateCoins(coins);
                 Instantiate(deathEffect, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
-
         }
     }
 }

@@ -166,7 +166,7 @@ Transform:
   m_GameObject: {fileID: 903022785}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 350, z: 0}
-  m_LocalScale: {x: 400, y: 700, z: 1}
+  m_LocalScale: {x: 700, y: 700, z: 1}
   m_Children: []
   m_Father: {fileID: 4294871546288971453}
   m_RootOrder: 1
@@ -5395,7 +5395,7 @@ MonoBehaviour:
   groundLength: 0.6
   timeManager: {fileID: 0}
   state: 0
-  dragTimer: 5
+  dragTimer: 2.5
   xp: 1
   gameCotroller: {fileID: 0}
   timeDragOut: 0

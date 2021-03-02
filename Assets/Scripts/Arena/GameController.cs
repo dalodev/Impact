@@ -115,4 +115,10 @@ public class GameController : MonoBehaviour
     {
         ball.ApplyUpgrades();
     }
+
+    public void UpdateCoins(int coins)
+    {
+        this.coins += coins;
+        SaveSystem.SavePlayerData(this);
+    }
 }

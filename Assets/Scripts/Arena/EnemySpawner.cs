@@ -35,6 +35,7 @@ public class EnemySpawner : MonoBehaviour
             initalEnemies.transform.parent = this.gameObject.transform;
             SpawnEnemies(spawnCount, "Enemy");
             SpawnEnemies(spawnCount / 2, "EnemyArrow");
+            SpawnEnemies(50, "Coin");
         }
     }
     public void SpawnEnemies(int SpawnCount, string tag)
