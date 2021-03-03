@@ -27,15 +27,15 @@ public class CustomizeManager : MonoBehaviour
             trailId = trailSkinManager.GetTrailName();
         }
         PlayerData playerData = SaveSystem.LoadPlayerData();
+        int coins = 0;
+        int level = 0;
         if(playerData != null)
         {
-            levelText.text =  ""+playerData.level;
+            level = playerData.level;
+            coins = playerData.coins;
         }
-        else
-        {
-            levelText.text = ""+0;
-        }
-        
+        coinText.text = coins.ToString();
+        levelText.text = level.ToString();
     }
 
     void Update()

@@ -32,8 +32,7 @@ public class ShopUpgrades : MonoBehaviour
         {
             coins = 0;
         }
-        coins = 100000;
-        coinsText.text = ""+ coins;
+        coinsText.text = coins.ToString();
         UpgradesData upgrades = SaveSystem.LoadUpgrades();
         if(upgrades != null)
         {
@@ -63,7 +62,7 @@ public class ShopUpgrades : MonoBehaviour
                 {
                     if (currentItems[i] == item.id)
                     {
-                        itemObject.gameObject.GetComponent<Image>().color = new Color32(255, 0, 0, 0);
+                        itemObject.transform.GetChild(0).GetComponent<Image>().color = new Color32(255, 0, 0, 255);
                     }
                 }
             }

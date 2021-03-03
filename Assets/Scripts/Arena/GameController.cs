@@ -27,10 +27,12 @@ public class GameController : MonoBehaviour
         if (data != null)
         {
             highScore = data.highScore;
+            coins = data.coins;
         }
         else
         {
             highScore = 0;
+            coins = 0;
         }
     }
 

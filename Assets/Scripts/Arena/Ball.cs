@@ -20,6 +20,7 @@ public class Ball : MonoBehaviour
     public float maxDrag = 5f;
     public int dragCount = 0;
     public int maxDragCount = 1;
+    public Vector2 launchDirection;
 
     [Header("Collision")]
     public bool onGround = false;
@@ -87,10 +88,9 @@ public class Ball : MonoBehaviour
             canLaunch = true;
         }
         else
-        {
+        { 
             dragCount = 0;
             canLaunch = false;
-
         }
         state = BallState.LAUNCH;
         if (!timeDragOut)
@@ -100,6 +100,7 @@ public class Ball : MonoBehaviour
             endPoint = myCamera.ScreenToWorldPoint(Input.mousePosition);
             Vector2 launchForce = GetLaunchDirection(endPoint);
             Vector2 clampForce = Vector2.ClampMagnitude(launchForce, maxDrag);
+            launchDirection = clampForce;
             rb.AddForce(clampForce * launchSpeed, ForceMode2D.Impulse);
         }
         EndLine();

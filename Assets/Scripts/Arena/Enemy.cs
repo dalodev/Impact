@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour
     public GameObject deathEffect = null;
     public float upWardForce = 8f;
     public int points = 0;
-    private Vector3 direction = Vector3.up;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -18,7 +17,7 @@ public class Enemy : MonoBehaviour
         {
             Ball player = collision.gameObject.GetComponent<Ball>();
             Rigidbody2D rbPlayer = collision.gameObject.GetComponent<Rigidbody2D>();
-            rbPlayer.AddForce(rbPlayer.velocity.normalized * upWardForce, ForceMode2D.Impulse);
+            rbPlayer.AddForce(player.launchDirection* upWardForce, ForceMode2D.Impulse);
             player.ResetLaunch(true);
             player.timeDragOut = false;
             if (ShakePreset != null)

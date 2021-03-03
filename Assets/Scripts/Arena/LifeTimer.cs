@@ -20,27 +20,28 @@ public class LifeTimer : MonoBehaviour
 
     void Update()
     {
-        
-        if(player.state == Ball.BallState.DRAGGING)
+
+        switch (player.state)
         {
-            if(dragTime > 0)
-            {
-                dragTime -= Time.unscaledDeltaTime;
-            }
-            else
-            {
-                player.timeDragOut = true;
-                player.Launch();
-                dragTime = 0f;
-                timeManager.BackToNormal();
-            }
-            currentTime = dragTime;
-            lifeTimer.fillAmount = currentTime / player.dragTimer;
-        }
-        if(player.state == Ball.BallState.LAUNCH)
-        {
-            dragTime = player.dragTimer;
-            lifeTimer.fillAmount = player.dragTimer;
-        }
+            case Ball.BallState.DRAGGING:
+                if(dragTime > 0)
+                {
+                    dragTime -= Time.unscaledDeltaTime;
+                }
+                else
+                {
+                    dragTime = 0f;
+                    player.timeDragOut = true;
+                    player.Launch();
+                    timeManager.BackToNormal();
+                }
+                currentTime = dragTime;
+                lifeTimer.fillAmount = currentTime / player.dragTimer;
+                break;
+            case Ball.BallState.LAUNCH:
+                dragTime = player.dragTimer;
+                lifeTimer.fillAmount = player.dragTimer;
+                break;
+        } 
     }
 }

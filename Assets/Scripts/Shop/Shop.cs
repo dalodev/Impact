@@ -5,6 +5,7 @@ using TMPro;
 public class Shop : MonoBehaviour
 {
     public GameObject menu;
+    public TextMeshProUGUI coinsText;
     [Header("List of items to sold")]
     [SerializeField] private ShopItem[] shopItems;
 
@@ -19,10 +20,12 @@ public class Shop : MonoBehaviour
     private void Awake()
     {
         PlayerData playerData = SaveSystem.LoadPlayerData();
+        int coins = 0;
         if (playerData != null)
         {
             coins = playerData.coins;
         }
+        coinsText.text = coins.ToString();
     }
 
     private void Start()

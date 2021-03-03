@@ -292,4 +292,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShakePreset: {fileID: 11400000, guid: bd4328bd5427ab74383676e7049ce3d3, type: 2}
   deathEffect: {fileID: 4853962083377314509, guid: f3e565786db858f4baaec0b053fb3bd3, type: 3}
-  upWardForce: 8
+  upWardForce: 4
+  coins: 1
+  gameController: {fileID: 0}
