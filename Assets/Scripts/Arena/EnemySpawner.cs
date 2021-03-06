@@ -23,9 +23,8 @@ public class EnemySpawner : MonoBehaviour
     {
         if (Time.time >= nextSpawn)
         {
-
-            SpawnEnemies(spawnCount / 5, "Covid");
-            SpawnEnemies(spawnCount / 5, "EnemyArrow");
+            SpawnEnemies(100, "Covid");
+            //SpawnEnemies(20, "EnemyArrow");
             nextSpawn = Time.time + spawnInterval;
         }
         if (restart)
@@ -34,7 +33,7 @@ public class EnemySpawner : MonoBehaviour
             GameObject initalEnemies = Instantiate(initialEnemies, Vector2.zero, Quaternion.identity);
             initalEnemies.transform.parent = this.gameObject.transform;
             SpawnEnemies(spawnCount, "Enemy");
-            SpawnEnemies(spawnCount / 2, "EnemyArrow");
+            SpawnEnemies(200, "EnemyArrow");
             SpawnEnemies(50, "Coin");
         }
     }

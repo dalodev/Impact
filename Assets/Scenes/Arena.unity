@@ -212,7 +212,7 @@ MonoBehaviour:
   playerPool: {fileID: 903022785}
   pooler: {fileID: 2068874269}
   spawnInterval: 10
-  spawnCount: 600
+  spawnCount: 800
 --- !u!1 &19501133
 GameObject:
   m_ObjectHideFlags: 0
@@ -11322,6 +11322,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: edd368db0810e42448a9971c355dc3c5, type: 2}
   - {fileID: 11400000, guid: 497be4d0da0d7f144a59a33c0805c818, type: 2}
   - {fileID: 11400000, guid: 6a7d05326d0c0194894761e6ed48cf01, type: 2}
+  - {fileID: 11400000, guid: 3d0cd90f032f83a4fa9ddb72050f4d53, type: 2}
   upgradesContainer: {fileID: 615136876}
   upgradesItemPrefab: {fileID: 7951822509052699729, guid: 218d414bb94b331409cf82cc6e8ebf27, type: 3}
   gameController: {fileID: 563260663}
@@ -19564,13 +19565,13 @@ MonoBehaviour:
   pools:
   - tag: Enemy
     prefab: {fileID: 9079352930251004577, guid: be54b610a17b8454d8b3928281860a42, type: 3}
-    size: 600
+    size: 800
   - tag: EnemyArrow
     prefab: {fileID: 9079352930251004577, guid: b7cc80480fa8b2a44a068c33805948c4, type: 3}
-    size: 150
+    size: 200
   - tag: Covid
     prefab: {fileID: 5790352928787555000, guid: 091604478392a9e4a9e8193f60050c57, type: 3}
-    size: 150
+    size: 100
   - tag: Coin
     prefab: {fileID: 9079352930251004577, guid: edeec72a618f10049af730a3d9a31f16, type: 3}
     size: 50
@@ -20011,6 +20012,10 @@ PrefabInstance:
       propertyPath: myCamera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 1389915068245649366, guid: ff9da86b83601cd49bece9c7f3bd50e0, type: 3}
+      propertyPath: launchGuide
+      value: 650
+      objectReference: {fileID: 0}
     - target: {fileID: 3037039595514576022, guid: ff9da86b83601cd49bece9c7f3bd50e0, type: 3}
       propertyPath: m_Mesh
       value: 

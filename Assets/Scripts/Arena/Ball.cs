@@ -21,6 +21,7 @@ public class Ball : MonoBehaviour
     public int dragCount = 0;
     public int maxDragCount = 1;
     public Vector2 launchDirection;
+    public int launchGuide = 650;
 
     [Header("Collision")]
     public bool onGround = false;
@@ -118,7 +119,7 @@ public class Ball : MonoBehaviour
         float xVel = vel.x;
         float gravity = 9.81f;
 
-        int iterations = 650 / (int) vel.magnitude;
+        int iterations = launchGuide / (int) vel.magnitude;
         float iterationsDist = 1f;
         line.positionCount = iterations;
         line.startColor = Color.white;
@@ -189,6 +190,9 @@ public class Ball : MonoBehaviour
                         break;
                     case (int)UpgradesData.Upgrades.AutoBounce:
                         //TODO make ball to bounce around 5 to 6 balls???? Activable by button????
+                        break;
+                    case (int)UpgradesData.Upgrades.LaunchGuide:
+                        launchGuide = 2000;
                         break;
                 }
             }

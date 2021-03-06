@@ -6,16 +6,17 @@ public class UpgradesData
 
    public UpgradesData(ShopUpgrades data)
     {
-        this.items = new float[data.items.Length];
-        this.items[data.currentItems.Length+1] = data.GetItemSelected().id;
+        this.items = new float[data.currentItems.Length+1];
+        this.items[this.items.Length -1] = data.GetItemSelected().id;
     }
 
     public enum Upgrades {
-        Speed = 1, 
-        TripleLaunch = 2, 
-        Experience = 3,
-        DragTime = 4,
-        AutoBounce = 5
+        Speed = 0, 
+        TripleLaunch = 1, 
+        Experience = 2,
+        DragTime = 3,
+        AutoBounce = 4,
+        LaunchGuide = 5
     };
 
 }

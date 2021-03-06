@@ -16,6 +16,7 @@ public class ShopUpgrades : MonoBehaviour
     public GameController gameController;
     public TextMeshProUGUI coinsText;
     private UpgradeItem itemSelected;
+    private GameObject gameObjectSelected;
     public float[] currentItems;
     public ShopManager shopManager;
 
@@ -32,12 +33,19 @@ public class ShopUpgrades : MonoBehaviour
         {
             coins = 0;
         }
+        coins = 1000;
         coinsText.text = coins.ToString();
+        LoadDataUpgradesData();
+    }
+
+    private void LoadDataUpgradesData()
+    {
         UpgradesData upgrades = SaveSystem.LoadUpgrades();
-        if(upgrades != null)
+        if (upgrades != null)
         {
             currentItems = upgrades.items;
         }
+        Debug.Log("Loaded current items: " + currentItems.Length);
     }
 
     private void Start()
@@ -60,9 +68,9 @@ public class ShopUpgrades : MonoBehaviour
             {
                 for (int j = 0; j < currentItems.Length; j++)
                 {
-                    if (currentItems[i] == item.id)
+                    if (currentItems[j] == item.id)
                     {
-                        itemObject.transform.GetChild(0).GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+                        itemObject.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(true);
                     }
                 }
             }
@@ -72,6 +80,7 @@ public class ShopUpgrades : MonoBehaviour
     private void OnButtonClick(UpgradeItem item, GameObject itemObject)
     {
         itemSelected = item;
+        gameObjectSelected = itemObject;
         foreach (Transform child in upgradesContainer)
         {
             child.gameObject.GetComponent<Image>().color = new Color32(0, 0, 0, 0);
@@ -103,7 +112,9 @@ public class ShopUpgrades : MonoBehaviour
                 //buy item
                 //save upgrades
                 Debug.Log("Buy it");
+                gameObjectSelected.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(true);
                 SaveSystem.SaveUpgrades(this);
+                LoadDataUpgradesData();
                 gameController.ApplyUpgrades();
                 //apply upgrades
             }
