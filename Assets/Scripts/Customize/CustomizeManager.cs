@@ -26,16 +26,7 @@ public class CustomizeManager : MonoBehaviour
             skinId = skinManager.GetSkinName();
             trailId = trailSkinManager.GetTrailName();
         }
-        PlayerData playerData = SaveSystem.LoadPlayerData();
-        int coins = 0;
-        int level = 0;
-        if(playerData != null)
-        {
-            level = playerData.level;
-            coins = playerData.coins;
-        }
-        coinText.text = coins.ToString();
-        levelText.text = level.ToString();
+        UpdatePlayerData();
     }
 
     void Update()
@@ -44,6 +35,20 @@ public class CustomizeManager : MonoBehaviour
         {
             Customize();
         }
+    }
+
+    public void UpdatePlayerData()
+    {
+        PlayerData playerData = SaveSystem.LoadPlayerData();
+        int coins = 0;
+        int level = 0;
+        if (playerData != null)
+        {
+            level = playerData.level;
+            coins = playerData.coins;
+        }
+        coinText.text = coins.ToString();
+        levelText.text = level.ToString();
     }
 
     public void Customize()

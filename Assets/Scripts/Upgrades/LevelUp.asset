@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce1b4564cbbe8d144bc11e90ad3b7510, type: 3}
-  m_Name: DoubleExperience
+  m_Name: LevelUp
   m_EditorClassIdentifier: 
-  id: 3
-  itemName: XP x2
+  id: 7
+  itemName: Level Up
   sprite: {fileID: 0}
-  cost: 6000
+  cost: 100
   backgroundColor: {r: 0, g: 0, b: 0, a: 0}

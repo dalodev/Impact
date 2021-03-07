@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class ShopUpgrades : MonoBehaviour
 {
@@ -13,12 +14,12 @@ public class ShopUpgrades : MonoBehaviour
     [SerializeField] private Transform upgradesContainer;
     [SerializeField] private GameObject upgradesItemPrefab;
 
+    public MenuManager menuManager;
     public GameController gameController;
     public TextMeshProUGUI coinsText;
     private UpgradeItem itemSelected;
     private GameObject gameObjectSelected;
-    public float[] currentItems;
-    public ShopManager shopManager;
+    public List<int> myItems = new List<int>();
 
     private int coins;
 
@@ -33,7 +34,6 @@ public class ShopUpgrades : MonoBehaviour
         {
             coins = 0;
         }
-        coins = 1000;
         coinsText.text = coins.ToString();
         LoadDataUpgradesData();
     }
@@ -43,9 +43,11 @@ public class ShopUpgrades : MonoBehaviour
         UpgradesData upgrades = SaveSystem.LoadUpgrades();
         if (upgrades != null)
         {
-            currentItems = upgrades.items;
+            foreach(int i in upgrades.items)
+            {
+                this.myItems.Add(i);
+            }
         }
-        Debug.Log("Loaded current items: " + currentItems.Length);
     }
 
     private void Start()
@@ -64,14 +66,12 @@ public class ShopUpgrades : MonoBehaviour
 
             itemObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "" + item.cost;
             itemObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "" + item.itemName;
-            if(currentItems != null && currentItems.Length > 0)
+            foreach(int id in myItems)
             {
-                for (int j = 0; j < currentItems.Length; j++)
+                if(id == item.id)
                 {
-                    if (currentItems[j] == item.id)
-                    {
-                        itemObject.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(true);
-                    }
+                    itemObject.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(true);
+                    CheckLevelUpItem(item, itemObject);
                 }
             }
         }     
@@ -84,7 +84,7 @@ public class ShopUpgrades : MonoBehaviour
         foreach (Transform child in upgradesContainer)
         {
             child.gameObject.GetComponent<Image>().color = new Color32(0, 0, 0, 0);
-        }
+        } 
         itemObject.GetComponent<Image>().color = item.backgroundColor;
     }
 
@@ -92,14 +92,28 @@ public class ShopUpgrades : MonoBehaviour
     {
         return itemSelected;
     }
+
+    private void CheckLevelUpItem(UpgradeItem item, GameObject itemObject)
+    {
+        if(item.id == (int)UpgradesData.Upgrades.LevelUp)
+        {
+            if(DateTime.Now.Hour == 24)
+            {
+                itemObject.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(false);
+                myItems.Remove((int)item.id);
+                SaveSystem.SaveUpgrades(this);
+            }
+        }
+    }
+
     public void Buy()
     {
         bool canBuy = true;
-        if (currentItems != null)
+        if (myItems.Count > 0)
         {
-            for (int i = 0; i < currentItems.Length; i++)
+            for (int i = 0; i < myItems.Count; i++)
             {
-                if (currentItems[i] == GetItemSelected().id)
+                if (myItems[i] == GetItemSelected().id)
                 {
                     canBuy = false;
                 }
@@ -109,19 +123,25 @@ public class ShopUpgrades : MonoBehaviour
         {
             if (GetItemSelected().cost <= coins && canBuy)
             {
-                //buy item
-                //save upgrades
+                this.coins -= (int)GetItemSelected().cost;
+                coinsText.text = coins.ToString();
                 Debug.Log("Buy it");
+                this.myItems.Add((int)GetItemSelected().id);
                 gameObjectSelected.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(true);
                 SaveSystem.SaveUpgrades(this);
-                LoadDataUpgradesData();
+                if (GetItemSelected().id == (int)UpgradesData.Upgrades.LevelUp)
+                {
+                    GameObject.FindObjectOfType<GameController>().LevelUp();
+                    menuManager.ApplyLevel();
+                }
                 gameController.ApplyUpgrades();
-                //apply upgrades
+                itemSelected = null;
+                gameObjectSelected = null;
             }
             else
             {
-                Debug.Log("No no no give me money");
-                //show not enogh coins dialog
+                Debug.Log("You can't buy this upgrade :(");
+                //show not enough coins dialog
             }
         }
     }

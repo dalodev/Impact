@@ -19,6 +19,11 @@ public class Shop : MonoBehaviour
 
     private void Awake()
     {
+        UpdatePlayerData();
+    }
+
+    public void UpdatePlayerData()
+    {
         PlayerData playerData = SaveSystem.LoadPlayerData();
         int coins = 0;
         if (playerData != null)

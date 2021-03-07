@@ -174,24 +174,31 @@ public class Ball : MonoBehaviour
         {
             for(int i = 0; i < data.items.Length; i++)
             {
+                Debug.Log("item: " + (int)data.items[i]);
                 switch ((int)data.items[i])
                 {
                     case (int)UpgradesData.Upgrades.Speed:
+                        Debug.Log("Apply Upgrade Launch speed");
                         this.launchSpeed = 8;
                         break;
                     case (int)UpgradesData.Upgrades.TripleLaunch:
+                        Debug.Log("Apply Upgrade Launch TripleLaunch");
                         this.maxDragCount = 2;
                         break;
                     case (int)UpgradesData.Upgrades.Experience:
+                        Debug.Log("Apply Upgrade Launch Experience");
                         this.xp = 2;
                         break;
                     case (int)UpgradesData.Upgrades.DragTime:
+                        Debug.Log("Apply Upgrade Launch FragTime");
                         this.dragTimer = 5;
                         break;
                     case (int)UpgradesData.Upgrades.AutoBounce:
+                        Debug.Log("Apply Upgrade Launch AutoBounce");
                         //TODO make ball to bounce around 5 to 6 balls???? Activable by button????
                         break;
                     case (int)UpgradesData.Upgrades.LaunchGuide:
+                        Debug.Log("Apply Upgrade LaunchGuide");
                         launchGuide = 2000;
                         break;
                 }

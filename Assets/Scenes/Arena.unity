@@ -11317,18 +11317,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
+  - {fileID: 11400000, guid: 4814e920c20b9314e9663460d02b95c5, type: 2}
   - {fileID: 11400000, guid: 67249fdf0ce3fa042b654e30905d5142, type: 2}
+  - {fileID: 11400000, guid: 3d0cd90f032f83a4fa9ddb72050f4d53, type: 2}
   - {fileID: 11400000, guid: c7b1a372ff6d126488884231523bad9c, type: 2}
-  - {fileID: 11400000, guid: edd368db0810e42448a9971c355dc3c5, type: 2}
   - {fileID: 11400000, guid: 497be4d0da0d7f144a59a33c0805c818, type: 2}
   - {fileID: 11400000, guid: 6a7d05326d0c0194894761e6ed48cf01, type: 2}
-  - {fileID: 11400000, guid: 3d0cd90f032f83a4fa9ddb72050f4d53, type: 2}
+  - {fileID: 11400000, guid: edd368db0810e42448a9971c355dc3c5, type: 2}
   upgradesContainer: {fileID: 615136876}
   upgradesItemPrefab: {fileID: 7951822509052699729, guid: 218d414bb94b331409cf82cc6e8ebf27, type: 3}
+  menuManager: {fileID: 175501724}
   gameController: {fileID: 563260663}
   coinsText: {fileID: 1636525920}
-  currentItems: []
-  shopManager: {fileID: 486242744}
+  myItems: 
 --- !u!114 &786270580
 MonoBehaviour:
   m_ObjectHideFlags: 0

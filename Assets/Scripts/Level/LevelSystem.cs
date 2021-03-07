@@ -105,4 +105,9 @@ public class LevelSystem : MonoBehaviour
     {
         return experienceToNextLevel;
     }
+
+    public void LevelUp()
+    {
+        this.level++;
+    }
 }

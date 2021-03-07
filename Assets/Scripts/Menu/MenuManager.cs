@@ -15,15 +15,7 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
-        PlayerData playerData = SaveSystem.LoadPlayerData();
-        if(playerData != null)
-        {
-            levelText.text = playerData.level.ToString();
-        }
-        else
-        {
-            levelText.text = 0.ToString();
-        }
+        ApplyLevel();
     }
 
     private void Update()
@@ -60,6 +52,19 @@ public class MenuManager : MonoBehaviour
             case UiState.State.ShopUpgrades:
                 upgradesTween.Shop(false);
                 break;
+        }
+    }
+
+    public void ApplyLevel()
+    {
+        PlayerData playerData = SaveSystem.LoadPlayerData();
+        if (playerData != null)
+        {
+            levelText.text = playerData.level.ToString();
+        }
+        else
+        {
+            levelText.text = 0.ToString();
         }
     }
 }
