@@ -6,6 +6,7 @@ using TMPro;
 
 public class SkinsManager : MonoBehaviour
 {
+    public GameObject player;
     public ParticleSystem playerParticleSys;
     public GameObject lockImage;
     public List<SkinInfo> skins = new List<SkinInfo>();
@@ -83,7 +84,8 @@ public class SkinsManager : MonoBehaviour
         if (skin != null)
         {
             IsSkinEnable(skin);
-            playerParticleSys.GetComponent<ParticleSystemRenderer>().material = skin.skin;
+            DisplaySkinMaterial(skin);
+            DisplaySkinEffect(skin);
         }
     }
 
@@ -104,7 +106,29 @@ public class SkinsManager : MonoBehaviour
         if (skin != null)
         {
             IsSkinEnable(skin);
+            DisplaySkinMaterial(skin);
+        }
+    }
+
+    private void DisplaySkinMaterial(SkinInfo skin)
+    {
+        if (skin.skin != null)
+        {
             playerParticleSys.GetComponent<ParticleSystemRenderer>().material = skin.skin;
+        }
+    }
+
+    private void DisplaySkinEffect(SkinInfo skin)
+    {
+        if (skin.effect != null)
+        {
+            GameObject effect = GameObject.FindGameObjectWithTag("Skin");
+            if (effect != null)
+            {
+                Destroy(effect);
+            }
+            GameObject newSkin = Instantiate(skin.effect, player.transform.position, Quaternion.identity);
+            newSkin.transform.parent = player.transform;
         }
     }
 
@@ -151,13 +175,7 @@ public class SkinsManager : MonoBehaviour
         {
             lockImage.SetActive(true);
             skinLevelText.gameObject.SetActive(true);
-            //skinCoinsText.gameObject.SetActive(true);
-            //skinCoinsText.text = ""+skin.coins;
             skinLevelText.text = "" + skin.unlockLevel;
-            if(skin.coins > 0)
-            {
-
-            }
             skin.enabled = false;
         }
     }
