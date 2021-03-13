@@ -17,6 +17,7 @@ public class ShopUpgrades : MonoBehaviour
     public MenuManager menuManager;
     public GameController gameController;
     public TextMeshProUGUI coinsText;
+    public TextMeshProUGUI dailyText;
     private UpgradeItem itemSelected;
     private GameObject gameObjectSelected;
     public List<int> myItems = new List<int>();
@@ -34,6 +35,7 @@ public class ShopUpgrades : MonoBehaviour
         {
             coins = 0;
         }
+        coins = 1000;
         coinsText.text = coins.ToString();
         LoadDataUpgradesData();
     }
@@ -71,7 +73,6 @@ public class ShopUpgrades : MonoBehaviour
                 if(id == item.id)
                 {
                     itemObject.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(true);
-                    CheckLevelUpItem(item, itemObject);
                 }
             }
         }     
@@ -91,19 +92,6 @@ public class ShopUpgrades : MonoBehaviour
     public UpgradeItem GetItemSelected()
     {
         return itemSelected;
-    }
-
-    private void CheckLevelUpItem(UpgradeItem item, GameObject itemObject)
-    {
-        if(item.id == (int)UpgradesData.Upgrades.LevelUp)
-        {
-            if(DateTime.Now.Hour == 24)
-            {
-                itemObject.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(false);
-                myItems.Remove((int)item.id);
-                SaveSystem.SaveUpgrades(this);
-            }
-        }
     }
 
     public void Buy()
@@ -144,6 +132,11 @@ public class ShopUpgrades : MonoBehaviour
                 //show not enough coins dialog
             }
         }
+    }
+
+    public void WatchAd()
+    {
+
     }
  
 }

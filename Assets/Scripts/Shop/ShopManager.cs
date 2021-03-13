@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class ShopManager : MonoBehaviour
 { 
@@ -12,8 +7,13 @@ public class ShopManager : MonoBehaviour
 
     void Start()
     {
+        UpdatePlayerData();
+    }
+
+    public void UpdatePlayerData()
+    {
         PlayerData data = SaveSystem.LoadPlayerData();
-        if(data != null)
+        if (data != null)
         {
             this.level = data.level;
             this.coins = data.coins;
@@ -23,12 +23,10 @@ public class ShopManager : MonoBehaviour
             this.level = 0;
             this.coins = 0;
         }
-        
-        //coinsTxt.text = "$" + coins.ToString();
     }
 
-    public void Buy()
+    public int GetLevel()
     {
-        
+        return this.level;
     }
 }

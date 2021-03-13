@@ -20,17 +20,12 @@ public class Shop : MonoBehaviour
     private void Awake()
     {
         UpdatePlayerData();
+        
     }
 
     public void UpdatePlayerData()
     {
-        PlayerData playerData = SaveSystem.LoadPlayerData();
-        int coins = 0;
-        if (playerData != null)
-        {
-            coins = playerData.coins;
-        }
-        coinsText.text = coins.ToString();
+        coinsText.text = GameObject.FindObjectOfType<ShopManager>().GetLevel().ToString();
     }
 
     private void Start()

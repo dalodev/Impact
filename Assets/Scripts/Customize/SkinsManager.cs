@@ -85,6 +85,11 @@ public class SkinsManager : MonoBehaviour
         {
             IsSkinEnable(skin);
             DisplaySkinMaterial(skin);
+            GameObject effect = GameObject.FindGameObjectWithTag("Skin");
+            if (effect != null)
+            {
+                Destroy(effect);
+            }
             DisplaySkinEffect(skin);
         }
     }
@@ -107,6 +112,12 @@ public class SkinsManager : MonoBehaviour
         {
             IsSkinEnable(skin);
             DisplaySkinMaterial(skin);
+            GameObject effect = GameObject.FindGameObjectWithTag("Skin");
+            if (effect != null)
+            {
+                Destroy(effect);
+            }
+            DisplaySkinEffect(skin);
         }
     }
 
@@ -114,6 +125,7 @@ public class SkinsManager : MonoBehaviour
     {
         if (skin.skin != null)
         {
+            playerParticleSys.gameObject.SetActive(true);
             playerParticleSys.GetComponent<ParticleSystemRenderer>().material = skin.skin;
         }
     }
@@ -122,11 +134,7 @@ public class SkinsManager : MonoBehaviour
     {
         if (skin.effect != null)
         {
-            GameObject effect = GameObject.FindGameObjectWithTag("Skin");
-            if (effect != null)
-            {
-                Destroy(effect);
-            }
+            playerParticleSys.gameObject.SetActive(false);
             GameObject newSkin = Instantiate(skin.effect, player.transform.position, Quaternion.identity);
             newSkin.transform.parent = player.transform;
         }

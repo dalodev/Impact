@@ -118,7 +118,7 @@ public class GameController : MonoBehaviour
         ball.ApplyUpgrades();
         SaveSystem.SavePlayerData(this);
         customizeManager.UpdatePlayerData();
-        GameObject.FindObjectOfType<Shop>().UpdatePlayerData();
+        GameObject.FindObjectOfType<ShopManager>().UpdatePlayerData();
     }
 
     public void UpdateCoins(int coins)
