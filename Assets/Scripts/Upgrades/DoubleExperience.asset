@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   itemName: XP x2
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 358ca2d17695fab4b828a001d2b04152, type: 3}
   cost: 6000
-  backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}

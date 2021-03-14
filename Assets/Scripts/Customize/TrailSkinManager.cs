@@ -21,8 +21,13 @@ public class TrailSkinManager : MonoBehaviour
         if (data != null)
         {
             SkinInfo skin = skins.Find(item => FindTrail(item, data));
-            currentSkin = skins.IndexOf(skin);
-            skinIndex = skins.IndexOf(skin);
+            if(skin != null)
+            {
+                Debug.Log("index:" + skin.itemID);
+                currentSkin = skins.IndexOf(skin);
+                skinIndex = skins.IndexOf(skin);
+            }
+   
         }
         else
         {
@@ -30,6 +35,7 @@ public class TrailSkinManager : MonoBehaviour
             skinIndex = 0;
         }
         GetPlayerData();
+        UpdateArrows();
         SelectSkin(currentSkin);
     }
 
@@ -109,8 +115,11 @@ public class TrailSkinManager : MonoBehaviour
             }
             IsSkinEnable(skin);
 
-            GameObject newTrail = Instantiate(skin.effect, player.transform.position, Quaternion.identity);
-            newTrail.transform.parent = player.transform;
+            if (skin.effect)
+            {
+                GameObject newTrail = Instantiate(skin.effect, player.transform.position, Quaternion.identity);
+                newTrail.transform.parent = player.transform;
+            }  
         }        
     }
 
@@ -129,7 +138,7 @@ public class TrailSkinManager : MonoBehaviour
             {
                 Destroy(effect);
             }
-            if( skins[skinIndex].effect != null)
+            if(skins[skinIndex].effect != null)
             {
                 GameObject newTrail = Instantiate(skins[skinIndex].effect, player.transform.position, Quaternion.identity);
                 newTrail.transform.parent = player.transform;
@@ -141,7 +150,11 @@ public class TrailSkinManager : MonoBehaviour
 
     public string GetTrailName()
     {
-        return GetselectedItem().effect.name;
+        if(GetselectedItem().effect != null)
+        {
+            return GetselectedItem().effect.name;
+        }
+        return null;
     }
 
     private void IsSkinEnable(SkinInfo skin)
@@ -178,10 +191,15 @@ public class TrailSkinManager : MonoBehaviour
             nextButton.SetActive(true);
             previousButton.SetActive(false);
         }
-        if (currentSkin >= skins.Count-1)
+        if (currentSkin == skins.Count - 1)
+        {
+            nextButton.SetActive(false);
+            previousButton.SetActive(true);
+        }
+        if (currentSkin > 0 && currentSkin < skins.Count - 1)
         {
             previousButton.SetActive(true);
-            nextButton.SetActive(false);
+            nextButton.SetActive(true);
         }
     }
 

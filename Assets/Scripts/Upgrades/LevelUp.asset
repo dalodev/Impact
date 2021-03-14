@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 7
   itemName: Level Up
-  sprite: {fileID: 0}
-  cost: 100
-  backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+  sprite: {fileID: 21300000, guid: 9c5c1f1ed3967c04ba636ac848ea85c3, type: 3}
+  cost: 2400
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}

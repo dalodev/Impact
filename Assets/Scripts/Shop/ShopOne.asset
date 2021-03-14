@@ -16,4 +16,4 @@ MonoBehaviour:
   sprite: {fileID: 0}
   cost: 0.99
   reward: 100
-  backgroundColor: {r: 0.9607844, g: 0.83921576, b: 0.2509804, a: 1}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}

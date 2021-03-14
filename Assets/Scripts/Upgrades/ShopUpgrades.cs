@@ -9,6 +9,7 @@ public class ShopUpgrades : MonoBehaviour
 {
     [Header("List of items to sold")]
     [SerializeField] public UpgradeItem[] items;
+    [SerializeField] public int levelUpMultipler;
 
     [Header("References")]
     [SerializeField] private Transform upgradesContainer;
@@ -17,7 +18,6 @@ public class ShopUpgrades : MonoBehaviour
     public MenuManager menuManager;
     public GameController gameController;
     public TextMeshProUGUI coinsText;
-    public TextMeshProUGUI dailyText;
     private UpgradeItem itemSelected;
     private GameObject gameObjectSelected;
     public List<int> myItems = new List<int>();
@@ -45,7 +45,9 @@ public class ShopUpgrades : MonoBehaviour
         UpgradesData upgrades = SaveSystem.LoadUpgrades();
         if (upgrades != null)
         {
-            foreach(int i in upgrades.items)
+            levelUpMultipler = upgrades.levelUpMultipler;
+
+            foreach (int i in upgrades.items)
             {
                 this.myItems.Add(i);
             }
@@ -68,14 +70,32 @@ public class ShopUpgrades : MonoBehaviour
 
             itemObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "" + item.cost;
             itemObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "" + item.itemName;
-            foreach(int id in myItems)
+            if (item.sprite)
+            {
+                itemObject.transform.GetChild(2).GetComponent<Image>().sprite = item.sprite;
+            }
+            foreach (int id in myItems)
             {
                 if(id == item.id)
                 {
                     itemObject.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(true);
+                    UpdateLevelUp(itemObject, item);
                 }
             }
         }     
+    }
+
+    private void UpdateLevelUp(GameObject itemObject, UpgradeItem item)
+    {
+        if(item.id == (int)UpgradesData.Upgrades.LevelUp)
+        {
+            if (myItems.Contains((int)item.id))
+            {
+                item.cost *= levelUpMultipler;
+                itemObject.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(false);
+                itemObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "" + item.cost;
+            }
+        }
     }
 
     private void OnButtonClick(UpgradeItem item, GameObject itemObject)
@@ -84,8 +104,8 @@ public class ShopUpgrades : MonoBehaviour
         gameObjectSelected = itemObject;
         foreach (Transform child in upgradesContainer)
         {
-            child.gameObject.GetComponent<Image>().color = new Color32(0, 0, 0, 0);
-        } 
+            child.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 50);
+        }
         itemObject.GetComponent<Image>().color = item.backgroundColor;
     }
 
@@ -103,7 +123,14 @@ public class ShopUpgrades : MonoBehaviour
             {
                 if (myItems[i] == GetItemSelected().id)
                 {
-                    canBuy = false;
+                    if (myItems[i] == (int)UpgradesData.Upgrades.LevelUp || myItems[i] == (int)UpgradesData.Upgrades.Love)
+                    {
+                        canBuy = true;
+                    }
+                    else
+                    {
+                        canBuy = false;
+                    }
                 }
             }
         }
@@ -116,12 +143,14 @@ public class ShopUpgrades : MonoBehaviour
                 Debug.Log("Buy it");
                 this.myItems.Add((int)GetItemSelected().id);
                 gameObjectSelected.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(true);
-                SaveSystem.SaveUpgrades(this);
                 if (GetItemSelected().id == (int)UpgradesData.Upgrades.LevelUp)
                 {
+                    levelUpMultipler += 1;
+                    UpdateLevelUp(gameObjectSelected, GetItemSelected());
                     GameObject.FindObjectOfType<GameController>().LevelUp();
                     menuManager.ApplyLevel();
                 }
+                SaveSystem.SaveUpgrades(this);
                 gameController.ApplyUpgrades();
                 itemSelected = null;
                 gameObjectSelected = null;

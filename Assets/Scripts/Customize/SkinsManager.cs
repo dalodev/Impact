@@ -33,6 +33,7 @@ public class SkinsManager : MonoBehaviour
             skinIndex = 0;
         }
         GetPlayerData();
+        UpdateArrows();
         SelectSkin(skins[currentSkin]);
     }
 
@@ -202,8 +203,13 @@ public class SkinsManager : MonoBehaviour
         }
         if(currentSkin == skins.Count - 1)
         {
-            previousButton.SetActive(true);
             nextButton.SetActive(false);
+            previousButton.SetActive(true);
+        }
+        if(currentSkin > 0 && currentSkin < skins.Count - 1)
+        {
+            previousButton.SetActive(true);
+            nextButton.SetActive(true);
         }
     }
     public void levelUp()

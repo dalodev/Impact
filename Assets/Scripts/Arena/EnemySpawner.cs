@@ -24,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
         if (Time.time >= nextSpawn)
         {
             SpawnEnemies(100, "Covid");
-            //SpawnEnemies(20, "EnemyArrow");
+            SpawnEnemies(20, "Enemy");
             nextSpawn = Time.time + spawnInterval;
         }
         if (restart)

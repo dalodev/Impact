@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     public LevelSystem levelSystem;
     public EnemySpawner enemySpawner;
     public ArenaTweenManager arenaTweenManager;
+    public int coinMultiplier = 1;
     private int highScore;
     private int currentScore = 0;
     private int scoreIncreaseRate = 1;
@@ -56,7 +57,6 @@ public class GameController : MonoBehaviour
 
     public void PlayerDead(int xp = 1)
     {
-        //ActivateScoreOverTime(false);
         arenaTweenManager.ShowDeathPanel(true);
         if(currentScore > highScore)
         {
@@ -123,7 +123,7 @@ public class GameController : MonoBehaviour
 
     public void UpdateCoins(int coins)
     {
-        this.coins += coins;
+        this.coins += (coins * coinMultiplier);
         SaveSystem.SavePlayerData(this);
     }
 

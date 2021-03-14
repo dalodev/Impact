@@ -25,7 +25,7 @@ public class Shop : MonoBehaviour
 
     public void UpdatePlayerData()
     {
-        coinsText.text = GameObject.FindObjectOfType<ShopManager>().GetLevel().ToString();
+        coinsText.text = GameObject.FindObjectOfType<ShopManager>().coins.ToString();
     }
 
     private void Start()
@@ -43,7 +43,7 @@ public class Shop : MonoBehaviour
             itemObject.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(item, itemObject));
 
             itemObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "" + item.cost + "€";
-            itemObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "" + item.reward + " \ncoins";
+            itemObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "" + item.reward;
         }
     }
 
@@ -52,7 +52,7 @@ public class Shop : MonoBehaviour
         itemSelected = item;
         foreach (Transform child in shopContainer)
         {
-            child.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            child.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 50);
         }
         itemObject.GetComponent<Image>().color = item.backgroundColor;
     }

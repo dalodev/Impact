@@ -3,9 +3,11 @@ public class UpgradesData
 {
 
     public int[] items;
+    public int levelUpMultipler = 1;
 
    public UpgradesData(ShopUpgrades data)
     {
+        this.levelUpMultipler = data.levelUpMultipler;
         this.items = new int[data.myItems.Count];
         for (int i = 0; i < data.myItems.Count; i++)
         {
@@ -20,7 +22,10 @@ public class UpgradesData
         DragTime = 4,
         AutoBounce = 5,
         LaunchGuide = 6,
-        LevelUp = 7 //TODO reset every day at 23:59
+        LevelUp = 7,
+        CoinMultiplier = 8,
+        Love = 9,
+        Antivirus = 10
     };
 
 } 

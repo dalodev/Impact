@@ -201,6 +201,12 @@ public class Ball : MonoBehaviour
                         Debug.Log("Apply Upgrade LaunchGuide");
                         launchGuide = 2000;
                         break;
+                    case (int)UpgradesData.Upgrades.CoinMultiplier:
+                        gameCotroller.coinMultiplier = 2;
+                        break;
+                    case (int)UpgradesData.Upgrades.Antivirus:
+                        //todo
+                        break;
                 }
             }
         }
