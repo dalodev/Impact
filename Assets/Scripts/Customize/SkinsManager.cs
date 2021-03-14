@@ -143,42 +143,48 @@ public class SkinsManager : MonoBehaviour
 
     public SkinInfo GetselectedItem()
     {
-        if (skins[currentSkin].enabled)
+        if (skins[currentSkin].unlockLevel <= currentLevel)
         {
             return skins[currentSkin];
         }
         else
         {
+            GameObject effect = GameObject.FindGameObjectWithTag("Skin");
+
             currentSkin = skinIndex;
-            playerParticleSys.GetComponent<ParticleSystemRenderer>().material = skins[skinIndex].skin;
+            IsSkinEnable(skins[skinIndex]);
+            DisplaySkinMaterial(skins[skinIndex]);
+            if (effect != null)
+            {
+                Destroy(effect);
+            }
+            DisplaySkinEffect(skins[skinIndex]);
+
             return skins[skinIndex];
         }
-        
+
     }
 
     public string GetSkinName()
     {
-        return GetselectedItem().skin.name;
+        if (GetselectedItem().effect != null)
+        {
+            return GetselectedItem().effect.name;
+        }
+        if (GetselectedItem().skin != null)
+        {
+            return GetselectedItem().skin.name;
+        }
+        return null;
     }
 
     private void IsSkinEnable(SkinInfo skin)
     {
         if (skin.unlockLevel <= currentLevel)
         {
-            if(skin.coins > 0) //TODO check if skin buyed
-            {
-                lockImage.SetActive(true);
-                skinLevelText.gameObject.SetActive(false);
-                //skinCoinsText.gameObject.SetActive(true);
-                skinCoinsText.text = "" + skin.coins;
-            }
-            else
-            {
-                lockImage.SetActive(false);
-                skinLevelText.gameObject.SetActive(false);
-                //skinCoinsText.gameObject.SetActive(false);
-                skin.enabled = true;
-            }
+            lockImage.SetActive(false);
+            skinLevelText.gameObject.SetActive(false);
+            skin.enabled = true;
         }
         else
         {

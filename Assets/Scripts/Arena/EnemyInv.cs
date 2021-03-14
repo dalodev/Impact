@@ -57,7 +57,7 @@ public class EnemyInv : MonoBehaviour
             if (deathEffect != null)
             {
                 player.UpdateScore(points);
-                Instantiate(deathEffect, intialPosition, Quaternion.identity);
+                Instantiate(deathEffect, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
 

@@ -54,7 +54,7 @@ public class CustomizeManager : MonoBehaviour
     public void Customize()
     {
         bool navigate = false;
-        if (trailSkinManager.GetselectedItem().enabled)
+        if (trailSkinManager.GetselectedItem().unlockLevel <= currentLevel)
         {
             Debug.Log("trail enabled");
             this.trailId = trailSkinManager.GetTrailName();
@@ -62,7 +62,7 @@ public class CustomizeManager : MonoBehaviour
             navigate = true;
         }
 
-        if (skinManager.GetselectedItem().enabled)
+        if (skinManager.GetselectedItem().unlockLevel <= currentLevel)
         {
             Debug.Log("skin enabled");
             this.skinId = skinManager.GetSkinName();

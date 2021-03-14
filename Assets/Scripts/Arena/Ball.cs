@@ -174,12 +174,11 @@ public class Ball : MonoBehaviour
         {
             for(int i = 0; i < data.items.Length; i++)
             {
-                Debug.Log("item: " + (int)data.items[i]);
                 switch ((int)data.items[i])
                 {
                     case (int)UpgradesData.Upgrades.Speed:
                         Debug.Log("Apply Upgrade Launch speed");
-                        this.launchSpeed = 8;
+                        this.launchSpeed = 6;
                         break;
                     case (int)UpgradesData.Upgrades.TripleLaunch:
                         Debug.Log("Apply Upgrade Launch TripleLaunch");

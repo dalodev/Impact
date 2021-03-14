@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 9079352930251004583}
   - component: {fileID: 9079352930251004576}
   - component: {fileID: 9079352930251004580}
+  - component: {fileID: -5961556930234832222}
   m_Layer: 11
   m_Name: Ball
   m_TagString: Untagged
@@ -210,4 +211,17 @@ MonoBehaviour:
   ShakePreset: {fileID: 11400000, guid: bd4328bd5427ab74383676e7049ce3d3, type: 2}
   deathEffect: {fileID: 4853962083377314509, guid: 8d73885d72aa8ba41be72bc95f7944c5, type: 3}
   upWardForce: 2
-  points: 60
+  points: 300
+--- !u!114 &-5961556930234832222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9079352930251004577}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf4d77332bd7cb4abcb9cd75869b067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPosition: {x: 0, y: 0, z: 0}

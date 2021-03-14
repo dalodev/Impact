@@ -23,7 +23,6 @@ public class TrailSkinManager : MonoBehaviour
             SkinInfo skin = skins.Find(item => FindTrail(item, data));
             if(skin != null)
             {
-                Debug.Log("index:" + skin.itemID);
                 currentSkin = skins.IndexOf(skin);
                 skinIndex = skins.IndexOf(skin);
             }
@@ -127,7 +126,7 @@ public class TrailSkinManager : MonoBehaviour
     {
         GameObject effect = GameObject.FindGameObjectWithTag("Trail");
 
-        if (skins[currentSkin].enabled)
+        if (skins[currentSkin].unlockLevel <= currentLevel)
         {
             return skins[currentSkin];
         }

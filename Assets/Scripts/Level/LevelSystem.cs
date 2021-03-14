@@ -30,7 +30,6 @@ public class LevelSystem : MonoBehaviour
             experience = 0;
             experienceToNextLevel = 1000;
         }
-        Debug.Log("awake");
         levelText.text = "Level "+ level.ToString();
         levelSlider.value += GetExperienceNormalized();
     }

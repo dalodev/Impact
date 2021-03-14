@@ -24,7 +24,6 @@ public class EnemySpawner : MonoBehaviour
         if (Time.time >= nextSpawn)
         {
             SpawnEnemies(100, "Covid");
-            SpawnEnemies(20, "Enemy");
             nextSpawn = Time.time + spawnInterval;
         }
         if (restart)
@@ -35,6 +34,8 @@ public class EnemySpawner : MonoBehaviour
             SpawnEnemies(spawnCount, "Enemy");
             SpawnEnemies(200, "EnemyArrow");
             SpawnEnemies(50, "Coin");
+            SpawnEnemies(50, "EnemySplit");
+            SpawnEnemies(50, "EnemySplitRandom");
         }
     }
     public void SpawnEnemies(int SpawnCount, string tag)
@@ -52,7 +53,10 @@ public class EnemySpawner : MonoBehaviour
                 screenY = Random.Range(collider.bounds.min.y, collider.bounds.max.y);
                 position = new Vector3(screenX, screenY, 0);
                 GameObject enemy = objectPooler.SpawnFromPool(tag, position, Quaternion.identity);
-                enemy.transform.parent = this.gameObject.transform;
+                if(enemy != null)
+                {
+                    enemy.transform.parent = this.gameObject.transform;
+                }
             }
 
         }
