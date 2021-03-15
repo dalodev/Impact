@@ -15,19 +15,24 @@ public class EnemyDeath : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Ball player = collision.gameObject.GetComponent<Ball>();
-            
+          
            
             if (ShakePreset != null)
             {
                 Shaker.ShakeAll(ShakePreset);
             }
+           
             if (deathEffect != null)
             {
                 player.UpdateScore(points);
                 Instantiate(deathEffect, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
-            player.PlayerDeath();
+
+            if (!player.antivirus)
+            {
+                player.PlayerDeath();
+            }
         }
     }
 }

@@ -60,7 +60,8 @@ public class EnemyInv : MonoBehaviour
                 Instantiate(deathEffect, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
-
+            EnemyRadar enemyRadar = collision.gameObject.GetComponent<EnemyRadar>();
+            enemyRadar.updateBounceCount();
         }
     }
 }

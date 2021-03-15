@@ -46,7 +46,10 @@ public class Ball : MonoBehaviour
     public bool canLaunch = true;
 
     [Header("Customize")]
-    public TrailRenderer trail; 
+    public TrailRenderer trail;
+
+    public bool antivirus = false;
+    public GameObject autobounceButton;
 
     void Awake()
     {
@@ -159,6 +162,11 @@ public class Ball : MonoBehaviour
         this.dragCount = 0;
     }
 
+    public bool isAutoBounceEnabled()
+    {
+        return this.autobounceButton.activeInHierarchy;
+    }
+
    public enum BallState
     {
         NONE,
@@ -194,17 +202,19 @@ public class Ball : MonoBehaviour
                         break;
                     case (int)UpgradesData.Upgrades.AutoBounce:
                         Debug.Log("Apply Upgrade Launch AutoBounce");
-                        //TODO make ball to bounce around 5 to 6 balls???? Activable by button????
+                        autobounceButton.SetActive(true);
                         break;
                     case (int)UpgradesData.Upgrades.LaunchGuide:
                         Debug.Log("Apply Upgrade LaunchGuide");
                         launchGuide = 2000;
                         break;
                     case (int)UpgradesData.Upgrades.CoinMultiplier:
+                        Debug.Log("Apply Upgrade CoinMultiplier");
                         gameCotroller.coinMultiplier = 2;
                         break;
                     case (int)UpgradesData.Upgrades.Antivirus:
-                        //todo
+                        Debug.Log("Apply Upgrade Antivirus");
+                        antivirus = true;
                         break;
                 }
             }

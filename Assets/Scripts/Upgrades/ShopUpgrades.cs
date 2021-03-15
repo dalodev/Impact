@@ -35,7 +35,7 @@ public class ShopUpgrades : MonoBehaviour
         {
             coins = 0;
         }
-        coins = 1000;
+        coins = 2000;
         coinsText.text = coins.ToString();
         LoadDataUpgradesData();
     }

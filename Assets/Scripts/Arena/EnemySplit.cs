@@ -40,7 +40,16 @@ public class EnemySplit : MonoBehaviour
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    GameObject randomEnemy = enemies[Random.Range(0, enemies.Length)];
+                    int enemiesLength = enemies.Length;
+                    if (player.isAutoBounceEnabled())
+                    {
+                        enemiesLength = enemies.Length;
+                    }
+                    else
+                    {
+                        enemiesLength = enemies.Length - 1;
+                    }
+                    GameObject randomEnemy = enemies[Random.Range(0, enemiesLength)];
                     GameObject enemyObject = Instantiate(randomEnemy, transform.position, Quaternion.identity);
                     EnemyMove enemy = enemyObject.GetComponent<EnemyMove>();
                     if(enemy != null)
@@ -61,7 +70,8 @@ public class EnemySplit : MonoBehaviour
                 Instantiate(deathEffect, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
-
+            EnemyRadar enemyRadar = collision.gameObject.GetComponent<EnemyRadar>();
+            enemyRadar.updateBounceCount();
         }
     }
 }
