@@ -94,6 +94,36 @@ public static class SaveSystem
         }
     }
 
+    public static void SaveLevelData(LevelSystem levelSystem)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/level.fun";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        LevelData data = new LevelData(levelSystem);
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+
+    public static LevelData LoadLevelData()
+    {
+        string path = Application.persistentDataPath + "/level.fun";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            LevelData data = formatter.Deserialize(stream) as LevelData;
+            stream.Close();
+            return data;
+        }
+        else
+        {
+            Debug.Log("Save file not found in " + path);
+            return null;
+        }
+    }
+
     public static void DeleteData()
     {
         DirectoryInfo dataDir = new DirectoryInfo(Application.persistentDataPath);

@@ -44,8 +44,13 @@ public class CustomizeManager : MonoBehaviour
         int level = 0;
         if (playerData != null)
         {
-            level = playerData.level;
             coins = playerData.coins;
+        }
+        LevelData levelData = SaveSystem.LoadLevelData();
+        if(levelData != null)
+        {
+            level = levelData.level;
+            currentLevel = level;
         }
         coinText.text = coins.ToString();
         levelText.text = level.ToString();
@@ -62,6 +67,7 @@ public class CustomizeManager : MonoBehaviour
             navigate = true;
         }
 
+        Debug.Log("skinManager: " + skinManager.GetselectedItem().unlockLevel + " currentLevel: " + currentLevel);
         if (skinManager.GetselectedItem().unlockLevel <= currentLevel)
         {
             Debug.Log("skin enabled");
@@ -71,8 +77,6 @@ public class CustomizeManager : MonoBehaviour
         }
         if (navigate)
         {
-            //menuManager.SetActive(true);
-            //customizeManager.SetActive(false);
             trailSkinManager.DisableLockImage();
             skinManager.DisableLockImage();
         }
@@ -80,12 +84,5 @@ public class CustomizeManager : MonoBehaviour
         {
             //display error
         }
-    }
-
-    public void DebugLevelUp()
-    {
-        trailSkinManager.levelUp();
-        skinManager.levelUp();
-        levelText.text = "" + currentLevel++; 
     }
 }

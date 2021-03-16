@@ -15,13 +15,20 @@ public class ShopManager : MonoBehaviour
         PlayerData data = SaveSystem.LoadPlayerData();
         if (data != null)
         {
-            this.level = data.level;
             this.coins = data.coins;
         }
         else
         {
-            this.level = 0;
             this.coins = 0;
+        }
+        LevelData levelData = SaveSystem.LoadLevelData();
+        if (levelData != null)
+        {
+            this.level = levelData.level;
+        }
+        else
+        {
+            this.level = 0;
         }
     }
 

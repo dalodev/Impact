@@ -23,7 +23,7 @@ public class SkinsManager : MonoBehaviour
         CustomizeData data = SaveSystem.LoadCustomize();
         if (data != null)
         {
-            SkinInfo skin = skins.Find(item => item.skin.name == data.skin);
+            SkinInfo skin = skins.Find(item => item.itemID.ToString() == data.skin);
             currentSkin = skins.IndexOf(skin);
             skinIndex = skins.IndexOf(skin);
         }
@@ -39,10 +39,10 @@ public class SkinsManager : MonoBehaviour
 
     private void GetPlayerData()
     {
-        PlayerData playerData = SaveSystem.LoadPlayerData();
-        if (playerData != null)
+        LevelData data = SaveSystem.LoadLevelData();
+        if (data != null)
         {
-            currentLevel = playerData.level;
+            currentLevel = data.level;
         }
         else
         {
@@ -169,11 +169,11 @@ public class SkinsManager : MonoBehaviour
     {
         if (GetselectedItem().effect != null)
         {
-            return GetselectedItem().effect.name;
+            return GetselectedItem().itemID.ToString();
         }
         if (GetselectedItem().skin != null)
         {
-            return GetselectedItem().skin.name;
+            return GetselectedItem().itemID.ToString();
         }
         return null;
     }
@@ -217,9 +217,5 @@ public class SkinsManager : MonoBehaviour
             previousButton.SetActive(true);
             nextButton.SetActive(true);
         }
-    }
-    public void levelUp()
-    {
-        currentLevel++;
     }
 }

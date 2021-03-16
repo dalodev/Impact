@@ -57,10 +57,10 @@ public class MenuManager : MonoBehaviour
 
     public void ApplyLevel()
     {
-        PlayerData playerData = SaveSystem.LoadPlayerData();
-        if (playerData != null)
+        LevelData data = SaveSystem.LoadLevelData();
+        if (data != null)
         {
-            levelText.text = playerData.level.ToString();
+            levelText.text = data.level.ToString();
         }
         else
         {

@@ -40,10 +40,10 @@ public class TrailSkinManager : MonoBehaviour
 
     private void GetPlayerData()
     {
-        PlayerData playerData = SaveSystem.LoadPlayerData();
-        if (playerData != null)
+        LevelData data = SaveSystem.LoadLevelData();
+        if (data != null)
         {
-            currentLevel = playerData.level;
+            currentLevel = data.level;
         }
         else
         {
@@ -65,7 +65,7 @@ public class TrailSkinManager : MonoBehaviour
         
         if(item.effect != null)
         {
-            find = item.effect.name == data.trail;
+            find = item.itemID.ToString() == data.trail;
         }
         return find;
     }
@@ -151,7 +151,7 @@ public class TrailSkinManager : MonoBehaviour
     {
         if(GetselectedItem().effect != null)
         {
-            return GetselectedItem().effect.name;
+            return GetselectedItem().itemID.ToString();
         }
         return null;
     }
@@ -200,10 +200,5 @@ public class TrailSkinManager : MonoBehaviour
             previousButton.SetActive(true);
             nextButton.SetActive(true);
         }
-    }
-
-    public void levelUp()
-    {
-        currentLevel++;
     }
 }

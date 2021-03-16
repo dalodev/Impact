@@ -70,7 +70,7 @@ public class GameController : MonoBehaviour
         }
         scoreText.text = "Score: " + currentScore.ToString();
         int score = currentMaxScore * xp;
-        levelSystem.AddExperience(score, this);
+        levelSystem.AddExperience(score);
         currentMaxScore = 0;
         currentScore = 0;
     }
@@ -98,21 +98,6 @@ public class GameController : MonoBehaviour
         enemySpawner.gameObject.SetActive(true);
     }
 
-    public int GetLevel()
-    {
-        return levelSystem.GetLevel();
-    }
-
-    public int GetExperience()
-    {
-        return levelSystem.experience;
-    }
-
-    public int GetExperienceToNextLevel()
-    {
-        return levelSystem.experienceToNextLevel;
-    }
-
     public void ApplyUpgrades()
     {
         ball.ApplyUpgrades();
@@ -130,6 +115,5 @@ public class GameController : MonoBehaviour
     public void LevelUp()
     {
         levelSystem.LevelUp();
-        SaveSystem.SavePlayerData(this);
     }
 }

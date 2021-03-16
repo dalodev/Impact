@@ -1041,7 +1041,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 120701183}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 563260666}
+        m_TargetAssemblyTypeName: LevelSystem, Assembly-CSharp
+        m_MethodName: AddRevenueExp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &120701183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5083,6 +5095,7 @@ GameObject:
   - component: {fileID: 563260664}
   - component: {fileID: 563260663}
   - component: {fileID: 563260665}
+  - component: {fileID: 563260666}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5110,7 +5123,7 @@ MonoBehaviour:
   coins: 0
   ball: {fileID: 875348950}
   customizeManager: {fileID: 60570915}
-  levelSystem: {fileID: 1615358224}
+  levelSystem: {fileID: 563260666}
   enemySpawner: {fileID: 12368502}
   arenaTweenManager: {fileID: 1284166923}
   coinMultiplier: 1
@@ -5143,6 +5156,27 @@ MonoBehaviour:
   lifeTimer: {fileID: 839670464}
   player: {fileID: 875348950}
   timeManager: {fileID: 583592394}
+--- !u!114 &563260666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563260662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bb177c3f021b3c4bb34429442708648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelSlider: {fileID: 1615358225}
+  levelText: {fileID: 483053170}
+  partycleSystem: {fileID: 574836347}
+  level: 0
+  experience: 0
+  experienceToNextLevel: 1000
+  fillSpeed: 0.5
+  targetProgress: 0
+  experienceToUpdateNextLevel: 0
 --- !u!1 &567686654
 GameObject:
   m_ObjectHideFlags: 0
@@ -16793,7 +16827,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1615358223}
   - component: {fileID: 1615358225}
-  - component: {fileID: 1615358224}
   m_Layer: 5
   m_Name: Exp
   m_TagString: Untagged
@@ -16822,27 +16855,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -1158.9999}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 1}
---- !u!114 &1615358224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1615358222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bb177c3f021b3c4bb34429442708648, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelSlider: {fileID: 1615358225}
-  levelText: {fileID: 483053170}
-  partycleSystem: {fileID: 574836347}
-  level: 0
-  experience: 0
-  experienceToNextLevel: 1000
-  fillSpeed: 0.5
-  targetProgress: 0
-  experienceToUpdateNextLevel: 0
 --- !u!114 &1615358225
 MonoBehaviour:
   m_ObjectHideFlags: 0
