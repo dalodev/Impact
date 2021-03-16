@@ -15,8 +15,10 @@ public class EnemyDeath : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Ball player = collision.gameObject.GetComponent<Ball>();
-          
-           
+            Rigidbody2D rbPlayer = collision.gameObject.GetComponent<Rigidbody2D>();
+            rbPlayer.AddForce(player.launchDirection * upWardForce, ForceMode2D.Impulse);
+            player.ResetLaunch(true);
+            player.timeDragOut = false;
             if (ShakePreset != null)
             {
                 Shaker.ShakeAll(ShakePreset);
@@ -28,11 +30,18 @@ public class EnemyDeath : MonoBehaviour
                 Instantiate(deathEffect, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
-
-            if (!player.antivirus)
+            if(gameObject.tag == "Enemy")
+            {
+                if (!player.antivirus)
+                {
+                    player.PlayerDeath();
+                }
+            }
+            else
             {
                 player.PlayerDeath();
             }
+           
         }
     }
 }

@@ -36,7 +36,10 @@ public class EnemySpawner : MonoBehaviour
             SpawnEnemies(50, "Coin");
             SpawnEnemies(50, "EnemySplit");
             SpawnEnemies(50, "EnemySplitRandom");
-            SpawnEnemies(20, "EnemyRechargeAutoBounce");
+            if (GameObject.FindObjectOfType<Ball>().isAutoBounceEnabled())
+            {
+                SpawnEnemies(20, "EnemyRechargeAutoBounce");
+            }
         }
     }
     public void SpawnEnemies(int SpawnCount, string tag)
