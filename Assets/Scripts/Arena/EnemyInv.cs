@@ -10,6 +10,7 @@ public class EnemyInv : MonoBehaviour
     public float upWardForce = 8f;
     public float speed = 4f;
     public int points = 0;
+    public AudioClip explosionClip;
     private Vector3 direction = Vector3.right;
     private Vector3 rotationDirection = Vector3.right;
     private Vector2 intialPosition;
@@ -56,6 +57,7 @@ public class EnemyInv : MonoBehaviour
             }
             if (deathEffect != null)
             {
+                SfxManager.instance.Play(explosionClip);
                 player.UpdateScore(points);
                 Instantiate(deathEffect, transform.position, Quaternion.identity);
                 Destroy(gameObject);

@@ -6,14 +6,13 @@ public class Shop : MonoBehaviour
 {
     public GameObject menu;
     public TextMeshProUGUI coinsText;
+    public MenuManager menuManager;
     [Header("List of items to sold")]
     [SerializeField] private ShopItem[] shopItems;
 
     [Header("References")]
     [SerializeField] private Transform shopContainer;
     [SerializeField] private GameObject shopItemPrefab;
-
-    private int coins;
 
     private ShopItem itemSelected;
 
@@ -55,6 +54,7 @@ public class Shop : MonoBehaviour
             child.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 50);
         }
         itemObject.GetComponent<Image>().color = item.backgroundColor;
+        menuManager.ClickUISound();
     }
 
     public ShopItem GetItemSelected()

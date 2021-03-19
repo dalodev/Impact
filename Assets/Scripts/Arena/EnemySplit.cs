@@ -13,6 +13,7 @@ public class EnemySplit : MonoBehaviour
     public float upWardForce = 8f;
     public int points = 0;
     public Transform[] targetPositon;
+    public AudioClip explosionClip;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -66,6 +67,7 @@ public class EnemySplit : MonoBehaviour
             }
             if (deathEffect != null)
             {
+                SfxManager.instance.Play(explosionClip);
                 player.UpdateScore(points);
                 Instantiate(deathEffect, transform.position, Quaternion.identity);
                 Destroy(gameObject);

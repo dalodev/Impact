@@ -9,6 +9,7 @@ public class EnemyDeath : MonoBehaviour
     public GameObject deathEffect = null;
     public float upWardForce = 8f;
     public int points = 0;
+    public AudioClip deathClip;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -26,6 +27,7 @@ public class EnemyDeath : MonoBehaviour
            
             if (deathEffect != null)
             {
+                SfxManager.instance.Play(deathClip);
                 player.UpdateScore(points);
                 Instantiate(deathEffect, transform.position, Quaternion.identity);
                 Destroy(gameObject);

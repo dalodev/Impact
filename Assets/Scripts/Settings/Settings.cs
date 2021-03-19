@@ -8,18 +8,34 @@ using TMPro;
 public class Settings : MonoBehaviour
 {
     public AudioMixer audioMixer;
-    public Slider volimeSlider;
+    public AudioMixer effectsAudioMixer;
+    public Slider volumeSlider;
+    public Slider volumeEffectsSlider;
     public TMP_Dropdown dropDownGraphics;
 
     void Start()
     {
-        volimeSlider.value = 0;
+        volumeSlider.value = 0;
+        volumeEffectsSlider.value = 0;
+        SettingsData data = SaveSystem.LoadSettingsData();
+        if(data != null)
+        {
+            volumeSlider.value = data.volumeValue;
+            volumeEffectsSlider.value = data.effectsVolume;
+        }
         dropDownGraphics.value = 4;
     }
 
     public void SetVolume(float volume)
     {
         audioMixer.SetFloat("volume", volume);
+        SaveSystem.SaveSettingsData(this);
+    }
+
+    public void SetEffectsVolume(float volume)
+    {
+        effectsAudioMixer.SetFloat("effectsVolume", volume);
+        SaveSystem.SaveSettingsData(this);
     }
 
     public void SetQuality(int qualityIndex)

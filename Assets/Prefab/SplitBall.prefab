@@ -675,6 +675,7 @@ MonoBehaviour:
   - {fileID: 1916077680}
   - {fileID: 1696774391}
   - {fileID: 1331824351}
+  explosionClip: {fileID: 8300000, guid: 1523c10753000e14d801e9bcec67ab76, type: 3}
 --- !u!114 &2946792635359526419
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,6 +21,8 @@ public class ShopUpgrades : MonoBehaviour
     private UpgradeItem itemSelected;
     private GameObject gameObjectSelected;
     public List<int> myItems = new List<int>();
+    public AudioClip confirmationClip;
+    public AudioClip errorClip;
 
     private int coins;
 
@@ -107,6 +109,7 @@ public class ShopUpgrades : MonoBehaviour
             child.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 50);
         }
         itemObject.GetComponent<Image>().color = item.backgroundColor;
+        menuManager.ClickUISound();
     }
 
     public UpgradeItem GetItemSelected()
@@ -154,11 +157,12 @@ public class ShopUpgrades : MonoBehaviour
                 gameController.ApplyUpgrades();
                 itemSelected = null;
                 gameObjectSelected = null;
+                SfxManager.instance.Play(confirmationClip);
             }
             else
             {
                 Debug.Log("You can't buy this upgrade :(");
-                //show not enough coins dialog
+                SfxManager.instance.Play(errorClip);
             }
         }
     }

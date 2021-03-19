@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour
     public UpgradesTweenManager upgradesTween;
     public ShopTweenManager shopTween;
     public ArenaTweenManager arenaTween;
+    public AudioClip click;
 
     private void Awake()
     {
@@ -53,6 +54,7 @@ public class MenuManager : MonoBehaviour
                 upgradesTween.Shop(false);
                 break;
         }
+        ClickUISound();
     }
 
     public void ApplyLevel()
@@ -66,5 +68,10 @@ public class MenuManager : MonoBehaviour
         {
             levelText.text = 0.ToString();
         }
+    }
+
+    public void ClickUISound()
+    {
+        SfxManager.instance.Play(click);
     }
 }

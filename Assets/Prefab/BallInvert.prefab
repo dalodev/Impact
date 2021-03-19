@@ -296,6 +296,7 @@ MonoBehaviour:
   upWardForce: 10
   speed: 30
   points: 40
+  explosionClip: {fileID: 8300000, guid: 3158446d33385fa4bb641334140d399f, type: 3}
 --- !u!114 &3237190065780082897
 MonoBehaviour:
   m_ObjectHideFlags: 0

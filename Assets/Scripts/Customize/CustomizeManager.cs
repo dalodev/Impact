@@ -11,6 +11,8 @@ public class CustomizeManager : MonoBehaviour
     public GameObject customizeManager;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI coinText;
+    public AudioClip errorClip;
+    public AudioClip confirmationClip;
     private int currentLevel = 0;
     
     void Awake()
@@ -77,12 +79,13 @@ public class CustomizeManager : MonoBehaviour
         }
         if (navigate)
         {
+            SfxManager.instance.Play(confirmationClip);
             trailSkinManager.DisableLockImage();
             skinManager.DisableLockImage();
         }
         else
         {
-            //display error
+            SfxManager.instance.Play(errorClip);
         }
     }
 }

@@ -124,6 +124,35 @@ public static class SaveSystem
         }
     }
 
+    public static void SaveSettingsData(Settings settings)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/settings.fun";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        SettingsData data = new SettingsData(settings);
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+
+    public static SettingsData LoadSettingsData()
+    {
+        string path = Application.persistentDataPath + "/settings.fun";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+            SettingsData data = formatter.Deserialize(stream) as SettingsData;
+            stream.Close();
+            return data;
+        }
+        else
+        {
+            Debug.Log("Save file not found in " + path);
+            return null;
+        }
+    }
+
     public static void DeleteData()
     {
         DirectoryInfo dataDir = new DirectoryInfo(Application.persistentDataPath);

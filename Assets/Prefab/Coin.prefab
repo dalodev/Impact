@@ -295,6 +295,7 @@ MonoBehaviour:
   deathEffect: {fileID: 4853962083377314509, guid: f3e565786db858f4baaec0b053fb3bd3, type: 3}
   upWardForce: 4
   coins: 1
+  explosionClip: {fileID: 8300000, guid: 7de17e8170317154eb1329dfacff890b, type: 3}
 --- !u!114 &-5466717670493545749
 MonoBehaviour:
   m_ObjectHideFlags: 0

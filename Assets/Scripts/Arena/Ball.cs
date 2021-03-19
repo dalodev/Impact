@@ -50,6 +50,7 @@ public class Ball : MonoBehaviour
 
     public bool antivirus = false;
     public GameObject autobounceButton;
+    public AudioClip launchClip;
 
     void Awake()
     {
@@ -72,6 +73,7 @@ public class Ball : MonoBehaviour
 
     public void StartDrag()
     {
+        SfxManager.instance.Play(launchClip);
         timeManager.DoSlowMotion();
     }
 

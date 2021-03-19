@@ -63,7 +63,13 @@ public class SkinsManager : MonoBehaviour
         if(skin != null)
         {
             IsSkinEnable(skin);
-            playerParticleSys.GetComponent<ParticleSystemRenderer>().material = skin.skin;
+            DisplaySkinMaterial(skin);
+            GameObject effect = GameObject.FindGameObjectWithTag("Skin");
+            if (effect != null)
+            {
+                Destroy(effect);
+            }
+            DisplaySkinEffect(skin);
         }
     }
 

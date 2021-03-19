@@ -212,6 +212,7 @@ MonoBehaviour:
   deathEffect: {fileID: 4853962083377314509, guid: 8d73885d72aa8ba41be72bc95f7944c5, type: 3}
   upWardForce: 2
   points: 300
+  explosionClip: {fileID: 8300000, guid: 1523c10753000e14d801e9bcec67ab76, type: 3}
 --- !u!114 &-5961556930234832222
 MonoBehaviour:
   m_ObjectHideFlags: 0

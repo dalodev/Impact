@@ -9,6 +9,7 @@ public class CoinBall : MonoBehaviour
     public GameObject deathEffect = null;
     public float upWardForce = 8f;
     public int coins = 1;
+    public AudioClip explosionClip;
     private GameController gameController;
 
     private void Start()
@@ -33,6 +34,7 @@ public class CoinBall : MonoBehaviour
             if (deathEffect != null)
             {
                 //TODO get coin
+                SfxManager.instance.Play(explosionClip);
                 gameController.UpdateCoins(coins);
                 Instantiate(deathEffect, transform.position, Quaternion.identity);
                 Destroy(gameObject);

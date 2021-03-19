@@ -7,6 +7,7 @@ public class DeathZone : MonoBehaviour
 {
     public GameController gameController;
     public ShakePreset ShakePreset;
+    public AudioClip deathClip;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,6 +20,7 @@ public class DeathZone : MonoBehaviour
 
             if (player.deathEffect != null)
             {
+                SfxManager.instance.Play(deathClip);
                 Instantiate(player.deathEffect, collision.gameObject.transform.position, player.deathEffect.transform.rotation);
             }
             gameController.PlayerDead(collision.gameObject.GetComponent<Ball>().xp);
