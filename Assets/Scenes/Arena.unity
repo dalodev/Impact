@@ -643,16 +643,58 @@ MonoBehaviour:
     unlockLevel: 8
     enabled: 0
     coins: 0
-  - effect: {fileID: 1959943387793046998, guid: 30df3c632e33332449d5648432b154f0, type: 3}
+  - effect: {fileID: 4973131399950641137, guid: 0be4e0ae865adff4f88d50458ad04c38, type: 3}
     skin: {fileID: 0}
     itemID: 6
+    unlockLevel: 9
+    enabled: 0
+    coins: 0
+  - effect: {fileID: 5233610265377405297, guid: b25bfd302a7464a458107ec7deb743a8, type: 3}
+    skin: {fileID: 0}
+    itemID: 7
     unlockLevel: 10
+    enabled: 0
+    coins: 0
+  - effect: {fileID: 1159253186340175430, guid: d8b6f465844f4414da527ffc15ba0fcf, type: 3}
+    skin: {fileID: 0}
+    itemID: 8
+    unlockLevel: 11
+    enabled: 0
+    coins: 0
+  - effect: {fileID: 8967493452900946613, guid: 38c924ed2e666b44d8cb72967c71b2cc, type: 3}
+    skin: {fileID: 0}
+    itemID: 9
+    unlockLevel: 12
+    enabled: 0
+    coins: 0
+  - effect: {fileID: 3969609340329492252, guid: a4d4401d863589b4cbbe043c8b0c9c95, type: 3}
+    skin: {fileID: 0}
+    itemID: 10
+    unlockLevel: 13
+    enabled: 0
+    coins: 0
+  - effect: {fileID: 6764266140410683073, guid: ef2e1b0bd76f16243817134d584c9c41, type: 3}
+    skin: {fileID: 0}
+    itemID: 11
+    unlockLevel: 14
+    enabled: 0
+    coins: 0
+  - effect: {fileID: 8101345153455546527, guid: 18b0353148aae4b408c880c44a78714d, type: 3}
+    skin: {fileID: 0}
+    itemID: 12
+    unlockLevel: 15
+    enabled: 0
+    coins: 0
+  - effect: {fileID: 1959943387793046998, guid: 30df3c632e33332449d5648432b154f0, type: 3}
+    skin: {fileID: 0}
+    itemID: 13
+    unlockLevel: 15
     enabled: 0
     coins: 0
   - effect: {fileID: 8760715169331311186, guid: 4e099579f4d00b04d8aa1a44623deed0, type: 3}
     skin: {fileID: 0}
-    itemID: 7
-    unlockLevel: 12
+    itemID: 14
+    unlockLevel: 20
     enabled: 0
     coins: 0
   skinCoinsText: {fileID: 546721609}
