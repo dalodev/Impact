@@ -216,7 +216,7 @@ public class Ball : MonoBehaviour
                         break;
                     case (int)UpgradesData.Upgrades.Antivirus:
                         Debug.Log("Apply Upgrade Antivirus");
-                        antivirus = true;
+                        //antivirus = true;
                         break;
                 }
             }

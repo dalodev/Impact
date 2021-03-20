@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   itemName: Speed
-  sprite: {fileID: 21300000, guid: 2d0c194218d49954aa6fa55d29642317, type: 3}
+  sprite: {fileID: 21300000, guid: 513789ae9b2b44049aa51f08d34a6212, type: 3}
   cost: 300
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
