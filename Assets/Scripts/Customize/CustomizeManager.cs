@@ -54,7 +54,7 @@ public class CustomizeManager : MonoBehaviour
             level = levelData.level;
             currentLevel = level;
         }
-        coinText.text = coins.ToString();
+        coinText.text = string.Format("{0:#,0}", coins);
         levelText.text = level.ToString();
     }
 

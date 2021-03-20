@@ -37,8 +37,8 @@ public class ShopUpgrades : MonoBehaviour
         {
             coins = 0;
         }
-        coins = 2000;
-        coinsText.text = coins.ToString();
+        coins = 2000000;
+        coinsText.text = string.Format("{0:#,0}", coins);
         LoadDataUpgradesData();
     }
 
@@ -70,18 +70,24 @@ public class ShopUpgrades : MonoBehaviour
 
             itemObject.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(item, itemObject));
 
-            itemObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "" + item.cost;
+            string costFormat = string.Format("{0:#,0}", item.cost);
+            itemObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = costFormat;
             itemObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "" + item.itemName;
             if (item.sprite)
             {
                 itemObject.transform.GetChild(2).GetComponent<Image>().sprite = item.sprite;
             }
+           
             foreach (int id in myItems)
             {
                 if(id == item.id)
                 {
                     itemObject.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(true);
                     UpdateLevelUp(itemObject, item);
+                }
+                if(id == (int)UpgradesData.Upgrades.Love)
+                {
+                    itemObject.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(false);
                 }
             }
         }     
@@ -93,9 +99,9 @@ public class ShopUpgrades : MonoBehaviour
         {
             if (myItems.Contains((int)item.id))
             {
-                item.cost *= levelUpMultipler;
                 itemObject.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(false);
-                itemObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "" + item.cost;
+                string value = string.Format("{0:#,0}", item.cost * levelUpMultipler);
+                itemObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = value;
             }
         }
     }
@@ -142,7 +148,7 @@ public class ShopUpgrades : MonoBehaviour
             if (GetItemSelected().cost <= coins && canBuy)
             {
                 this.coins -= (int)GetItemSelected().cost;
-                coinsText.text = coins.ToString();
+                coinsText.text = string.Format("{0:#,0}", coins);
                 Debug.Log("Buy it");
                 this.myItems.Add((int)GetItemSelected().id);
                 gameObjectSelected.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(true);
@@ -153,10 +159,12 @@ public class ShopUpgrades : MonoBehaviour
                     GameObject.FindObjectOfType<GameController>().LevelUp();
                     menuManager.ApplyLevel();
                 }
+                if (GetItemSelected().id == (int)UpgradesData.Upgrades.Love)
+                {
+                    gameObjectSelected.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(false);
+                }
                 SaveSystem.SaveUpgrades(this);
                 gameController.ApplyUpgrades();
-                itemSelected = null;
-                gameObjectSelected = null;
                 SfxManager.instance.Play(confirmationClip);
             }
             else

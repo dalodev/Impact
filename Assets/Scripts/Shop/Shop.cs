@@ -24,7 +24,8 @@ public class Shop : MonoBehaviour
 
     public void UpdatePlayerData()
     {
-        coinsText.text = GameObject.FindObjectOfType<ShopManager>().coins.ToString();
+        string value = string.Format("{0:#,0}", GameObject.FindObjectOfType<ShopManager>().coins.ToString());
+        coinsText.text = value;
     }
 
     private void Start()

@@ -13018,7 +13018,6 @@ MonoBehaviour:
   audioSource: {fileID: 869430466}
   clips:
   - {fileID: 8300000, guid: b9909eb757230f440a3716ba3c8e21a3, type: 3}
-  - {fileID: 8300000, guid: b049b306fe73bc2458cea7024bb3149a, type: 3}
   - {fileID: 8300000, guid: 7d2b42d8f82a2d6458e96085a929cf08, type: 3}
 --- !u!1001 &874991960
 PrefabInstance:
