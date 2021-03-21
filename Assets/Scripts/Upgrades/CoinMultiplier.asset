@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CoinMultiplier
   m_EditorClassIdentifier: 
   id: 8
-  itemName: More coins
+  itemName: +Money
   sprite: {fileID: 21300000, guid: 6d476bdeadb9e2c4387ced7f371607f1, type: 3}
   cost: 10000
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}

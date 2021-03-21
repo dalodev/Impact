@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UI Text_es-ES
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es-ES
+  m_SharedData: {fileID: 11400000, guid: 2c37158605f9f1941b4241fc4ddd5e06, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 11655213056
+    m_Localized: Personalizar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 105976721408
+    m_Localized: Jugar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 228479758336
+    m_Localized: Mejoras
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1213642076160
+    m_Localized: Tienda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1431011880960
+    m_Localized: Seleccionar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1593776041984
+    m_Localized: Comprar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2069573693440
+    m_Localized: Volver
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2275497242624
+    m_Localized: "Volumen m\xFAsica"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2364047388672
+    m_Localized: Volumen efectos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2847768080384
+    m_Localized: Ver anuncio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4368576573440
+    m_Localized: "Puntuaci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4514899062784
+    m_Localized: "Mejor puntiaci\xF3n:"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1

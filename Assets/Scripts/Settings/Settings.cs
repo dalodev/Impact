@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 public class Settings : MonoBehaviour
 {
@@ -11,19 +13,24 @@ public class Settings : MonoBehaviour
     public AudioMixer effectsAudioMixer;
     public Slider volumeSlider;
     public Slider volumeEffectsSlider;
-    public TMP_Dropdown dropDownGraphics;
+    public TMP_Dropdown dropDownLAnguage;
+    public TextMeshProUGUI languageLabel;
+    public int languageIndex;
 
     void Start()
     {
         volumeSlider.value = 0;
         volumeEffectsSlider.value = 0;
+        languageIndex = 0;
         SettingsData data = SaveSystem.LoadSettingsData();
         if(data != null)
         {
             volumeSlider.value = data.volumeValue;
             volumeEffectsSlider.value = data.effectsVolume;
+            languageIndex = data.languageIndex;
         }
-        dropDownGraphics.value = 4;
+        dropDownLAnguage.value = languageIndex;
+        StartCoroutine(LoadLanguage());
     }
 
     public void SetVolume(float volume)
@@ -38,8 +45,16 @@ public class Settings : MonoBehaviour
         SaveSystem.SaveSettingsData(this);
     }
 
-    public void SetQuality(int qualityIndex)
+    public void SetLanguage(int languageIndex)
     {
-        QualitySettings.SetQualityLevel(qualityIndex);
+        this.languageIndex = languageIndex;
+        StartCoroutine(LoadLanguage());
+        SaveSystem.SaveSettingsData(this);
+    }
+
+    public IEnumerator LoadLanguage()
+    {
+        yield return LocalizationSettings.InitializationOperation;
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[languageIndex];
     }
 }

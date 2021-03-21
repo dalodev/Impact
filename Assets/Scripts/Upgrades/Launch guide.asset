@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Launch guide
   m_EditorClassIdentifier: 
   id: 6
-  itemName: More Launch guide
+  itemName: + Launch Guide
   sprite: {fileID: 21300000, guid: 46f8e3359e0d72b4aae4299e80c52d0e, type: 3}
   cost: 500
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}

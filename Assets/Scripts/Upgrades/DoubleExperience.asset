@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DoubleExperience
   m_EditorClassIdentifier: 
   id: 3
-  itemName: More experience
+  itemName: + Experience
   sprite: {fileID: 21300000, guid: 27fc442a69e2eb5489fb3121c6e4af8e, type: 3}
   cost: 6000
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}

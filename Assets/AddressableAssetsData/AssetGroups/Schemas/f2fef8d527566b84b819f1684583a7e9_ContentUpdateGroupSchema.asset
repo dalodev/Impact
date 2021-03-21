@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce1b4564cbbe8d144bc11e90ad3b7510, type: 3}
-  m_Name: MoreDragTime
+  m_Script: {fileID: 11500000, guid: 5834b5087d578d24c926ce20cd31e6d6, type: 3}
+  m_Name: f2fef8d527566b84b819f1684583a7e9_ContentUpdateGroupSchema
   m_EditorClassIdentifier: 
-  id: 4
-  itemName: + Time
-  sprite: {fileID: 21300000, guid: 99741fad24f99b9448e17af13014dc04, type: 3}
-  cost: 1000
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  m_Group: {fileID: 0}
+  m_StaticContent: 0
