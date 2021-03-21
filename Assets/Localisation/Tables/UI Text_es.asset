@@ -47,7 +47,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2275497242624
-    m_Localized: "Volumen m\xFAsica"
+    m_Localized: Volumen musica
     m_Metadata:
       m_Items: []
   - m_Id: 2364047388672
@@ -63,7 +63,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4514899062784
-    m_Localized: "Mejor puntuaci\xF3n:"
+    m_Localized: 'Mejor puntuacion:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 316408511885312
+    m_Localized: Opciones
+    m_Metadata:
+      m_Items: []
+  - m_Id: 316865430974464
+    m_Localized: Idioma
     m_Metadata:
       m_Items: []
   references:

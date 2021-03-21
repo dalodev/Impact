@@ -44,11 +44,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2275497242624
-    m_Key: Volume music
+    m_Key: music
     m_Metadata:
       m_Items: []
   - m_Id: 2364047388672
-    m_Key: Volume effects
+    m_Key: effects
     m_Metadata:
       m_Items: []
   - m_Id: 2847768080384
@@ -61,6 +61,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 4514899062784
     m_Key: HighScore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 316408511885312
+    m_Key: OptionsText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 316865430974464
+    m_Key: LanguageText
     m_Metadata:
       m_Items: []
   m_Metadata:

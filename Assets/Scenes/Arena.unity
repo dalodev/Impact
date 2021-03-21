@@ -279,7 +279,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &37350780
 MonoBehaviour:
@@ -554,43 +554,43 @@ MonoBehaviour:
   - effect: {fileID: 1556591271088736060, guid: 927964ad8abe1c54f8010c2e80d112bb, type: 3}
     skin: {fileID: 0}
     itemID: 101
-    unlockLevel: 1
+    unlockLevel: 5
     enabled: 0
     coins: 0
   - effect: {fileID: 4426299672710710529, guid: 72d980476430b694ead4bb58eb9b37fe, type: 3}
     skin: {fileID: 0}
     itemID: 102
-    unlockLevel: 2
+    unlockLevel: 10
     enabled: 0
     coins: 0
   - effect: {fileID: 9025856593195288628, guid: 05b5df4cb210a214b8bc21d1f899aaa3, type: 3}
     skin: {fileID: 0}
     itemID: 103
-    unlockLevel: 3
+    unlockLevel: 15
     enabled: 0
     coins: 0
   - effect: {fileID: 3235537677625187802, guid: a670096a7d44c02459c358be0b1f9561, type: 3}
     skin: {fileID: 0}
     itemID: 104
-    unlockLevel: 4
+    unlockLevel: 20
     enabled: 0
     coins: 0
   - effect: {fileID: 7437496198352762088, guid: 072831bc272029044a18c1ae1f6b5d6f, type: 3}
     skin: {fileID: 0}
     itemID: 105
-    unlockLevel: 5
+    unlockLevel: 25
     enabled: 0
     coins: 0
   - effect: {fileID: 8433883468577653368, guid: 5df1eae9916540f4ba226703741dd208, type: 3}
     skin: {fileID: 0}
     itemID: 106
-    unlockLevel: 6
+    unlockLevel: 30
     enabled: 0
     coins: 0
   - effect: {fileID: 1380706919562567171, guid: 1b2ff965132da324da2fd98836b2e107, type: 3}
     skin: {fileID: 0}
-    itemID: 106
-    unlockLevel: 8
+    itemID: 107
+    unlockLevel: 35
     enabled: 0
     coins: 0
   lockImage: {fileID: 1265563034}
@@ -622,79 +622,79 @@ MonoBehaviour:
   - effect: {fileID: 0}
     skin: {fileID: 2100000, guid: b5453ff0795ca324a86a05420916090d, type: 2}
     itemID: 2
-    unlockLevel: 2
+    unlockLevel: 4
     enabled: 0
     coins: 0
   - effect: {fileID: 0}
     skin: {fileID: 2100000, guid: 054297a4e98137b4b9bd3bc70065976f, type: 2}
     itemID: 3
-    unlockLevel: 3
+    unlockLevel: 6
     enabled: 0
     coins: 0
   - effect: {fileID: 0}
     skin: {fileID: 2100000, guid: 617a63bf57090da40974de555aa97366, type: 2}
     itemID: 4
-    unlockLevel: 4
+    unlockLevel: 8
     enabled: 0
     coins: 0
   - effect: {fileID: 0}
     skin: {fileID: 2100000, guid: 7d2d817515796f7419987db40f1255ab, type: 2}
     itemID: 5
-    unlockLevel: 8
+    unlockLevel: 10
     enabled: 0
     coins: 0
   - effect: {fileID: 4973131399950641137, guid: 0be4e0ae865adff4f88d50458ad04c38, type: 3}
     skin: {fileID: 0}
     itemID: 6
-    unlockLevel: 9
+    unlockLevel: 12
     enabled: 0
     coins: 0
   - effect: {fileID: 5233610265377405297, guid: b25bfd302a7464a458107ec7deb743a8, type: 3}
     skin: {fileID: 0}
     itemID: 7
-    unlockLevel: 10
+    unlockLevel: 14
     enabled: 0
     coins: 0
   - effect: {fileID: 1159253186340175430, guid: d8b6f465844f4414da527ffc15ba0fcf, type: 3}
     skin: {fileID: 0}
     itemID: 8
-    unlockLevel: 11
+    unlockLevel: 16
     enabled: 0
     coins: 0
   - effect: {fileID: 8967493452900946613, guid: 38c924ed2e666b44d8cb72967c71b2cc, type: 3}
     skin: {fileID: 0}
     itemID: 9
-    unlockLevel: 12
+    unlockLevel: 18
     enabled: 0
     coins: 0
   - effect: {fileID: 3969609340329492252, guid: a4d4401d863589b4cbbe043c8b0c9c95, type: 3}
     skin: {fileID: 0}
     itemID: 10
-    unlockLevel: 13
+    unlockLevel: 20
     enabled: 0
     coins: 0
   - effect: {fileID: 6764266140410683073, guid: ef2e1b0bd76f16243817134d584c9c41, type: 3}
     skin: {fileID: 0}
     itemID: 11
-    unlockLevel: 14
+    unlockLevel: 22
     enabled: 0
     coins: 0
   - effect: {fileID: 8101345153455546527, guid: 18b0353148aae4b408c880c44a78714d, type: 3}
     skin: {fileID: 0}
     itemID: 12
-    unlockLevel: 15
+    unlockLevel: 24
     enabled: 0
     coins: 0
   - effect: {fileID: 1959943387793046998, guid: 30df3c632e33332449d5648432b154f0, type: 3}
     skin: {fileID: 0}
     itemID: 13
-    unlockLevel: 15
+    unlockLevel: 26
     enabled: 0
     coins: 0
   - effect: {fileID: 8760715169331311186, guid: 4e099579f4d00b04d8aa1a44623deed0, type: 3}
     skin: {fileID: 0}
     itemID: 14
-    unlockLevel: 20
+    unlockLevel: 28
     enabled: 0
     coins: 0
   skinCoinsText: {fileID: 546721609}
@@ -713,7 +713,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &77148341
 GameObject:
@@ -1086,9 +1086,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 563260666}
-        m_TargetAssemblyTypeName: LevelSystem, Assembly-CSharp
-        m_MethodName: AddRevenueExp
+      - m_Target: {fileID: 200090196}
+        m_TargetAssemblyTypeName: AdMobManager, Assembly-CSharp
+        m_MethodName: ShowRewardedExpAd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2043,7 +2043,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &192271379
 PrefabInstance:
@@ -2106,6 +2106,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 640a7868143fae144a8f96c7edcac06b, type: 3}
+--- !u!1 &200090195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 200090197}
+  - component: {fileID: 200090196}
+  m_Layer: 0
+  m_Name: AdManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &200090196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200090195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60a5f89e866ecff4b80e4c210e03bb6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelSystem: {fileID: 563260666}
+  gameController: {fileID: 563260663}
+--- !u!4 &200090197
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200090195}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.183219, y: -38.712555, z: 41.924335}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &209998846
 GameObject:
   m_ObjectHideFlags: 0
@@ -3417,6 +3462,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 200090196}
+        m_TargetAssemblyTypeName: AdMobManager, Assembly-CSharp
+        m_MethodName: ShowInteresticialAd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &326610373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3843,7 +3900,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &370253814
 MonoBehaviour:
@@ -5004,7 +5061,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &486798616
 GameObject:
@@ -5748,6 +5805,7 @@ MonoBehaviour:
   enemySpawner: {fileID: 12368502}
   arenaTweenManager: {fileID: 1284166923}
   coinMultiplier: 1
+  adMobManager: {fileID: 200090196}
 --- !u!4 &563260664
 Transform:
   m_ObjectHideFlags: 0
@@ -5760,7 +5818,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &563260665
 MonoBehaviour:
@@ -5794,7 +5852,7 @@ MonoBehaviour:
   partycleSystem: {fileID: 574836347}
   level: 0
   experience: 0
-  experienceToNextLevel: 1000
+  experienceToNextLevel: 2000
   fillSpeed: 0.5
   targetProgress: 0
   experienceToUpdateNextLevel: 0
@@ -10939,7 +10997,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &584858652
 GameObject:
@@ -11478,8 +11536,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: 158}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -156.7, y: 158}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &607418930
 MonoBehaviour:
@@ -11503,8 +11561,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Language
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3dc41b968c05d654695962165f53721a, type: 2}
+  m_sharedMaterial: {fileID: -7567400570528092002, guid: 3dc41b968c05d654695962165f53721a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11592,9 +11650,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:b29accc43b65399489511873d9997436
+      m_TableCollectionName: GUID:2c37158605f9f1941b4241fc4ddd5e06
     m_TableEntryReference:
-      m_KeyId: 11009290240
+      m_KeyId: 316865430974464
       m_Key: 
     m_FallbackState: 0
   m_FormatArguments: []
@@ -12251,7 +12309,7 @@ RectTransform:
   m_GameObject: {fileID: 731545780}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 1}
   m_Children:
   - {fileID: 1067801540}
   - {fileID: 1962480507}
@@ -15073,7 +15131,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1150308960
 GameObject:
@@ -17969,7 +18027,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1557702430
 GameObject:
@@ -19535,6 +19593,18 @@ MonoBehaviour:
       - m_Target: {fileID: 175501724}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: ClickUISound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 200090196}
+        m_TargetAssemblyTypeName: AdMobManager, Assembly-CSharp
+        m_MethodName: ShowRewardedCoinAd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22263,6 +22333,7 @@ GameObject:
   - component: {fileID: 2081568638}
   - component: {fileID: 2081568640}
   - component: {fileID: 2081568639}
+  - component: {fileID: 2081568641}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -22386,6 +22457,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081568637}
   m_CullTransparentMesh: 0
+--- !u!114 &2081568641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081568637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:2c37158605f9f1941b4241fc4ddd5e06
+    m_TableEntryReference:
+      m_KeyId: 316408511885312
+      m_Key: 
+    m_FallbackState: 0
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2081568639}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &2104101343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22701,7 +22807,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4294871546288971453, guid: ff9da86b83601cd49bece9c7f3bd50e0, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4294871546288971453, guid: ff9da86b83601cd49bece9c7f3bd50e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

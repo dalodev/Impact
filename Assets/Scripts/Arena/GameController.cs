@@ -16,10 +16,12 @@ public class GameController : MonoBehaviour
     public EnemySpawner enemySpawner;
     public ArenaTweenManager arenaTweenManager;
     public int coinMultiplier = 1;
+    public AdMobManager adMobManager;
     private int highScore;
     private int currentScore = 0;
     private int scoreIncreaseRate = 1;
     private int currentMaxScore = 0;
+    private int scoreToEvaluate = 0;
 
     void Awake()
     {
@@ -70,9 +72,11 @@ public class GameController : MonoBehaviour
         }
         scoreText.text = "Score: " + currentScore.ToString();
         int score = currentMaxScore * xp;
+        scoreToEvaluate = currentMaxScore;
         levelSystem.AddExperience(score);
         currentMaxScore = 0;
         currentScore = 0;
+        adMobManager.ShowInteresticialAd();
     }
 
     public void UpdateScore(int score)
@@ -112,8 +116,35 @@ public class GameController : MonoBehaviour
         SaveSystem.SavePlayerData(this);
     }
 
+    public void RewardedCoins(int coins)
+    {
+        this.coins += coins;
+        SaveSystem.SavePlayerData(this);
+        Shop shop = GameObject.FindObjectOfType<Shop>();
+        if(shop != null)
+        {
+            shop.UpdatePlayerData();
+        }
+        ShopUpgrades upgrades = GameObject.FindObjectOfType<ShopUpgrades>();
+        if(upgrades != null)
+        {
+            upgrades.UpdatePlayerData();
+        }
+        CustomizeManager customize = GameObject.FindObjectOfType<CustomizeManager>();
+        if(customize != null)
+        {
+            customize.UpdatePlayerData();
+        }
+    }
+
     public void LevelUp()
     {
+     
         levelSystem.LevelUp();
+    }
+
+    public int GetCurrentScore()
+    {
+        return scoreToEvaluate;
     }
 }

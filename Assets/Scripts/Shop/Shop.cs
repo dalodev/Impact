@@ -19,12 +19,16 @@ public class Shop : MonoBehaviour
     private void Awake()
     {
         UpdatePlayerData();
-        
     }
 
     public void UpdatePlayerData()
     {
+        PlayerData data = SaveSystem.LoadPlayerData();
         string value = string.Format("{0:#,0}", GameObject.FindObjectOfType<ShopManager>().coins.ToString());
+        if (data != null)
+        {
+            value = string.Format("{0:#,0}", data.coins);
+        }
         coinsText.text = value;
     }
 

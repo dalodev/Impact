@@ -66,5 +66,13 @@ MonoBehaviour:
     m_Localized: 'HighScore:'
     m_Metadata:
       m_Items: []
+  - m_Id: 316408511885312
+    m_Localized: Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 316865430974464
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

@@ -96,11 +96,6 @@ public class LevelSystem : MonoBehaviour
         SaveSystem.SaveLevelData(this);
     }
 
-    public void AddRevenueExp()
-    {
-        AddExperience(500);
-    }
-
     public void LoadPlayerData()
     {
         LevelData data = SaveSystem.LoadLevelData();

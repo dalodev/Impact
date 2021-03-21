@@ -22,44 +22,6 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en
-    m_mainAssetType: UnityEngine.Localization.Tables.StringTable, Unity.Localization,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 30e763871f1ae374291d6a89b1dd5c57
-    m_Address: Options Text_es
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-es
-    m_mainAssetType: UnityEngine.Localization.Tables.StringTable, Unity.Localization,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 42f8cfebba45a4f41b0d67dacb404dd6
-    m_Address: UI Text_es-ES
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-es-ES
-    m_mainAssetType: UnityEngine.Localization.Tables.StringTable, Unity.Localization,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: b0619ed87f62b184c880e31fd88a9aa8
-    m_Address: UI Text_en-US
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-en-US
-    m_mainAssetType: UnityEngine.Localization.Tables.StringTable, Unity.Localization,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: c3f3e89db390c3a449262abb91373b74
-    m_Address: Options Text_en
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-en
-    m_mainAssetType: UnityEngine.Localization.Tables.StringTable, Unity.Localization,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: c7ce1aa8453939848b0ebb15ef8c8b6b
@@ -67,8 +29,6 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-es
-    m_mainAssetType: UnityEngine.Localization.Tables.StringTable, Unity.Localization,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   m_ReadOnly: 1

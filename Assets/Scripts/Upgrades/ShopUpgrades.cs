@@ -28,18 +28,19 @@ public class ShopUpgrades : MonoBehaviour
 
     private void Awake()
     {
+        coins = 0;
+        UpdatePlayerData();
+        LoadDataUpgradesData();
+    }
+
+    public void UpdatePlayerData()
+    {
         PlayerData playerData = SaveSystem.LoadPlayerData();
         if (playerData != null)
         {
             coins = playerData.coins;
         }
-        else
-        {
-            coins = 0;
-        }
-        coins = 2000000;
         coinsText.text = string.Format("{0:#,0}", coins);
-        LoadDataUpgradesData();
     }
 
     private void LoadDataUpgradesData()

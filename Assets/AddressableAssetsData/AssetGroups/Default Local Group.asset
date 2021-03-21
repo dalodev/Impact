@@ -17,8 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: e10084ef35e35314ab9c4c2b9bcda878
   m_SerializeEntries:
-  - m_GUID: 88d8e382b0762574da10b37ac370c1ae
-    m_Address: Assets/Localisation/Localization Settings.asset
+  - m_GUID: 2c37158605f9f1941b4241fc4ddd5e06
+    m_Address: Assets/Localisation/Tables/UI Text Shared Data.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
