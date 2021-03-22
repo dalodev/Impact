@@ -125,7 +125,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.0
+  bundleVersion: 0.1
   preloadedAssets:
   - {fileID: 11400000, guid: 88d8e382b0762574da10b37ac370c1ae, type: 2}
   metroInputSource: 0
@@ -249,7 +249,7 @@ PlayerSettings:
   AndroidTargetArchitectures: 1
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/Play Store/Impact/keystore/impact.keystore
+  AndroidKeystoreName: D:/PlayStore/Impact/keystore/impact.keystore
   AndroidKeyaliasName: dev.id
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
