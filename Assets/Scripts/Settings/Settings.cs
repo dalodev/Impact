@@ -1,10 +1,8 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 
 public class Settings : MonoBehaviour
@@ -19,18 +17,7 @@ public class Settings : MonoBehaviour
 
     void Start()
     {
-        volumeSlider.value = 0;
-        volumeEffectsSlider.value = 0;
-        languageIndex = 0;
-        SettingsData data = SaveSystem.LoadSettingsData();
-        if(data != null)
-        {
-            volumeSlider.value = data.volumeValue;
-            volumeEffectsSlider.value = data.effectsVolume;
-            languageIndex = data.languageIndex;
-        }
-        dropDownLAnguage.value = languageIndex;
-        StartCoroutine(LoadLanguage());
+        LoadData();
     }
 
     public void SetVolume(float volume)
@@ -56,5 +43,21 @@ public class Settings : MonoBehaviour
     {
         yield return LocalizationSettings.InitializationOperation;
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[languageIndex];
+    }
+
+    public void LoadData()
+    {
+        volumeSlider.value = 0;
+        volumeEffectsSlider.value = 0;
+        languageIndex = 0;
+        SettingsData data = SaveSystem.LoadSettingsData();
+        if (data != null)
+        {
+            volumeSlider.value = data.volumeValue;
+            volumeEffectsSlider.value = data.effectsVolume;
+            languageIndex = data.languageIndex;
+        }
+        dropDownLAnguage.value = languageIndex;
+        StartCoroutine(LoadLanguage());
     }
 }

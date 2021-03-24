@@ -4,13 +4,25 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
+
     public static void SaveCustomize(CustomizeManager customize)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/customize.fun";
         FileStream stream = new FileStream(path, FileMode.Create);
-
         CustomizeData data = new CustomizeData(customize);
+        formatter.Serialize(stream, data);
+        stream.Close();
+        GPGSAuthentication.instance.OpenSaveToCloud(true);
+    }
+
+    public static void SaveCustomize(string skin, string trail)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/customize.fun";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        CustomizeData data = new CustomizeData(skin, trail);
         formatter.Serialize(stream, data);
         stream.Close();
     }
@@ -43,6 +55,18 @@ public static class SaveSystem
         PlayerData data = new PlayerData(gameController);
         formatter.Serialize(stream, data);
         stream.Close();
+        GPGSAuthentication.instance.OpenSaveToCloud(true);
+    }
+
+    public static void SavePlayerData(int coins, int highScore, bool loadedFromCloud)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/player.fun";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        PlayerData data = new PlayerData(coins, highScore, loadedFromCloud);
+        formatter.Serialize(stream, data);
+        stream.Close();
     }
 
     public static PlayerData LoadPlayerData()
@@ -73,6 +97,18 @@ public static class SaveSystem
         UpgradesData data = new UpgradesData(upgradesData);
         formatter.Serialize(stream, data);
         stream.Close();
+        GPGSAuthentication.instance.OpenSaveToCloud(true);
+    }
+
+    public static void SaveUpgrades(int[] items, int levelUpMultiplier)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/upgrades.fun";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        UpgradesData data = new UpgradesData(items, levelUpMultiplier);
+        formatter.Serialize(stream, data);
+        stream.Close();
     }
 
     public static UpgradesData LoadUpgrades()
@@ -84,6 +120,8 @@ public static class SaveSystem
             FileStream stream = new FileStream(path, FileMode.Open);
 
             UpgradesData data = formatter.Deserialize(stream) as UpgradesData;
+            Debug.Log("upgrades data " + data.items);
+
             stream.Close();
             return data;
         }
@@ -101,6 +139,18 @@ public static class SaveSystem
         FileStream stream = new FileStream(path, FileMode.Create);
 
         LevelData data = new LevelData(levelSystem);
+        formatter.Serialize(stream, data);
+        stream.Close();
+        GPGSAuthentication.instance.OpenSaveToCloud(true);
+    }
+
+    public static void SaveLevelData(int level)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/level.fun";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        LevelData data = new LevelData(level);
         formatter.Serialize(stream, data);
         stream.Close();
     }
@@ -158,6 +208,5 @@ public static class SaveSystem
         DirectoryInfo dataDir = new DirectoryInfo(Application.persistentDataPath);
         dataDir.Delete(true);
     }
-
 
 }

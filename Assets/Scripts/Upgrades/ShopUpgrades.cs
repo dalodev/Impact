@@ -28,9 +28,7 @@ public class ShopUpgrades : MonoBehaviour
 
     private void Awake()
     {
-        coins = 0;
-        UpdatePlayerData();
-        LoadDataUpgradesData();
+        LoadData();
     }
 
     public void UpdatePlayerData()
@@ -40,6 +38,7 @@ public class ShopUpgrades : MonoBehaviour
         {
             coins = playerData.coins;
         }
+        coins = 10000;
         coinsText.text = string.Format("{0:#,0}", coins);
     }
 
@@ -176,9 +175,10 @@ public class ShopUpgrades : MonoBehaviour
         }
     }
 
-    public void WatchAd()
+    public void LoadData()
     {
-
+        coins = 0;
+        UpdatePlayerData();
+        LoadDataUpgradesData();
     }
- 
 }

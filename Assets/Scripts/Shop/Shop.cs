@@ -18,7 +18,7 @@ public class Shop : MonoBehaviour
 
     private void Awake()
     {
-        UpdatePlayerData();
+        LoadData();
     }
 
     public void UpdatePlayerData()
@@ -72,6 +72,9 @@ public class Shop : MonoBehaviour
         //initiate google play services
         //in app service
     }
-  
-   
+
+    public void LoadData()
+    {
+        UpdatePlayerData();
+    }
 }

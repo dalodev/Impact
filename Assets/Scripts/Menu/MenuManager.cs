@@ -16,7 +16,7 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
-        ApplyLevel();
+        LoadData();
     }
 
     private void Update()
@@ -73,5 +73,15 @@ public class MenuManager : MonoBehaviour
     public void ClickUISound()
     {
         SfxManager.instance.Play(click);
+    }
+
+    public void ShowLeaderBoard()
+    {
+        GPGSAuthentication.instance.ShowLeaderBoard();
+    }
+    
+    public void LoadData()
+    {
+        ApplyLevel();
     }
 }

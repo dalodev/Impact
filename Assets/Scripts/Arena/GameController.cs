@@ -8,8 +8,7 @@ public class GameController : MonoBehaviour
     public GameObject lifeUi;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highScoreText;
-    public TextMeshProUGUI levelText;
-    public int coins;
+    public int coins = 0;
     public Ball ball;
     public CustomizeManager customizeManager;
     public LevelSystem levelSystem;
@@ -17,6 +16,7 @@ public class GameController : MonoBehaviour
     public ArenaTweenManager arenaTweenManager;
     public int coinMultiplier = 1;
     public AdMobManager adMobManager;
+    public bool loadedFromCloud = false;
     private int highScore;
     private int currentScore = 0;
     private int scoreIncreaseRate = 1;
@@ -25,18 +25,7 @@ public class GameController : MonoBehaviour
 
     void Awake()
     {
-        //SaveSystem.DeleteData();
-        PlayerData data = SaveSystem.LoadPlayerData();
-        if (data != null)
-        {
-            highScore = data.highScore;
-            coins = data.coins;
-        }
-        else
-        {
-            highScore = 0;
-            coins = 0;
-        }
+        LoadData();
     }
 
     void Update()
@@ -63,6 +52,7 @@ public class GameController : MonoBehaviour
         if(currentScore > highScore)
         {
             highScore = currentScore;
+            GPGSAuthentication.instance.SubmitScoreToLeaderboard(highScore);
             highScoreText.text = "HighScore: " + currentScore.ToString();
         }
         else
@@ -146,5 +136,22 @@ public class GameController : MonoBehaviour
     public int GetCurrentScore()
     {
         return scoreToEvaluate;
+    }
+
+    public void LoadData()
+    {
+        //SaveSystem.DeleteData();
+        PlayerData data = SaveSystem.LoadPlayerData();
+        if (data != null)
+        {
+            highScore = data.highScore;
+            coins = data.coins;
+            loadedFromCloud = data.loadedFromCloud;
+        }
+        else
+        {
+            highScore = 0;
+            coins = 0;
+        }
     }
 }

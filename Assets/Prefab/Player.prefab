@@ -5146,6 +5146,7 @@ GameObject:
   - component: {fileID: 4294871546288971451}
   - component: {fileID: 1389915068245649366}
   - component: {fileID: 875348947}
+  - component: {fileID: 971909066}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -5405,6 +5406,9 @@ MonoBehaviour:
   deathEffect: {fileID: 928886995705978368, guid: 28980cdb593af614fb0bfadc9705c0e1, type: 3}
   canLaunch: 1
   trail: {fileID: 494282060}
+  antivirus: 0
+  autobounceButton: {fileID: 0}
+  launchClip: {fileID: 8300000, guid: 44ac33ebd4cf76b4f9e4756b10138ec4, type: 3}
 --- !u!58 &875348947
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5421,6 +5425,25 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &971909066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4294871546288971425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc6556d33d64d014d83ad6c8e2059df5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies: []
+  closestEnemy: {fileID: 0}
+  enemyContact: 0
+  bounceCount: 4
+  bounceRate: 3
+  force: 20
+  bounceRateText: {fileID: 0}
 --- !u!1001 &4294871548073768627
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -17,18 +17,7 @@ public class CustomizeManager : MonoBehaviour
     
     void Awake()
     {
-        CustomizeData data = SaveSystem.LoadCustomize();
-        if (data != null)
-        {
-            skinId = data.skin;
-            trailId = data.trail;
-        }
-        else
-        {
-            skinId = skinManager.GetSkinName();
-            trailId = trailSkinManager.GetTrailName();
-        }
-        UpdatePlayerData();
+        LoadData();
     }
 
     void Update()
@@ -87,5 +76,21 @@ public class CustomizeManager : MonoBehaviour
         {
             SfxManager.instance.Play(errorClip);
         }
+    }
+
+    public void LoadData()
+    {
+        CustomizeData data = SaveSystem.LoadCustomize();
+        if (data != null)
+        {
+            skinId = data.skin;
+            trailId = data.trail;
+        }
+        else
+        {
+            skinId = skinManager.GetSkinName();
+            trailId = trailSkinManager.GetTrailName();
+        }
+        UpdatePlayerData();
     }
 }

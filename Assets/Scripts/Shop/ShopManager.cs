@@ -7,6 +7,11 @@ public class ShopManager : MonoBehaviour
 
     void Start()
     {
+        LoadData();
+    }
+
+    public void LoadData()
+    {
         UpdatePlayerData();
     }
 

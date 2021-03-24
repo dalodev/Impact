@@ -5337,6 +5337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5fa14f10fed682448bed0a9af2e2694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSaving: 0
+  dataLoaded: 0
 --- !u!4 &515285506
 Transform:
   m_ObjectHideFlags: 0
@@ -5345,7 +5347,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 515285504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.40524468, y: -38.733906, z: 24.856094}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11813,6 +11815,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 175501724}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ShowLeaderBoard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &611822132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14275,11 +14289,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37ff7cf2e3513f4a907cfcdb1f31157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &971909066
+--- !u!114 &971909066 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 971909066, guid: ff9da86b83601cd49bece9c7f3bd50e0, type: 3}
+  m_PrefabInstance: {fileID: 4294871547158486383}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971909060}
   m_Enabled: 1
@@ -14287,13 +14300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6556d33d64d014d83ad6c8e2059df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies: []
-  closestEnemy: {fileID: 0}
-  enemyContact: 0
-  bounceCount: 4
-  bounceRate: 3
-  force: 20
-  bounceRateText: {fileID: 1875018614}
 --- !u!1 &983627661
 GameObject:
   m_ObjectHideFlags: 0
@@ -22784,6 +22790,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9001d441ec4f37648b1dedda944c817b, type: 2}
+    - target: {fileID: 971909066, guid: ff9da86b83601cd49bece9c7f3bd50e0, type: 3}
+      propertyPath: bounceRateText
+      value: 
+      objectReference: {fileID: 1875018614}
     - target: {fileID: 1389915068245649366, guid: ff9da86b83601cd49bece9c7f3bd50e0, type: 3}
       propertyPath: timeManager
       value: 
@@ -22800,10 +22810,6 @@ PrefabInstance:
       propertyPath: autobounceButton
       value: 
       objectReference: {fileID: 1914251951}
-    - target: {fileID: 1389915068245649366, guid: ff9da86b83601cd49bece9c7f3bd50e0, type: 3}
-      propertyPath: launchClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 44ac33ebd4cf76b4f9e4756b10138ec4, type: 3}
     - target: {fileID: 3037039595514576022, guid: ff9da86b83601cd49bece9c7f3bd50e0, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -22877,10 +22883,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000}
-    - target: {fileID: 6109965553752513048, guid: 640a7868143fae144a8f96c7edcac06b, type: 3}
-      propertyPath: bounceClip
-      value: 
-      objectReference: {fileID: 8300000, guid: fc172aba07912d2439a74b514d0cd740, type: 3}
     - target: {fileID: 6109965554614003854, guid: 640a7868143fae144a8f96c7edcac06b, type: 3}
       propertyPath: m_Name
       value: Floor
@@ -22984,18 +22986,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6367534700011766629, guid: d0af819d5b6fff44c81a97ec0f0428a3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6367534700011766629, guid: d0af819d5b6fff44c81a97ec0f0428a3, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6367534700011766629, guid: d0af819d5b6fff44c81a97ec0f0428a3, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 48
-      objectReference: {fileID: 0}
-    - target: {fileID: 6367534700011766629, guid: d0af819d5b6fff44c81a97ec0f0428a3, type: 3}
-      propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6367534700011766631, guid: d0af819d5b6fff44c81a97ec0f0428a3, type: 3}

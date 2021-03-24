@@ -15,6 +15,12 @@ public class UpgradesData
         }
     }
 
+    public UpgradesData(int[] items, int levelUpMultiplier)
+    {
+        this.levelUpMultipler = levelUpMultiplier;
+        this.items = items;
+    }
+
     public enum Upgrades {
         Speed = 1, 
         TripleLaunch = 2, 
@@ -28,4 +34,9 @@ public class UpgradesData
         Antivirus = 10
     };
 
+    public enum UpgradesIndex
+    {
+        UPGRADES_ITEMS = 4,
+        UPGRADES_LEVELMULTIPLAYER = 5
+    }
 } 

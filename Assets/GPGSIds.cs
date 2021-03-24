@@ -25,7 +25,6 @@
 public static class GPGSIds
 {
         public const string leaderboard_highscore = "CgkInYaFxIAdEAIQAg"; // <GPGSID>
-        public const string achievement_pimp_my_ball = "CgkInYaFxIAdEAIQAw"; // <GPGSID>
 
 }
 
