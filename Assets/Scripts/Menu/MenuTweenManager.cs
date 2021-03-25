@@ -14,13 +14,14 @@ public class MenuTweenManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UiState.instance.SetState(UiState.State.Menu);
-        LeanTween.moveY(level.GetComponent<RectTransform>(), 200, 0.3f);
+    }
 
+    public void Menu()
+    {
+        LeanTween.moveY(level.GetComponent<RectTransform>(), 200, 0.3f);
         LeanTween.moveY(privacyBtn.GetComponent<RectTransform>(), -294, 0.4f).setEase(topButtonsType);
         LeanTween.moveY(leaderboardBtn.GetComponent<RectTransform>(), -350, 0.4f).setEase(topButtonsType);
         LeanTween.moveY(settingsBtn.GetComponent<RectTransform>(), -300, 0.4f).setEase(topButtonsType);
-
         LeanTween.moveX(playBtn.GetComponent<RectTransform>(), 0, 0.5f).setEase(buttonsType);
         LeanTween.moveX(customizeBtn.GetComponent<RectTransform>(), 0, 0.5f).setEase(buttonsType);
         LeanTween.moveX(upgradesBtn.GetComponent<RectTransform>(), 0, 0.5f).setEase(buttonsType);

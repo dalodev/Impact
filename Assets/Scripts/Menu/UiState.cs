@@ -10,14 +10,13 @@ public class UiState: MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+         if(instance != null && instance != this)
         {
-            instance = this;
+            Destroy(this.gameObject);
+            return;
         }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
+        instance = this;
+        instance.SetState(UiState.State.Menu);
     }
 
     public void SetState(State state)
@@ -33,6 +32,7 @@ public class UiState: MonoBehaviour
     public enum State
     {
         Menu,
+        Arena,
         Options,
         Customize,
         Upgrades,

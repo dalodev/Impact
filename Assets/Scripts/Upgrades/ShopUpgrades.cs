@@ -9,7 +9,7 @@ public class ShopUpgrades : MonoBehaviour
 {
     [Header("List of items to sold")]
     [SerializeField] public UpgradeItem[] items;
-    [SerializeField] public int levelUpMultipler;
+    [SerializeField] public int levelUpMultipler = 1;
 
     [Header("References")]
     [SerializeField] private Transform upgradesContainer;
@@ -38,13 +38,13 @@ public class ShopUpgrades : MonoBehaviour
         {
             coins = playerData.coins;
         }
-        coins = 10000;
         coinsText.text = string.Format("{0:#,0}", coins);
     }
 
     private void LoadDataUpgradesData()
     {
         UpgradesData upgrades = SaveSystem.LoadUpgrades();
+        levelUpMultipler = 1;
         if (upgrades != null)
         {
             levelUpMultipler = upgrades.levelUpMultipler;
@@ -54,10 +54,6 @@ public class ShopUpgrades : MonoBehaviour
                 this.myItems.Add(i);
             }
         }
-    }
-
-    private void Start()
-    {
         PopulateShop();
     }
 
@@ -147,10 +143,21 @@ public class ShopUpgrades : MonoBehaviour
         {
             if (GetItemSelected().cost <= coins && canBuy)
             {
-                this.coins -= (int)GetItemSelected().cost;
+                if(GetItemSelected().id == (int)UpgradesData.Upgrades.LevelUp)
+                {
+                    Debug.Log("levelupMultiplier " + (int)GetItemSelected().cost * levelUpMultipler);
+                    this.coins -= (int)GetItemSelected().cost * levelUpMultipler;
+                }
+                else
+                {
+                    this.coins -= (int)GetItemSelected().cost;
+                }
                 coinsText.text = string.Format("{0:#,0}", coins);
                 Debug.Log("Buy it");
-                this.myItems.Add((int)GetItemSelected().id);
+                if (!myItems.Contains((int)GetItemSelected().id))
+                {
+                    this.myItems.Add((int)GetItemSelected().id);
+                }
                 gameObjectSelected.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(true);
                 if (GetItemSelected().id == (int)UpgradesData.Upgrades.LevelUp)
                 {

@@ -13,6 +13,7 @@ public class MenuManager : MonoBehaviour
     public ShopTweenManager shopTween;
     public ArenaTweenManager arenaTween;
     public AudioClip click;
+    public GameObject loading;
 
     private void Awake()
     {
@@ -37,6 +38,7 @@ public class MenuManager : MonoBehaviour
         switch (UiState.instance.GetCurrentState())
         {
             case UiState.State.Menu:
+                Application.Quit();
                 break;
             case UiState.State.Options:
                 menuTween.Options(false);
@@ -83,5 +85,15 @@ public class MenuManager : MonoBehaviour
     public void LoadData()
     {
         ApplyLevel();
+        ShowLoading(false);
+    }
+
+    public void ShowLoading(bool show)
+    {
+        loading.SetActive(show);
+        if (!show)
+        {
+            GameObject.FindObjectOfType<MenuTweenManager>().Menu();
+        }
     }
 }

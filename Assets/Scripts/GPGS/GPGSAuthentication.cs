@@ -7,16 +7,20 @@ using System;
 
 public class GPGSAuthentication : MonoBehaviour
 {
-    public const string LEADERBOARD_ID = "CgkInYaFxIAdEAIQAg";
     public static PlayGamesPlatform platform;
     public bool isSaving = false;
     private string SAVE_NAME = "savegaames";
     public static GPGSAuthentication instance;
-
+    private MenuManager menuManager;
+    private ShopManager shopManager;
+    private ShopUpgrades shopUpgrades;
     public bool dataLoaded = false;
 
     private void Awake()
     {
+        menuManager = GameObject.FindObjectOfType<MenuManager>();
+        shopManager = GameObject.FindObjectOfType<ShopManager>();
+        shopUpgrades = GameObject.FindObjectOfType<ShopUpgrades>();
         if (instance != null && instance != this)
         {
             Destroy(this.gameObject);
@@ -28,7 +32,24 @@ public class GPGSAuthentication : MonoBehaviour
 
     void Start()
     {
-        if(platform == null)
+        PlayerData data = SaveSystem.LoadPlayerData();
+        if (data != null)
+        {
+            if (!data.loadedFromCloud)
+            {
+                menuManager.ShowLoading(true);
+            }
+            else
+            {
+                menuManager.LoadData();
+            }
+        }
+        else
+        {
+            menuManager.ShowLoading(true);
+        }
+
+        if (platform == null)
         {
             PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
                 .RequestServerAuthCode(false)
@@ -46,7 +67,6 @@ public class GPGSAuthentication : MonoBehaviour
             {
                 case SignInStatus.Success:
                     Debug.Log("Play Games signed in succesfully");
-                    PlayerData data = SaveSystem.LoadPlayerData();
                     if(data != null)
                     {
                         if (!data.loadedFromCloud)
@@ -61,6 +81,7 @@ public class GPGSAuthentication : MonoBehaviour
                     break;
                 default:
                     Debug.Log("Play Games signin not sucess");
+                    menuManager.LoadData();
                     break;
             }
         });
@@ -68,7 +89,7 @@ public class GPGSAuthentication : MonoBehaviour
 
     public void SubmitScoreToLeaderboard(int score)
     {
-        Social.ReportScore(score, LEADERBOARD_ID, (bool success) => {
+        Social.ReportScore(score, GPGSIds.leaderboard_highscore, (bool success) => {
             if (success)
             {
                 Debug.Log("succesfully add score to leaderboard");
@@ -114,11 +135,15 @@ public class GPGSAuthentication : MonoBehaviour
                 (SAVE_NAME, DataSource.ReadCacheOrNetwork,
                 ConflictResolutionStrategy.UseLongestPlaytime, SavedGameOpen);
         }
+        else
+        {
+            menuManager.LoadData();
+        }
     }
 
     private void SavedGameOpen(SavedGameRequestStatus status, ISavedGameMetadata meta)
     {
-        if(status== SavedGameRequestStatus.Success)
+        if(status == SavedGameRequestStatus.Success)
         {
             if (isSaving)//if is saving is truie we are saving our data to cloud
             {
@@ -130,6 +155,10 @@ public class GPGSAuthentication : MonoBehaviour
             {
                 ((PlayGamesPlatform)Social.Active).SavedGame.ReadBinaryData(meta, ReadDataFromCloud);
             }
+        }
+        else
+        {
+            menuManager.LoadData();
         }
     }
 
@@ -147,7 +176,25 @@ public class GPGSAuthentication : MonoBehaviour
         if(status == SavedGameRequestStatus.Success)
         {
             string saveData = System.Text.ASCIIEncoding.ASCII.GetString(data);
-            LoadDataFromCloud(saveData);
+            if(saveData != null)
+            {
+                if(saveData != "")
+                {
+                    LoadDataFromCloud(saveData);
+                }
+                else
+                {
+                    menuManager.LoadData();
+                }
+            }
+            else
+            {
+                menuManager.LoadData();
+            }
+        }
+        else
+        {
+            menuManager.LoadData();
         }
     }
 
@@ -171,13 +218,17 @@ public class GPGSAuthentication : MonoBehaviour
         if(dataItems != null)
         {
             int[] items = Array.ConvertAll(dataItems, s => int.Parse(s));
-            int multiplier = int.Parse(data[(int)UpgradesData.UpgradesIndex.UPGRADES_ITEMS]);
+            int multiplier = int.Parse(data[(int)UpgradesData.UpgradesIndex.UPGRADES_LEVELMULTIPLAYER]);
             SaveSystem.SaveUpgrades(items, multiplier);
         }
 
         int level = int.Parse(data[(int)LevelData.LevelIndex.LEVEL_LEVEL]);
         SaveSystem.SaveLevelData(level);
         dataLoaded = true;
+        //Update all data from game
+        menuManager.LoadData();
+        shopManager.LoadData();
+        shopUpgrades.LoadData();
     }
 
     private string GetDataToStore() // we seting the value that we are going to store the data in cloud

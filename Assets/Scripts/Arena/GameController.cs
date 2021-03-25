@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     public int coinMultiplier = 1;
     public AdMobManager adMobManager;
     public bool loadedFromCloud = false;
+    public bool resetData = false;
     private int highScore;
     private int currentScore = 0;
     private int scoreIncreaseRate = 1;
@@ -140,7 +141,10 @@ public class GameController : MonoBehaviour
 
     public void LoadData()
     {
-        //SaveSystem.DeleteData();
+        if (resetData)
+        {
+            SaveSystem.DeleteData();
+        }
         PlayerData data = SaveSystem.LoadPlayerData();
         if (data != null)
         {

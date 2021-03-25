@@ -178,7 +178,7 @@ public class AdMobManager : MonoBehaviour
         double amount = args.Amount;
         Debug.Log("HandleRewardedAdRewarded event received for "
                         + amount.ToString() + " " + type);
-        levelSystem.AddExperience(500);
+        levelSystem.AddExperience((int)amount);
         this.rewardedCoinAd = null;
         this.rewardedExpAd = null;
     }
