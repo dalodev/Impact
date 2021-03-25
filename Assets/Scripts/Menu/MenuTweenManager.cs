@@ -14,6 +14,7 @@ public class MenuTweenManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Menu();
     }
 
     public void Menu()

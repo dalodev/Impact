@@ -9,7 +9,7 @@ public class DisableUI : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            //return;
+            return;
         }
     }
 }
