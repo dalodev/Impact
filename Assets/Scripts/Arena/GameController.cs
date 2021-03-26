@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour
     private int scoreIncreaseRate = 1;
     private int currentMaxScore = 0;
     private int scoreToEvaluate = 0;
+    public string appVersion;
 
     void Awake()
     {
@@ -151,6 +152,7 @@ public class GameController : MonoBehaviour
             highScore = data.highScore;
             coins = data.coins;
             loadedFromCloud = data.loadedFromCloud;
+            appVersion = data.appVersion;
         }
         else
         {

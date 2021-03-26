@@ -96,4 +96,9 @@ public class MenuManager : MonoBehaviour
             GameObject.FindObjectOfType<MenuTweenManager>().Menu();
         }
     }
+
+    public void GoToPrivacyPolicy()
+    {
+        Application.OpenURL("https://appsdevidtest.wixsite.com/impact/");
+    }
 }

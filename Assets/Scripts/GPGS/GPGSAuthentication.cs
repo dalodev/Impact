@@ -41,7 +41,14 @@ public class GPGSAuthentication : MonoBehaviour
             }
             else
             {
-                menuManager.LoadData();
+                if(data.appVersion != Application.version)
+                {
+                    menuManager.ShowLoading(true);
+                }
+                else
+                {
+                    menuManager.LoadData();
+                }
             }
         }
         else
@@ -72,6 +79,13 @@ public class GPGSAuthentication : MonoBehaviour
                         if (!data.loadedFromCloud)
                         {
                             GPGSAuthentication.instance.OpenSaveToCloud(false);
+                        }
+                        else
+                        {
+                            if (Application.version != data.appVersion)
+                            {
+                                GPGSAuthentication.instance.OpenSaveToCloud(false);
+                            }
                         }
                     }
                     else
@@ -205,17 +219,17 @@ public class GPGSAuthentication : MonoBehaviour
         Debug.Log("data from cloud: " + string.Join(", ", data));
         string skin = data[(int)CustomizeData.CustomizeIndex.CUSTOMIZE_SKIN] != "null" ? data[(int)CustomizeData.CustomizeIndex.CUSTOMIZE_SKIN] : null;
         string trail = data[(int)CustomizeData.CustomizeIndex.CUSTOMIZE_TRAIL] != "null" ? data[(int)CustomizeData.CustomizeIndex.CUSTOMIZE_TRAIL] : null;
-        if(skin != null && trail != null)
+        if (skin != null && trail != null)
         {
             SaveSystem.SaveCustomize(skin, trail);
         }
 
         int coins = int.Parse(data[(int)PlayerData.PlayerIndex.PLAYER_COINS]);
         int highscore = int.Parse(data[(int)PlayerData.PlayerIndex.PLAYER_HIGHSCORE]);
-        SaveSystem.SavePlayerData(coins, highscore, true);
+        SaveSystem.SavePlayerData(coins, highscore, true, Application.version);
 
         string[] dataItems = data[(int)UpgradesData.UpgradesIndex.UPGRADES_ITEMS] != "null" ? data[(int)UpgradesData.UpgradesIndex.UPGRADES_ITEMS].Split(',') : null;
-        if(dataItems != null)
+        if (dataItems != null)
         {
             int[] items = Array.ConvertAll(dataItems, s => int.Parse(s));
             int multiplier = int.Parse(data[(int)UpgradesData.UpgradesIndex.UPGRADES_LEVELMULTIPLAYER]);
@@ -253,6 +267,8 @@ public class GPGSAuthentication : MonoBehaviour
         data += upgrades != null ? upgrades.levelUpMultipler : 1;
         data += "|";
         data += level != null ? level.level : 0;
+        data += "|";
+        data += player != null ? player.appVersion.ToString() : "null";// this is important to set at the end
 
         return data;
     }

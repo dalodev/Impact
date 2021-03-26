@@ -58,13 +58,13 @@ public static class SaveSystem
         GPGSAuthentication.instance.OpenSaveToCloud(true);
     }
 
-    public static void SavePlayerData(int coins, int highScore, bool loadedFromCloud)
+    public static void SavePlayerData(int coins, int highScore, bool loadedFromCloud, string appVersion)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player.fun";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        PlayerData data = new PlayerData(coins, highScore, loadedFromCloud);
+        PlayerData data = new PlayerData(coins, highScore, loadedFromCloud, appVersion);
         formatter.Serialize(stream, data);
         stream.Close();
     }
