@@ -45,6 +45,11 @@ public class ShopUpgrades : MonoBehaviour
     {
         UpgradesData upgrades = SaveSystem.LoadUpgrades();
         levelUpMultipler = 1;
+        myItems.Clear();
+        foreach(Transform child in upgradesContainer)
+        {
+            GameObject.Destroy(child.transform);
+        }
         if (upgrades != null)
         {
             levelUpMultipler = upgrades.levelUpMultipler;

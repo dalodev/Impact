@@ -13,9 +13,11 @@ public class LevelData
         this.experienceToNextLevel = data.experienceToNextLevel;
     }
 
-    public LevelData(int level)
+    public LevelData(int level, int experience, int experienceToNextLevel)
     {
         this.level = level;
+        this.currentExp = experience;
+        this.experienceToNextLevel = experienceToNextLevel;
     }
 
     public enum LevelIndex

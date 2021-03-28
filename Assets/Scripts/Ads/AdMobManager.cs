@@ -5,10 +5,10 @@ using Random = UnityEngine.Random;
 
 public class AdMobManager : MonoBehaviour
 {
-
-    //private string rewarded_coin_video = "ca-app-pub-8223583860856544/8518329635";
-    //private string rewarded_exp_video = "ca-app-pub-8223583860856544/2216096421";
-    //private string interesticial = "ca-app-pub-8223583860856544/2545794133";
+    public bool test = false;
+    private string rewarded_coin_video = "ca-app-pub-8223583860856544/8518329635";
+    private string rewarded_exp_video = "ca-app-pub-8223583860856544/2216096421";
+    private string interesticial = "ca-app-pub-8223583860856544/2545794133";
     private string rewarded_coin_video_test = "ca-app-pub-3940256099942544/5224354917";
     private string rewarded_exp_video_test = "ca-app-pub-3940256099942544/5224354917";
     private string interesticial_test = "ca-app-pub-3940256099942544/1033173712";
@@ -25,9 +25,9 @@ public class AdMobManager : MonoBehaviour
     void Start()
     {
         MobileAds.Initialize(initStatus => { });
-        this.rewardedCoinAd = RequestRewardedVideo(rewarded_coin_video_test);
-        this.rewardedExpAd = RequestRewardedVideo(rewarded_exp_video_test);
-        this.interstitialAd = RequestInteresticialAd(interesticial_test);
+        this.rewardedCoinAd = RequestRewardedVideo(test ? rewarded_coin_video_test : rewarded_coin_video);
+        this.rewardedExpAd = RequestRewardedVideo(test ? rewarded_exp_video_test : rewarded_exp_video);
+        this.interstitialAd = RequestInteresticialAd(test ? interesticial_test : interesticial);
     }
 
     private InterstitialAd RequestInteresticialAd(string adUnitId)
@@ -69,7 +69,7 @@ public class AdMobManager : MonoBehaviour
         {
             if (this.interstitialAd == null)
             {
-                this.interstitialAd = RequestInteresticialAd(interesticial_test);
+                this.interstitialAd = RequestInteresticialAd(test ? interesticial_test : interesticial);
             }
             if (this.interstitialAd.IsLoaded())
             {
@@ -84,7 +84,7 @@ public class AdMobManager : MonoBehaviour
         canShowAd = true;
         if(this.rewardedCoinAd == null)
         {
-            this.rewardedCoinAd = RequestRewardedVideo(rewarded_coin_video_test);
+            this.rewardedCoinAd = RequestRewardedVideo(test ? rewarded_coin_video_test : rewarded_coin_video);
         }
         rewardedCoinAd.OnUserEarnedReward += HandleCoinEarnedReward;
         if (this.rewardedCoinAd.IsLoaded())
@@ -98,7 +98,7 @@ public class AdMobManager : MonoBehaviour
         canShowAd = true;
         if (this.rewardedExpAd == null)
         {
-            this.rewardedExpAd = RequestRewardedVideo(rewarded_exp_video_test);
+            this.rewardedExpAd = RequestRewardedVideo(test ? rewarded_exp_video_test : rewarded_exp_video);
         }
         rewardedExpAd.OnUserEarnedReward += HandleExpEarnedReward;
         if (this.rewardedExpAd.IsLoaded())

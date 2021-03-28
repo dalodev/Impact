@@ -23,7 +23,6 @@ public class GameController : MonoBehaviour
     private int scoreIncreaseRate = 1;
     private int currentMaxScore = 0;
     private int scoreToEvaluate = 0;
-    public string appVersion;
 
     void Awake()
     {
@@ -46,6 +45,7 @@ public class GameController : MonoBehaviour
         {
             scoreText.text = "Score: " + currentScore.ToString();
         }
+        //scoreText.text = "Score: " + currentScore.ToString();
     }
 
     public void PlayerDead(int xp = 1)
@@ -65,10 +65,10 @@ public class GameController : MonoBehaviour
         scoreText.text = "Score: " + currentScore.ToString();
         int score = currentMaxScore * xp;
         scoreToEvaluate = currentMaxScore;
-        levelSystem.AddExperience(score);
         currentMaxScore = 0;
         currentScore = 0;
         adMobManager.ShowInteresticialAd();
+        levelSystem.AddExperience(score);
     }
 
     public void UpdateScore(int score)
@@ -131,7 +131,6 @@ public class GameController : MonoBehaviour
 
     public void LevelUp()
     {
-     
         levelSystem.LevelUp();
     }
 
@@ -152,12 +151,19 @@ public class GameController : MonoBehaviour
             highScore = data.highScore;
             coins = data.coins;
             loadedFromCloud = data.loadedFromCloud;
-            appVersion = data.appVersion;
         }
         else
         {
             highScore = 0;
             coins = 0;
         }
+    }
+
+    public void PlayAgain()
+    {
+        deathText.SetActive(false);
+        currentScore = 0;
+        currentMaxScore = 0;
+        scoreText.text = "Score: " + currentScore.ToString();
     }
 }

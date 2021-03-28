@@ -58,13 +58,13 @@ public static class SaveSystem
         GPGSAuthentication.instance.OpenSaveToCloud(true);
     }
 
-    public static void SavePlayerData(int coins, int highScore, bool loadedFromCloud, string appVersion)
+    public static void SavePlayerData(int coins, int highScore, bool loadedFromCloud)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player.fun";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        PlayerData data = new PlayerData(coins, highScore, loadedFromCloud, appVersion);
+        PlayerData data = new PlayerData(coins, highScore, loadedFromCloud);
         formatter.Serialize(stream, data);
         stream.Close();
     }
@@ -144,13 +144,13 @@ public static class SaveSystem
         GPGSAuthentication.instance.OpenSaveToCloud(true);
     }
 
-    public static void SaveLevelData(int level)
+    public static void SaveLevelData(int level, int experience, int expToNextLevel)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/level.fun";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        LevelData data = new LevelData(level);
+        LevelData data = new LevelData(level, experience, expToNextLevel);
         formatter.Serialize(stream, data);
         stream.Close();
     }

@@ -15,14 +15,36 @@ public class LevelSystem : MonoBehaviour
     public float targetProgress = 0;
     public float experienceToUpdateNextLevel = 0;
 
-    private GameController gameController;
+    private void Awake()
+    {
+        LoadData();
+    }
+
+    public void LoadData()
+    {
+        LevelData levelData = SaveSystem.LoadLevelData();
+        if (levelData != null)
+        {
+            level = levelData.level;
+            experience = levelData.currentExp;
+            experienceToNextLevel = levelData.experienceToNextLevel;
+        }
+        else
+        {
+            level = 0;
+            experience = 0;
+            experienceToNextLevel = 1000;
+        }
+        levelText.text = "Level " + level.ToString();
+        levelSlider.value += GetExperienceNormalized();
+    }
 
     void Update()
     {
-        if(levelSlider.value < targetProgress && levelSlider.value < 1)
+        if (levelSlider.value < targetProgress && levelSlider.value < 1)
         {
             levelSlider.value += fillSpeed * Time.deltaTime;
-            
+
             if (!partycleSystem.isPlaying)
             {
                 partycleSystem.Play();
@@ -50,17 +72,17 @@ public class LevelSystem : MonoBehaviour
     
     public void AddExperience(int amount)
     {
-        LoadPlayerData();
+        //LoadData();
+        Debug.Log("amount: " + amount);
         experience += amount;
         IncrementProgress(GetExperienceNormalized());
         while (experience >= experienceToNextLevel)
-        { 
+        {
             //level up
-            level += 1;
             experience -= experienceToNextLevel;
+            level += 1;
             experienceToUpdateNextLevel = experience;
             experienceToNextLevel += experienceToNextLevel / 20;
-            SaveSystem.SaveLevelData(this);
         }
         SaveSystem.SaveLevelData(this);
     }
@@ -94,24 +116,5 @@ public class LevelSystem : MonoBehaviour
     {
         this.level++;
         SaveSystem.SaveLevelData(this);
-    }
-
-    public void LoadPlayerData()
-    {
-        LevelData data = SaveSystem.LoadLevelData();
-        if(data != null)
-        {
-            level = data.level;
-            experience = data.currentExp;
-            experienceToNextLevel = data.experienceToNextLevel;
-        }
-        else
-        {
-            level = 0;
-            experience = 0;
-            experienceToNextLevel = 1000;
-        }
-        levelText.text = "Level " + level.ToString();
-        levelSlider.value += GetExperienceNormalized();
     }
 }
