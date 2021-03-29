@@ -425,7 +425,7 @@ MonoBehaviour:
   - {fileID: 5790352928787555000, guid: 091604478392a9e4a9e8193f60050c57, type: 3}
   - {fileID: 9079352930251004577, guid: cf3fc283ffe0e2245b18def97d641f36, type: 3}
   - {fileID: 9079352930251004577, guid: d5954c1d4f624f34caf1246c3a3ccfe2, type: 3}
-  upWardForce: 1
+  upWardForce: 1.5
   points: 80
   targetPositon:
   - {fileID: 1292676857}

@@ -668,7 +668,7 @@ MonoBehaviour:
   deathEffect: {fileID: 4853962083377314509, guid: 8d73885d72aa8ba41be72bc95f7944c5, type: 3}
   enemyPrefab: {fileID: 9079352930251004577, guid: be54b610a17b8454d8b3928281860a42, type: 3}
   enemies: []
-  upWardForce: 1
+  upWardForce: 1.5
   points: 60
   targetPositon:
   - {fileID: 1292676857}

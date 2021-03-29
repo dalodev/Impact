@@ -15,7 +15,7 @@ public class Ball : MonoBehaviour
     public float maxSpeed = 5f;
 
     [Header("Launch movment")]
-    public float launchSpeed = 15f;
+    public float launchSpeed = 5.8f;
     public LineRenderer line;
     public float maxDrag = 5f;
     public int dragCount = 0;
@@ -188,7 +188,7 @@ public class Ball : MonoBehaviour
                 {
                     case (int)UpgradesData.Upgrades.Speed:
                         Debug.Log("Apply Upgrade Launch speed");
-                        this.launchSpeed = 6;
+                        this.launchSpeed = 8;
                         break;
                     case (int)UpgradesData.Upgrades.TripleLaunch:
                         Debug.Log("Apply Upgrade Launch TripleLaunch");

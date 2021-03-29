@@ -23316,6 +23316,10 @@ PrefabInstance:
       propertyPath: autobounceButton
       value: 
       objectReference: {fileID: 1914251951}
+    - target: {fileID: 1389915068245649366, guid: ff9da86b83601cd49bece9c7f3bd50e0, type: 3}
+      propertyPath: launchSpeed
+      value: 5.8
+      objectReference: {fileID: 0}
     - target: {fileID: 3037039595514576022, guid: ff9da86b83601cd49bece9c7f3bd50e0, type: 3}
       propertyPath: m_Mesh
       value: 
