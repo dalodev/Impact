@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class Ball : MonoBehaviour
 {
@@ -157,6 +158,7 @@ public class Ball : MonoBehaviour
         Instantiate(deathEffect, transform.position, Quaternion.identity);
         gameCotroller.PlayerDead(xp);
         gameObject.SetActive(false);
+        autobounceButton.GetComponent<Button>().enabled = false;
     }
 
     public void ResetLaunch(bool canLaunch) {
@@ -167,6 +169,14 @@ public class Ball : MonoBehaviour
     public bool isAutoBounceEnabled()
     {
         return this.autobounceButton.activeInHierarchy;
+    }
+
+    public void EnableAutobounce()
+    {
+        if (isAutoBounceEnabled())
+        {
+            autobounceButton.GetComponent<Button>().enabled = true;
+        }
     }
 
    public enum BallState

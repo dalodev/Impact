@@ -115,6 +115,8 @@ public class LevelSystem : MonoBehaviour
     public void LevelUp()
     {
         this.level++;
+        experienceToNextLevel += experienceToNextLevel / 20;
         SaveSystem.SaveLevelData(this);
+        LoadData();
     }
 }

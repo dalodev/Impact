@@ -50,6 +50,11 @@ public class EnemyRadar : MonoBehaviour
         this.currentBounceCount -= 1;
     }
 
+    public void ResetAutoBounce()
+    {
+        this.currentBounceCount = 0;
+    }
+
     public void AutoBounce()
     {
         if(currentBounceRate > 0)

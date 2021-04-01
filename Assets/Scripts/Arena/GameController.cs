@@ -94,8 +94,9 @@ public class GameController : MonoBehaviour
         enemySpawner.gameObject.SetActive(true);
     }
 
-    public void ApplyUpgrades()
+    public void ApplyUpgrades(int coins)
     {
+        this.coins = coins;
         ball.ApplyUpgrades();
         SaveSystem.SavePlayerData(this);
         customizeManager.UpdatePlayerData();

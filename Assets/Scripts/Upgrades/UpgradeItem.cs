@@ -8,5 +8,5 @@ public class UpgradeItem : ScriptableObject
     public Sprite sprite;
     public float cost;
     public Color backgroundColor;
-
+    public Color buyColor;
 }

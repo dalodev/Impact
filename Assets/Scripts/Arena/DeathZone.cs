@@ -17,13 +17,12 @@ public class DeathZone : MonoBehaviour
             collision.gameObject.SetActive(false);
             Shaker.ShakeAll(ShakePreset);
             Ball player = collision.gameObject.GetComponent<Ball>();
-
             if (player.deathEffect != null)
             {
                 SfxManager.instance.Play(deathClip);
                 Instantiate(player.deathEffect, collision.gameObject.transform.position, player.deathEffect.transform.rotation);
             }
-            gameController.PlayerDead(collision.gameObject.GetComponent<Ball>().xp);
+            player.PlayerDeath();
         }
     }
 }

@@ -11,7 +11,7 @@ public class EnemyMove : MonoBehaviour
     {
         this.GetComponent<CircleCollider2D>().enabled = false;
     }
-    void Update()
+    void FixedUpdate()
     {
         transform.position = Vector3.Lerp(transform.position, targetPosition, 0.5f);
         if(transform.position == targetPosition)

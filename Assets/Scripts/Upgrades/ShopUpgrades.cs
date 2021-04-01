@@ -18,13 +18,16 @@ public class ShopUpgrades : MonoBehaviour
     public MenuManager menuManager;
     public GameController gameController;
     public TextMeshProUGUI coinsText;
+    public TextMeshProUGUI levelText;
     private UpgradeItem itemSelected;
     private GameObject gameObjectSelected;
     public List<int> myItems = new List<int>();
     public AudioClip confirmationClip;
     public AudioClip errorClip;
+    public bool test;
 
     private int coins;
+    private int level;
 
     private void Awake()
     {
@@ -33,12 +36,22 @@ public class ShopUpgrades : MonoBehaviour
 
     public void UpdatePlayerData()
     {
+        LevelData levelData = SaveSystem.LoadLevelData();
+        if(levelData!= null)
+        {
+            level = levelData.level;
+        }
         PlayerData playerData = SaveSystem.LoadPlayerData();
         if (playerData != null)
         {
             coins = playerData.coins;
         }
+        if (test)
+        {
+            coins = 1000000;
+        }
         coinsText.text = string.Format("{0:#,0}", coins);
+        levelText.text = level.ToString();
     }
 
     private void LoadDataUpgradesData()
@@ -83,12 +96,10 @@ public class ShopUpgrades : MonoBehaviour
             {
                 if(id == item.id)
                 {
-                    itemObject.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(true);
+                    itemObject.transform.GetComponent<Image>().color = item.buyColor;
+                    //itemObject.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(true);
                     UpdateLevelUp(itemObject, item);
-                }
-                if(id == (int)UpgradesData.Upgrades.Love)
-                {
-                    itemObject.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(false);
+                    UpdateLove(itemObject, item);
                 }
             }
         }     
@@ -100,7 +111,35 @@ public class ShopUpgrades : MonoBehaviour
         {
             if (myItems.Contains((int)item.id))
             {
-                itemObject.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(false);
+                if(GetItemSelected() != null && GetItemSelected().id == item.id)
+                {
+                    itemObject.transform.GetComponent<Image>().color = item.backgroundColor;
+                }
+                else
+                {
+                    itemObject.transform.GetComponent<Image>().color = new Color32(255, 255, 255, 50);
+                    //itemObject.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(false);
+                }
+                string value = string.Format("{0:#,0}", item.cost * levelUpMultipler);
+                itemObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = value;
+            }
+        }
+    }
+
+    private void UpdateLove(GameObject itemObject, UpgradeItem item)
+    {
+        if(item.id == (int)UpgradesData.Upgrades.Love)
+        {
+            if (myItems.Contains((int)item.id))
+            {
+                if(GetItemSelected() != null && GetItemSelected().id == item.id)
+                {
+                    itemObject.transform.GetComponent<Image>().color = item.backgroundColor;
+                }
+                else
+                {
+                    itemObject.transform.GetComponent<Image>().color = new Color32(255, 255, 255, 50);
+                }
                 string value = string.Format("{0:#,0}", item.cost * levelUpMultipler);
                 itemObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = value;
             }
@@ -113,9 +152,15 @@ public class ShopUpgrades : MonoBehaviour
         gameObjectSelected = itemObject;
         foreach (Transform child in upgradesContainer)
         {
-            child.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 50);
+            if(child.gameObject.GetComponent<Image>().color != item.buyColor)
+            {
+                child.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 50);
+            }
         }
-        itemObject.GetComponent<Image>().color = item.backgroundColor;
+        if (itemObject.GetComponent<Image>().color != item.buyColor)
+        {
+            itemObject.GetComponent<Image>().color = item.backgroundColor;
+        }
         menuManager.ClickUISound();
     }
 
@@ -131,7 +176,7 @@ public class ShopUpgrades : MonoBehaviour
         {
             for (int i = 0; i < myItems.Count; i++)
             {
-                if (myItems[i] == GetItemSelected().id)
+                if (GetItemSelected() != null && myItems[i] == GetItemSelected().id)
                 {
                     if (myItems[i] == (int)UpgradesData.Upgrades.LevelUp || myItems[i] == (int)UpgradesData.Upgrades.Love)
                     {
@@ -142,6 +187,7 @@ public class ShopUpgrades : MonoBehaviour
                         canBuy = false;
                     }
                 }
+                
             }
         }
         if(GetItemSelected() != null)
@@ -163,20 +209,25 @@ public class ShopUpgrades : MonoBehaviour
                 {
                     this.myItems.Add((int)GetItemSelected().id);
                 }
-                gameObjectSelected.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(true);
+                gameObjectSelected.GetComponent<Image>().color = GetItemSelected().buyColor;
+                //gameObjectSelected.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(true);
                 if (GetItemSelected().id == (int)UpgradesData.Upgrades.LevelUp)
                 {
                     levelUpMultipler += 1;
                     UpdateLevelUp(gameObjectSelected, GetItemSelected());
                     GameObject.FindObjectOfType<GameController>().LevelUp();
                     menuManager.ApplyLevel();
+                    level += 1;
+                    levelText.text = "" + level;
                 }
                 if (GetItemSelected().id == (int)UpgradesData.Upgrades.Love)
                 {
-                    gameObjectSelected.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(false);
+                    gameObjectSelected.GetComponent<Image>().color = new Color32(255, 255, 255, 50);
+                    //gameObjectSelected.transform.GetChild(5).GetComponent<Image>().gameObject.SetActive(false);
                 }
                 SaveSystem.SaveUpgrades(this);
-                gameController.ApplyUpgrades();
+                gameController.ApplyUpgrades(coins);
+              
                 SfxManager.instance.Play(confirmationClip);
             }
             else
@@ -190,6 +241,7 @@ public class ShopUpgrades : MonoBehaviour
     public void LoadData()
     {
         coins = 0;
+        level = 0;
         UpdatePlayerData();
         LoadDataUpgradesData();
     }
