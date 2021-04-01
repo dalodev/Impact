@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10ae7de146b46b54cb95e0505616d1b2, type: 3}
   m_Name: ShopThree
   m_EditorClassIdentifier: 
+  id: com.devid.impact.coin550
+  itemType: 550
   itemName: Three
   sprite: {fileID: 0}
   cost: 4.99

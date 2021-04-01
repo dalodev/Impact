@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class Shop : MonoBehaviour
 {
@@ -46,8 +47,9 @@ public class Shop : MonoBehaviour
 
             itemObject.GetComponent<Button>().onClick.AddListener(() => OnButtonClick(item, itemObject));
 
-            itemObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "" + item.cost + "€";
+            itemObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = item.cost.ToString();
             itemObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "" + item.reward;
+            StartCoroutine(LoadPriceRoutine(itemObject, item));
         }
     }
 
@@ -69,12 +71,21 @@ public class Shop : MonoBehaviour
 
     public void Buy()
     {
-        //initiate google play services
-        //in app service
+        Debug.Log("buy item: " + GetItemSelected().id);
+        IAPManager.instance.BuyCoin(GetItemSelected().id);
     }
 
     public void LoadData()
     {
         UpdatePlayerData();
+    }
+
+    private IEnumerator LoadPriceRoutine(GameObject itemObject, ShopItem item)
+    {
+        while (!IAPManager.instance.IsInitialized())
+            yield return null;
+
+        string loadedPrice = IAPManager.instance.GetProductPriceFromStore(item.id);
+        itemObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = loadedPrice;
     }
 }

@@ -34,6 +34,7 @@ public class MenuManager : MonoBehaviour
 
     public void OnBack()
     {
+        Debug.Log("OBack " + UiState.instance.GetCurrentState());
         switch (UiState.instance.GetCurrentState())
         {
             case UiState.State.Menu:
@@ -84,6 +85,11 @@ public class MenuManager : MonoBehaviour
     public void LoadData()
     {
         ApplyLevel();
+    }
+
+    public void PlayState()
+    {
+        UiState.instance.SetState(UiState.State.Arena);
     }
 
     public void GoToPrivacyPolicy()

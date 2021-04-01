@@ -172,7 +172,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.devid.impact
   buildNumber: {}
-  AndroidBundleVersionCode: 1
+  AndroidBundleVersionCode: 3
   AndroidMinSdkVersion: 21
   AndroidTargetSdkVersion: 30
   AndroidPreferredInstallLocation: 1

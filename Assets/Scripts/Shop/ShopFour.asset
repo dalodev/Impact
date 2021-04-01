@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10ae7de146b46b54cb95e0505616d1b2, type: 3}
   m_Name: ShopFour
   m_EditorClassIdentifier: 
+  id: com.devid.impact.coin1200
+  itemType: 1200
   itemName: Four
   sprite: {fileID: 0}
   cost: 10.99

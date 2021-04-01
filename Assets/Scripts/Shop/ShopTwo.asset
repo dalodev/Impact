@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10ae7de146b46b54cb95e0505616d1b2, type: 3}
   m_Name: ShopTwo
   m_EditorClassIdentifier: 
+  id: com.devid.impact.coin220
+  itemType: 220
   itemName: Two
   sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   cost: 1.99

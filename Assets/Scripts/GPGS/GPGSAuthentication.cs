@@ -16,8 +16,8 @@ public class GPGSAuthentication : MonoBehaviour
     public ShopManager shopManager;
     public GameController gameController;
     public LevelSystem levelSystem;
+    public CustomizeManager customizeManager;
     public bool dataLoaded = false;
-    public bool test = false;
 
     private void Awake()
     {
@@ -85,10 +85,6 @@ public class GPGSAuthentication : MonoBehaviour
 
     public void SubmitScoreToLeaderboard(int score)
     {
-        if (test)
-        {
-            return;
-        }
         Social.ReportScore(score, GPGSIds.leaderboard_highscore, (bool success) => {
             if (success)
             {
@@ -228,6 +224,7 @@ public class GPGSAuthentication : MonoBehaviour
         shopManager.LoadData();
         gameController.LoadData();
         levelSystem.LoadData();
+        customizeManager.LoadData();
         ShowLoading(false);
     }
 

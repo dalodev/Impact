@@ -34,6 +34,7 @@ public class GameController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape)
             && ball.enabled)
         {
+            Debug.Log("Back restar");
             Restart();
         }
         

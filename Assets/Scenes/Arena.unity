@@ -685,7 +685,7 @@ MonoBehaviour:
     unlockLevel: 24
     enabled: 0
     coins: 0
-  - effect: {fileID: 1959943387793046998, guid: 30df3c632e33332449d5648432b154f0, type: 3}
+  - effect: {fileID: 8760715169331311186, guid: c3f47c43e113b8a42b708d9bc7ab58e7, type: 3}
     skin: {fileID: 0}
     itemID: 13
     unlockLevel: 26
@@ -695,6 +695,12 @@ MonoBehaviour:
     skin: {fileID: 0}
     itemID: 14
     unlockLevel: 28
+    enabled: 0
+    coins: 0
+  - effect: {fileID: 8760715169331311186, guid: e40a7d2b4c3094a49af8e63daef18f0e, type: 3}
+    skin: {fileID: 0}
+    itemID: 14
+    unlockLevel: 29
     enabled: 0
     coins: 0
   skinCoinsText: {fileID: 546721609}
@@ -1136,6 +1142,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 113030848}
   m_CullTransparentMesh: 0
+--- !u!1 &117592639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 117592641}
+  - component: {fileID: 117592640}
+  m_Layer: 0
+  m_Name: IAPManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &117592640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117592639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72893fe727c85754fba270f5a0132f15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &117592641
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117592639}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.66822535, y: -2.910106, z: 9.129522}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &120701180
 GameObject:
   m_ObjectHideFlags: 0
@@ -5172,6 +5221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coins: 0
   level: 0
+  gameController: {fileID: 563260663}
 --- !u!4 &486242745
 Transform:
   m_ObjectHideFlags: 0
@@ -5466,8 +5516,8 @@ MonoBehaviour:
   shopManager: {fileID: 486242744}
   gameController: {fileID: 563260663}
   levelSystem: {fileID: 563260666}
+  customizeManager: {fileID: 60570915}
   dataLoaded: 0
-  test: 1
 --- !u!4 &515285506
 Transform:
   m_ObjectHideFlags: 0
@@ -11184,7 +11234,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &584858652
 GameObject:
@@ -13561,6 +13611,18 @@ MonoBehaviour:
       - m_Target: {fileID: 971909066}
         m_TargetAssemblyTypeName: EnemyRadar, Assembly-CSharp
         m_MethodName: updateBounceRate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175501724}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: PlayState
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17592,6 +17654,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 731545782}
+        m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+        m_MethodName: Buy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1309731646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21208,7 +21282,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1855489681
 GameObject:
@@ -23626,7 +23700,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4294871546288971453, guid: ff9da86b83601cd49bece9c7f3bd50e0, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4294871546288971453, guid: ff9da86b83601cd49bece9c7f3bd50e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

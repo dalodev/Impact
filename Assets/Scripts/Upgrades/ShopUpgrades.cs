@@ -194,6 +194,7 @@ public class ShopUpgrades : MonoBehaviour
         {
             if (GetItemSelected().cost <= coins && canBuy)
             {
+                int maxCoins = coins;
                 if(GetItemSelected().id == (int)UpgradesData.Upgrades.LevelUp)
                 {
                     Debug.Log("levelupMultiplier " + (int)GetItemSelected().cost * levelUpMultipler);
@@ -203,6 +204,7 @@ public class ShopUpgrades : MonoBehaviour
                 {
                     this.coins -= (int)GetItemSelected().cost;
                 }
+                coins = Mathf.Clamp(coins, 0, maxCoins);
                 coinsText.text = string.Format("{0:#,0}", coins);
                 Debug.Log("Buy it");
                 if (!myItems.Contains((int)GetItemSelected().id))
