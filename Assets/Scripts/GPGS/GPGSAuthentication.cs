@@ -17,6 +17,7 @@ public class GPGSAuthentication : MonoBehaviour
     public GameController gameController;
     public LevelSystem levelSystem;
     public CustomizeManager customizeManager;
+    public GameObject leaderBoardButton;
     public bool dataLoaded = false;
 
     private void Awake()
@@ -45,17 +46,7 @@ public class GPGSAuthentication : MonoBehaviour
             ShowLoading(true);
         }
 
-        if (platform == null)
-        {
-            PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
-                .RequestServerAuthCode(false)
-                .EnableSavedGames()
-                .Build();
-            PlayGamesPlatform.InitializeInstance(config);
-            PlayGamesPlatform.DebugLogEnabled = true;
-            platform = PlayGamesPlatform.Activate();
-            Debug.Log("Play Games initialized");
-        }
+        InitializeGoogelPlayGames();
 
         PlayGamesPlatform.Instance.Authenticate(SignInInteractivity.CanPromptOnce, (success) =>
         {
@@ -63,6 +54,7 @@ public class GPGSAuthentication : MonoBehaviour
             {
                 case SignInStatus.Success:
                     Debug.Log("Play Games signed in succesfully");
+                    leaderBoardButton.SetActive(true);
                     if (data != null)
                     {
                         if (!data.loadedFromCloud)
@@ -83,6 +75,21 @@ public class GPGSAuthentication : MonoBehaviour
         });
     }
 
+    private void InitializeGoogelPlayGames()
+    {
+        if (platform == null)
+        {
+            PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
+                .RequestServerAuthCode(false)
+                .EnableSavedGames()
+                .Build();
+            PlayGamesPlatform.InitializeInstance(config);
+            PlayGamesPlatform.DebugLogEnabled = true;
+            platform = PlayGamesPlatform.Activate();
+            Debug.Log("Play Games initialized");
+        }
+    }
+
     public void SubmitScoreToLeaderboard(int score)
     {
         Social.ReportScore(score, GPGSIds.leaderboard_highscore, (bool success) => {
@@ -99,7 +106,23 @@ public class GPGSAuthentication : MonoBehaviour
 
     public void ShowLeaderBoard()
     {
-        Social.ShowLeaderboardUI();
+        if (Social.localUser.authenticated)
+        {
+            PlayGamesPlatform.Instance.ShowLeaderboardUI(GPGSIds.leaderboard_highscore);
+        }
+        else
+        {
+            ShowLoading(true);
+            InitializeGoogelPlayGames();
+            Social.localUser.Authenticate((bool success) =>
+            {
+                if (success)
+                {
+                    PlayGamesPlatform.Instance.ShowLeaderboardUI(GPGSIds.leaderboard_highscore);
+                }
+                ShowLoading(false);
+            });
+        }
     }
 
     public void AchievementCompleted(string achievement = Achievements.PIMP_MY_BALL)
