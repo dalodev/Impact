@@ -15,6 +15,6 @@ MonoBehaviour:
   id: 5
   itemName: Auto Bounce
   sprite: {fileID: 21300000, guid: 9e09d156ed7513d4e8a00f5d84524359, type: 3}
-  cost: 1500
+  cost: 4000
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   buyColor: {r: 0.007843138, g: 1, b: 0.5294118, a: 1}

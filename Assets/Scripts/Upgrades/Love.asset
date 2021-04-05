@@ -15,6 +15,6 @@ MonoBehaviour:
   id: 9
   itemName: Love
   sprite: {fileID: 21300000, guid: b2f5b00a993b69a449df75f0e22eccb5, type: 3}
-  cost: 500000
+  cost: 10000
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   buyColor: {r: 0.007843138, g: 1, b: 0.5294118, a: 1}
