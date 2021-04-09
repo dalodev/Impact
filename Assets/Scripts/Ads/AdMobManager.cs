@@ -74,6 +74,7 @@ public class AdMobManager : MonoBehaviour
             if (this.interstitialAd.IsLoaded())
             {
                 this.interstitialAd.Show();
+                this.interstitialAd = RequestInteresticialAd(test ? interesticial_test : interesticial);
             }
         }
 
@@ -168,7 +169,7 @@ public class AdMobManager : MonoBehaviour
         Debug.Log("HandleRewardedAdRewarded event received for "
                         + amount.ToString() + " " + type);
         gameController.RewardedCoins((int)amount);
-        this.rewardedCoinAd = null;
+        this.rewardedCoinAd = RequestRewardedVideo(test ? rewarded_coin_video_test : rewarded_coin_video);
         this.rewardedExpAd = null;
     }
 
@@ -180,7 +181,7 @@ public class AdMobManager : MonoBehaviour
                         + amount.ToString() + " " + type);
         levelSystem.AddExperience((int)amount);
         this.rewardedCoinAd = null;
-        this.rewardedExpAd = null;
+        this.rewardedExpAd = RequestRewardedVideo(test ? rewarded_exp_video_test : rewarded_exp_video);
     }
 
 
